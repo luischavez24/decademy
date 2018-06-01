@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="/fragments/head :: headFragment('Mis Cursos')">
+</head>
+<body class="fixed-sn indigo-skin">
+  <header th:include="/fragments/navbar :: navbar"></header>
+  <!--Main layout-->
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 my-4">
+            <header>
+              <h1 class="main-title"><i class="fa fa-book"></i> Mis
+                  cursos</h1>
+            </header>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="list-group list-group-flush">
+              <a th:href="@{/cursos/algoritmica3}" class="list-group-item
+                  list-group-item-action flex-column
+                  align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Algorítmica 3</h5>
+                    <small>Hace 3 días</small>
+                  </div>
+                  <p class="mb-1">
+                    Se subió un nuevo reto para el curso, puedes
+                    verificarlo en la pestaña 'Retos'
+                  </p>
+                  <small>Visto por todos</small>
+              </a>
+              <a th:href="@{/cursos/ihc}" class="list-group-item
+                  list-group-item-action flex-column
+                  align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Interfaz Hombre Computador</h5>
+                    <small>Hace 4 días</small>
+                  </div>
+                  <p class="mb-1">
+                    Se subió un nuevo reto para el curso, puedes
+                    verificarlo en la pestaña 'Retos'
+                  </p>
+                  <small>Visto por 15</small>
+              </a>
+              <a th:href="@{/cursos/bd3}" class="list-group-item
+                  list-group-item-action flex-column
+                  align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Base de Datos 3</h5>
+                    <small>Hace 5 días</small>
+                  </div>
+                  <p class="mb-1">
+                    Se subió un nuevo reto para el curso, puedes
+                    verificarlo en la pestaña 'Retos'
+                  </p>
+                  <small>Visto por 10</small>
+              </a>
+              <a th:href="@{/cursos/ia}" class="list-group-item
+                  list-group-item-action flex-column
+                  align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Inteligencia Artificial</h5>
+                    <small>Hace 6 días</small>
+                  </div>
+                  <p class="mb-1">
+                    Se subió un nuevo reto para el curso, puedes
+                    verificarlo en la pestaña 'Retos'
+                  </p>
+                  <small>Visto por 10</small>
+              </a>
+            </div>
+        </div>
+        <div class="col-md-8 mb-5">
+          <div id="calendar"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <div th:include="/fragments/head :: finalSection"></div>
+  <div th:include="/fragments/head :: scripts"></div>
+  <!-- Script propio de la página web -->
+  <script>
+    $(() => {
+        // Inicializar calendar
+        $('#calendar').fullCalendar({
+          aspectRatio: 1.57,
+          eventSources : [
+              {
+                events: [
+                    { title: "Algoritmica 3", start: "2018-05-24",},
+                    { title: "Interfaz Hombre Computador", start: "2018-05-25" },
+                    { title: "Base de Datos 3",  start: "2018-05-28" },
+                    { title: "Inteligencia Artificial",  start: "2018-05-29" }
+                ],
+                color: "#435189",
+                textColor: "white"
+              }
+          ]
+        });
+    });
+  </script>
+</body>
+</html>>

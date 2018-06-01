@@ -1,0 +1,65 @@
+body {
+    --background: #63FDBB;
+}
+
+.cabezera {
+    background: #2E9AFE;
+    padding: 1%;
+    margin: 3%;
+    position: relative;
+    bottom: 3%;
+    color: white;
+}
+
+.desarrollo {
+    background: #F2F2F2;
+    padding: 2%;
+    margin: -0.8%;
+    color: black;
+}
+
+
+.formulario {
+    position: relative;
+    left: 2%;
+    
+}
+
+.curso {
+    position: relative;
+    left: 10%;
+    
+}
+
+.ciclo {
+    position: relative;
+    left: 5%;
+}
+
+.botonS {
+    position: relative;
+    left: 2%;
+}
+
+.contenido {
+    position: relative;
+    right: 1%;
+}
+
+.panel {
+    text-decoration: none;
+    color: black;
+}
+
+.general {
+    background: #DEF6FA;
+    margin: 2%;
+    padding: .002%;
+    border-radius: 2%;
+}
+
+.seleccionado {
+    position: absolute;
+    left: 15%;
+    bottom: -28%;
+}

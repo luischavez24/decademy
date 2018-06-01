@@ -1,0 +1,73 @@
+.general {
+    background: #DEF6FA;
+    padding: 1%;
+    margin: 0px 0px 20px 0px;
+}
+
+.cabezera {
+    background: #2E9AFE;
+    padding: 1%;
+    border: 1px solid blue;
+    margin: 0px 0px 20px 0px;
+    position: relative;
+    bottom: 3%;
+    width: 60%;
+    color: white;
+}
+
+.desarrollo {
+    background: #F2F2F2;
+    padding: 1%;
+    margin: -0.8%;
+    text-align: justify;
+}
+
+.contenido {
+    position: relative;
+    color: black;
+}
+
+.p {
+    width: 75%;
+    text-align: justify;
+}
+.finalizar {
+    background: #99F4A0;
+    padding: 1%;
+    width: 30%;
+    position: absolute;
+    left: 78%;
+    bottom: 90px;
+    text-align: center;
+}
+
+.tiempo {
+    background: #F97570;
+    padding: 1%;
+    width: 25%;
+    position: absolute;
+    left: 150px;
+    text-align: center;
+    bottom: 100px;
+}
+
+.t {
+    width: 20%;
+}
+
+.t2 {
+    width: 20%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.gen1  {
+    padding: 1%;
+    width: 30%;
+    left: 60%;
+    bottom: 420px;
+    position: absolute;
+}

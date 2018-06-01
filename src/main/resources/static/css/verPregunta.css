@@ -1,0 +1,30 @@
+.Gpregunta {
+    text-align: justify;
+    width: 75%;
+}
+
+
+.panterior {
+    position: relative;
+    left: 85%;
+}
+
+.cabezera {
+    background: #2E9AFE;
+    padding: .4%;
+    border: 1px solid blue;
+    margin: 0px 0px 200px 0px;
+    position: relative;
+    left: 80px;
+    top: 100px;
+    width: 80%;
+    color: white;
+}
+
+.desarrollo {
+    background: #F2F2F2;
+    padding: 1%;
+    border: 1px solid #D8D8D8;
+    text-align: justify;
+    color: black;
+}

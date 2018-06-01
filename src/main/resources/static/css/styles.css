@@ -1,0 +1,46 @@
+/* 
+   Hoja de estilos custom 
+   Autor: guis
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans|Roboto|Tajawal");
+
+.shadow {
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.75);
+}
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+.text-indigo {
+  color: #435189;
+}
+.main-title {
+  text-align: left;
+}
+
+.verde {
+  filter: hue-rotate(120deg);
+}
+.amarillo {
+  filter: hue-rotate(60deg) brightness(500%);
+}
+
+@media (max-width: 575px) {
+  .display-4 {
+    font-size: 1.5rem;
+  }
+  .day h5 {
+    background-color: #f8f9fa;
+    padding: 3px 5px 5px;
+    margin: -8px -8px 8px -8px;
+  }
+  .date {
+    padding-left: 4px;
+  }
+}
+
+@media (min-width: 576px) {
+  .day {
+    height: 14.2857vw;
+  }
+}

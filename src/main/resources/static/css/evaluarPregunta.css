@@ -1,0 +1,79 @@
+.general {
+    background: #DEF6FA;
+    padding: 2%;
+    margin: 0px 0px 20px 0px;
+}
+
+.cabezera {
+    background: #2E9AFE;
+    padding: .8%;
+    border: 1px solid blue;
+    margin: 0px 0px 20px 0px;
+    position: relative;
+    bottom: 3%;
+    width: 62%;
+    color: white;
+}
+
+.desarrollo {
+    background: #F2F2F2;
+    padding: .5%;
+    margin: -0.8%;
+    text-align: justify;
+    
+}
+
+.contenido {
+    position: relative;
+    color: black;
+}
+
+.GseleccionarP {
+    width: 20%;
+    position: absolute;
+    left: 78%;
+    bottom: 110px;
+}
+
+.Glista {
+    --background: #F6BB95;
+    width: 24.6%;
+    position: absolute;
+    left: 71%;
+    bottom: 450px;
+}
+
+.tabla {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tabla, .c, .i, .t, .cn, .in, .tn {
+    border: 1px solid #000;
+    padding: 13px 20px;;
+}
+
+.c {
+    background: #C3F9C4;
+}
+
+.i {
+    background: #F7B6B6;
+}
+
+.t {
+    background: #EFF490;
+}
+
+.c:hover {
+    background: #76F938;
+}
+
+.i:hover {
+    background: #FE2E2E;
+}
+
+.t:hover {
+    background: #F7FE2E;
+}

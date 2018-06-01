@@ -1,0 +1,47 @@
+.Gexamen {
+    background: #DEF6FA;
+    padding: .6%;
+    position: relative;
+    bottom: 90px;
+    margin: -30px;
+}
+
+.pregunta {
+    background: #2E9AFE;
+    padding: .5%;
+    color: white;
+}
+
+.Ppregunta {
+    background: #F2F2F2;
+    padding: 2% 0% 2% 0%;
+    color: black;
+}
+
+.tabla1,.tabla2,.tabla3 {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table, .pm, .tm, .t, .tc, .f {
+    border: 1px solid #000;
+    padding: 13px 20px;;
+}
+
+.tabla1 {
+    position: relative;
+    left: 56%;
+}
+
+.tabla2 {
+    position: relative;
+    left: 72%;
+    bottom: 97px;
+}
+
+.tabla3 {
+    position: relative;
+    left: 85%;
+    bottom: 165px;
+}
