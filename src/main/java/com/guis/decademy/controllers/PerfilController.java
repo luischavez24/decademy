@@ -32,6 +32,11 @@ public class PerfilController {
 		return ViewNames.PERFIL_CURSOS;
 	}
 	
+	@GetMapping("/cursos/virtual")
+	public String virtual() {
+		LOG.info("[Página devuelta]: '/perfil/virtual'");
+		return ViewNames.PERFIL_VIRTUAL;
+	}
 	@GetMapping("/findCursos")
 	@ResponseBody
 	public List<Curso> findCursos() {

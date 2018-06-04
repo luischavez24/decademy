@@ -1,5 +1,6 @@
 package com.guis.decademy.entity;
 
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,7 +11,9 @@ public class Curso {
 	@Id
 	public String id;
 	
-	public String codigoCurso;
+	public String codigo;
 	
-	public String nombreCurso;
+	public String curso;
+	
+	public List<Clase> clases;
 }

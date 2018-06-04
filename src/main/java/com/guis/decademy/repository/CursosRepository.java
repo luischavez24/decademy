@@ -8,5 +8,4 @@ import com.guis.decademy.entity.Curso;
 @Repository("cursosRepository")
 public interface CursosRepository extends MongoRepository<Curso, String>{
 	
-	public Curso findByNombreCurso(String nombreCurso);
 }
