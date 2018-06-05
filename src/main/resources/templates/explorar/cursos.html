@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="/fragments/head :: headFragment('Cursos')">
+</head>
+<body class="fixed-sn indigo-skin">
+    <header th:include="/fragments/navbar :: navbar"></header>
+    <main>
+        <div class="container-fluid text-justify">
+            <div class="row">
+                <header class="col-md-12 mb-3">
+                    <center>
+                        <h1 class="main-title display-5">
+                            Buscar Cursos
+                            <!-- Search form -->
+                            <form class="form-inline md-form form-sm">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+                            </form>
+                        </h1>
+                    </center>
+                </header>
+            </div>
+            <div class="row">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!--Blue select-->
+                            <select class="mdb-select" searchable="Search here..">
+                                <option value="1">Ingenierías</option>
+                                <option value="2">Humanidaes</option>
+                                <option value="3">Ciencias Básicas</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <!--Blue select-->
+                            <select class="mdb-select" searchable="Search here..">
+                                <option value="1">Ing. de Sistemas</option>
+                                <option value="2">Ciencias Físicas</option>
+                                <option value="3">Educación</option>
+                                <option value="4">Ciencias Economicas</option>
+                                <option value="5">Ciencias Matemáticas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-deck mb-5">
+                <!-- Card -->
+                <div class="card mb-4 ml-4">
+                    <!-- Card image -->
+                    <div class="view overlay">
+                        <img class="card-img-top mx-auto d-block" th:src="@{/img/algoritmica.png}" alt="Card image cap">
+                        <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title text-center">Algorítmica 3</h4>
+                        <!-- Text -->
+                        <p class="card-text">
+                            Desarrollar algoritmos con la finalidad de fortalecer los conocimientos adquiridos, poniendo énfasis
+                            en la eficiencia algorítmica, y las habilidades de elaboración de soluciones algorítmicas a problemas
+                            basados en un conjunto de componentes que deben interactuar entre si.
+                        </p>
+                        <p class="text-center">
+                            <a href="./tutores.html" class="btn btn-deep-orange mt-1">
+                                <i class="fa fa-info-circle"></i>
+                                Ver Más
+                            </a>
+                        </p>
+                        <!-- Button -->
+
+                    </div>
+                </div>
+                <!-- Card -->
+                <!-- Card -->
+                <div class="card mb-4">
+                    <!-- Card image -->
+                    <div class="view overlay">
+                        <img class="card-img-top mx-auto d-block mb-2" th:src="@{/img/sistemas_operativos.png}" alt="Card image cap">
+                        <!--544*362-->
+                        <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title text-center">Sistemas Operativos</h4>
+                        <!-- Text -->
+                        <p class="card-text">Conocerás como se estructura un Sistema Operativo, la forma como trabaja internamente el sistema
+                            operativo la gestión de los procesos. Daremos un vistazo a los SO predominantes en el mercado
+                            actualmente
+                        </p>
+                        <p class="text-center">
+                            <a href="./tutores.html" class="btn btn-deep-orange mt-1">
+                                <i class="fa fa-info-circle"></i>
+                                Ver Más
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <!-- Card -->
+                <!-- Card -->
+                <div class="card mb-4 mr-4">
+                    <!-- Card image -->
+                    <div class="view overlay">
+                        <img class="card-img-top mx-auto d-block" th:src="@{/img/inteligencia_artificial.png}" alt="Card image cap">
+                        <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <!-- Title -->
+                        <h4 class="card-title text-center">Inteligencia Artificial</h4>
+                        <!-- Text -->
+                        <p class="card-text">En este curso aprenderemos los conceptos básicos asociados a la Inteligencia Artificial, las escuelas
+                            predominantes en esta área. Así como distintos algoritmos para la generación de la inteligencia
+                            en el computador</p>
+                            <p class="text-center">
+                                <a href="./tutores.html" class="btn btn-deep-orange mt-1">
+                                    <i class="fa fa-info-circle"></i>
+                                    Ver Más
+                                </a>
+                            </p>
+                    </div>
+                </div>
+                <!-- Card -->
+            </div>
+        </div>
+
+    </main>
+    
+    <div th:include="/fragments/head :: finalSection"></div>
+    <div th:include="/fragments/head :: scripts"></div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="/fragments/head :: headFragment('Cursos')">
+</head>
+<body class="fixed-sn indigo-skin">
+    <style>
+        body {
+            height: 100%;
+            background-size: cover;
+            background: url("img/fondo.jpg") no-repeat center center fixed;
+        }
+    </style>
+    
+    <header th:include="/fragments/navbar :: navbar"></header>
+    
+    <main class="h-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 my-2">
+                    <header class="mx-auto">
+                        <img class="img-fluid" src="img/logo_decademy.png" alt="logo">
+                    </header>
+                </div>
+                <div class="col-md-8 mx-auto text-center text-white">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <h3 class="shadow">
+                                    Una plataforma donde podrás encontrar tutorias personales y en linea, para que puedas mejor tus calificaciones o reforzar
+                                    los cursos que ya llevaste en la universidad. Tus tutores pueden ser tanto alumnos como
+                                    profesores y estarán ahí para ayudarte.
+                                </h3>
+                            </div>
+                            <div class="col-12 mb-5">
+                                <button class="btn btn-deep-orange">
+                                    <i class="fa fa-book"></i>
+                                    Explora los cursos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:include="/fragments/head :: footer"></div>
+    <div th:include="/fragments/head :: finalSection"></div>
+    <div th:include="/fragments/head :: scripts"></div>
+</body>
+</html>
