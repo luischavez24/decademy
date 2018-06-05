@@ -22,4 +22,9 @@ public class CursosServiceImpl implements CursosService{
 		return cursosRepository.findAll();
 	}
 
+	@Override
+	public Curso insertCurso(Curso curso) {
+		Curso nuevoCurso = cursosRepository.insert(curso);
+		return nuevoCurso;
+	}
 }
