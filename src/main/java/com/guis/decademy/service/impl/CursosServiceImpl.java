@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.guis.decademy.entity.Curso;
+import com.guis.decademy.entity.Horario;
 import com.guis.decademy.repository.CursosRepository;
 import com.guis.decademy.service.CursosService;
 
@@ -26,5 +27,11 @@ public class CursosServiceImpl implements CursosService{
 	public Curso insertCurso(Curso curso) {
 		Curso nuevoCurso = cursosRepository.insert(curso);
 		return nuevoCurso;
+	}
+
+	@Override
+	public List<Horario> findHorarios() {
+		
+		return cursosRepository.findHorarios();
 	}
 }

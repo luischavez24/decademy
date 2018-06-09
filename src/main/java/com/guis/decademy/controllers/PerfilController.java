@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.guis.decademy.constants.ViewNames;
 import com.guis.decademy.entity.Curso;
+import com.guis.decademy.entity.Horario;
 import com.guis.decademy.service.CursosService;
 
 @Controller
@@ -50,6 +51,17 @@ public class PerfilController {
 		LOG.info("[findCursos]: Response body => " + cursos);
 		
 		return cursos;
+	}
+	
+	@GetMapping("/findHorarios")
+	@ResponseBody
+	public List<Horario> findHorarios() {
+		
+		List<Horario> horarios = cursosService.findHorarios();
+		
+		LOG.info("[findHorarios]: Response body => " + horarios);
+		
+		return horarios;
 	}
 
 	@PostMapping("/insertarCurso")
