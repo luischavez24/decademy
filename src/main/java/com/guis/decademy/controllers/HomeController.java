@@ -17,6 +17,7 @@ public class HomeController {
 	
 	@GetMapping("")
 	public String index (Model model) {
+		model.addAttribute("notLogin", "");
 		LOG.info("[index]: Pagina devuelta => /index");
 		return ViewNames.HOME_INDEX;
 	}

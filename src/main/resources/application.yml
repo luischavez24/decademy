@@ -2,3 +2,7 @@ spring:
   mvc:
   favicon:
     enabled: true
+  thymeleaf:
+    cache: false
+  resources:
+    cache: false
