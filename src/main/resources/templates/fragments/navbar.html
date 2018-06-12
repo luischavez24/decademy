@@ -83,20 +83,43 @@
             <a data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
          </div>
          
-         <ul class="nav navbar-nav nav-flex-icons ml-auto">
-            <li th:if="${notLogin == null}" class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-user"></i>
-                  <span class="clearfix d-none d-sm-inline-block">Luis Chávez</span>
+         <ul th:if="${notLogin == null}" class="nav navbar-nav nav-flex-icons ml-auto">
+            <li class="nav-item">
+               <a class="nav-link p-1">
+                  <img th:src="@{/img/foto_perfil.jpg}" alt="user-image" class="rounded-circle img-fluid" width="30">
+                  <span class="clearfix d-none d-sm-inline-block">Pedro Romero</span>
                </a>
-               <div class="dropdown-menu dropdown-orange dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item waves-effect waves-light" th:href="@{/perfil/}">Perfil</a>
-                  <a class="dropdown-item waves-effect waves-light" th:href="@{/perfil/cursos}">Mis Cursos</a>
-                  <a class="dropdown-item waves-effect waves-light" th:href="@{/logout}">
-                     <i class="fa fa-close"></i>
-                     <span class="clearfix d-none d-sm-inline-block">Cerrar sesión</span>
+            </li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-bell"></i>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
+                  <a class="dropdown-item-text" href="#">
+                     <h5 class="p-0"><i class="fa fa-flag"></i> Tarea</h5>
+                     Se ha subido una nueva tarea a Algoritmica 3
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item-text" href="#">
+                     <h5 class="p-0"><i class="fa fa-flag"></i> Tarea</h5>
+                     Se ha subido una nueva tarea a Algoritmica 3
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item-text" href="#">
+                     <h5 class="p-0"><i class="fa fa-flag"></i> Tarea</h5>
+                     Se ha subido una nueva tarea a Algoritmica 3
                   </a>
                </div>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link">
+                  <i class="fa fa-cog"></i>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link">
+                  <i class="fa fa-sign-out"></i>
+               </a>
             </li>
          </ul>
       </nav>
