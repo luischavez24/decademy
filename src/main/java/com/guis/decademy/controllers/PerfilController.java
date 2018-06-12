@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.guis.decademy.constants.ViewNames;
+import com.guis.decademy.constants.ViewConstants;
 import com.guis.decademy.entity.Curso;
 import com.guis.decademy.entity.Horario;
 import com.guis.decademy.service.CursosService;
@@ -28,18 +28,18 @@ public class PerfilController {
 	@Qualifier("cursosService")
 	private CursosService cursosService;
 	
-	@GetMapping("/cursos")
-	public String cursos() {
+	@GetMapping("")
+	public String index() {
 		
-		LOG.info("[cursos]: Página devuelta => '/perfil/cursos'");
+		LOG.info("[index]: Página devuelta => '/perfil/cursos'");
 		
-		return ViewNames.PERFIL_CURSOS;
+		return ViewConstants.PERFIL_INDEX;
 	}
 	
 	@GetMapping("/cursos/virtual")
 	public String virtual() {
-		LOG.info("[virtual]: Página devuelta => '/perfil/virtual'");
-		return ViewNames.PERFIL_VIRTUAL;
+		LOG.info("[/cursos/virtual]: Página devuelta => '/perfil/virtual'");
+		return ViewConstants.PERFIL_VIRTUAL;
 	}
 	
 	@GetMapping("/findCursos")

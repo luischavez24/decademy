@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.guis.decademy.constants.ViewNames;
+import com.guis.decademy.constants.ViewConstants;
 
 @Controller
 @RequestMapping("/explorar")
@@ -18,7 +18,7 @@ public class ExplorarController {
 	@GetMapping("/cursos")
 	public String cursos(Model model) {
 		LOG.info("[cursos]: Pagina devuelta => /explorar/cursos");
-		return ViewNames.EXPLORAR_CURSOS;
+		return ViewConstants.EXPLORAR_CURSOS;
 	}
 	
 }

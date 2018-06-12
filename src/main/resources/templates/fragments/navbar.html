@@ -10,7 +10,7 @@
 <body>
    <header th:fragment="navbar">
       <!-- Sidebar navigation -->
-      <div id="slide-out" class="side-nav sn-bg-1 fixed orange custom-scrollbar" style="transform: translateX(-100%);">
+      <div id="slide-out" class="side-nav sn-bg-1 fixed orange darken-3 custom-scrollbar" style="transform: translateX(-100%); font-size: 5%;">
          <ul class="custom-scrollbar">
             <!-- Logo -->
             <li>
@@ -22,23 +22,17 @@
             <!-- Side navigation links -->
             <li>
                <ul class="collapsible collapsible-accordion">
-                  <li>
-                     <a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Asesorías<i class="fa fa-angle-down rotate-icon"></i></a>
-                     <div class="collapsible-body">
-                        <ul class="list-unstyled">
-                           <li>
-                              <a th:href="@{/perfil/cursos}" class="waves-effect">Mis cursos</a>
-                           </li>
-                           <li>
-                              <a th:href="@{/perfil/Retos}" class="waves-effect">Retos</a>
-                           </li>
-                        </ul>
-                     </div>
+                  <li th:if="${notLogin == null}">
+                     <a th:href="@{/perfil/cursos}" class="waves-effect">
+                        <i class="fa fa-book"></i>
+                        Mis cursos
+                     </a>
                   </li>
-                  <li>
-                     <a th:href="@{/perfil/notificaciones}" class="collapsible-header waves-effect arrow-r">
-                        <i class="fa fa-bell"></i> Notificaciones<i class="fa fa-angle-down rotate-icon"></i>
-                     </a> 
+                  <li th:if="${notLogin == null}">
+                     <a th:href="@{/perfil/cursos}" class="waves-effect">
+                        <i class="fa fa-star"></i>
+                        Mis retos
+                     </a>
                   </li>
                   <li>
                      <a class="collapsible-header waves-effect arrow-r">
@@ -47,27 +41,23 @@
                      <div class="collapsible-body">
                         <ul class="list-unstyled">
                            <li>
-                              <a th:href="@{/explorar/cursos}" class="waves-effect">Cursos</a>
+                              <a th:href="@{/explorar/cursos}" class="waves-effect">
+                                <i class="fa fa-book"></i>Cursos
+                              </a>
                            </li>
                            <li>
-                              <a th:href="@{/explorar/tutores}" class="waves-effect">Tutores</a>
+                              <a th:href="@{/explorar/tutores}" class="waves-effect">
+                                 <i class="fa fa-graduation-cap"></i>Tutores
+                              </a>
                            </li>
                         </ul>
                      </div>
                   </li>
                   <li>
-                     <a th:href="@{/nosotros}" class="collapsible-header waves-effect arrow-r">
-                        <i class="fa fa-envelope-o"></i> 
-                        Acerca de
-                        <i class="fa fa-angle-down rotate-icon"></i>
+                     <a th:href="@{/nosotros}" class="waves-effect arrow-r">
+                        <i class="fa fa-address-card"></i> 
+                        Nosotros
                      </a>
-                     <div class="collapsible-body">
-                        <ul class="list-unstyled">
-                           <li>
-                              <a th:href="@{/faq}" class="waves-effect">FAQ</a>
-                           </li>
-                        </ul>
-                     </div>
                   </li>
                </ul>
             </li>
@@ -82,10 +72,9 @@
          <div class="float-left">
             <a data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
          </div>
-         
          <ul th:if="${notLogin == null}" class="nav navbar-nav nav-flex-icons ml-auto">
             <li class="nav-item">
-               <a class="nav-link p-1">
+               <a class="nav-link p-1" th:href="@{/perfil}">
                   <img th:src="@{/img/foto_perfil.jpg}" alt="user-image" class="rounded-circle img-fluid" width="30">
                   <span class="clearfix d-none d-sm-inline-block">Pedro Romero</span>
                </a>
@@ -94,7 +83,7 @@
                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-bell"></i>
                </a>
-               <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
+               <div class="dropdown-menu dropdown-default dropdown-menu-right" style="width: 400px;">
                   <a class="dropdown-item-text" href="#">
                      <h5 class="p-0"><i class="fa fa-flag"></i> Tarea</h5>
                      Se ha subido una nueva tarea a Algoritmica 3
@@ -111,14 +100,21 @@
                   </a>
                </div>
             </li>
-            <li class="nav-item">
-               <a class="nav-link">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-cog"></i>
-               </a>
+              </a>
+              <div class="dropdown-menu dropdown-default dropdown-menu-right">
+                  <a class="dropdown-item" href="#">
+                      <i class="fa fa-sign-out"></i> Cerra Sesión
+                  </a>
+              </div>
             </li>
+         </ul>
+         <ul th:if="${notLogin != null}" class="nav navbar-nav nav-flex-icons ml-auto">
             <li class="nav-item">
                <a class="nav-link">
-                  <i class="fa fa-sign-out"></i>
+                  <i class="fa fa-sign-in"></i> Inicia Sesión
                </a>
             </li>
          </ul>
