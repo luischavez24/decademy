@@ -1,0 +1,27 @@
+Alumnos
+
+Cursos
+/cursos  -> Te muestra los cursos, el horario y las noticias
+/cursos/{idCurso} -> Te muestra un curso seleccionado
+/cursos/{idCurso}/horario
+/cursos/{idCurso}/temario -> Muestra los temas y el progreso
+/cursos/{idCurso}/temario/{idTema}/download?tipo=[nube, archivo]
+/cursos/{idCurso}/informacion
+/cursos/{idCurso}/publicaciones
+
+Retos
+/retos/{idCurso} -> Visualizar los retos de un curso en especifico
+
+Tutores
+/cursos
+/cursos/administrar
+/cursos/{idCurso}/temario/{idTema}/iniciar
+/cursos/{idCurso}/alumnos
+/cursos/{idCurso}/horario
+
+Administrador
+
+/administrar/malla/nueva
+
+Padre
+/progreso/consulta/{idAlumno}
