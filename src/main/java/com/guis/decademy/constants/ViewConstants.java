@@ -10,6 +10,8 @@ public interface ViewConstants {
 
 	public static final String EXPLORAR_CURSOS = "/explorar/cursos";
 
+	public static final String CURSOS_INDEX= "/cursos/index";
+	
 	public static final String CURSOS_DETALLE = "/cursos/detalle";
 
 	public static final String CURSOS_HORARIO = "/cursos/horario";

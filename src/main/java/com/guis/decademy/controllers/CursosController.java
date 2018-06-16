@@ -1,5 +1,7 @@
 package com.guis.decademy.controllers;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +13,17 @@ import com.guis.decademy.constants.ViewConstants;
 @RequestMapping("/cursos")
 public class CursosController {
 	
+	private static final Log LOG  = LogFactory.getLog(CursosController.class);
+	@GetMapping("")
+	public String index () {
+		LOG.info("[/cursos] - METHOD [index] -- Entrando al método ");
+		return ViewConstants.CURSOS_INDEX;
+	}
+	
 	@GetMapping("/{idCurso}")
 	public String detalle (@PathVariable("idCurso") String idCurso) {
+		LOG.info("[/cursos] - METHOD [detalle] -- Entrando al método ");
+		LOG.info("[/cursos] - METHOD [detalle] -- idCurso: " + idCurso);
 		return ViewConstants.CURSOS_DETALLE;
 	}
 	

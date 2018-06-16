@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.guis.decademy.constants.ViewConstants;
 import com.guis.decademy.entity.Curso;
 import com.guis.decademy.entity.Horario;
 import com.guis.decademy.service.CursosService;
@@ -27,20 +26,6 @@ public class PerfilController {
 	@Autowired
 	@Qualifier("cursosService")
 	private CursosService cursosService;
-	
-	@GetMapping("")
-	public String index() {
-		
-		LOG.info("[index]: Página devuelta => '/perfil/cursos'");
-		
-		return ViewConstants.PERFIL_INDEX;
-	}
-	
-	@GetMapping("/cursos/virtual")
-	public String virtual() {
-		LOG.info("[/cursos/virtual]: Página devuelta => '/perfil/virtual'");
-		return ViewConstants.PERFIL_VIRTUAL;
-	}
 	
 	@GetMapping("/findCursos")
 	@ResponseBody
