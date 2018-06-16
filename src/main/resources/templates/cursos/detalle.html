@@ -4,14 +4,10 @@
 
 <body class="fixed-sn">
     <header th:include="/fragments/navbar :: navbar"></header>
-
     <main id="app" class="container-fluid mx-auto">
         <div class="row">
             <div class="col-md-3">
-                <ul
-                    class="nav md-pills pills-teal-light flex-column"
-                    role="tablist"
-                >
+                <ul class="nav md-pills pills-teal-light flex-column" role="tablist">
                     <li class="nav-item">
                         <a
                             class="nav-link active"
@@ -61,10 +57,8 @@
                     </li>
                 </ul>
             </div>
-
             <div class="col-md-9">
                 <!-- Tab panels -->
-
                 <div class="tab-content vertical">
                     <!-- Publicaciones -->
                     <div class="tab-pane fade in show active" id="publicaciones" role="tabpanel">
@@ -72,7 +66,7 @@
                             <i class="fa fa-history mr-2"></i>
                             Publicaciones
                             <a
-                                class="btn-floating my-auto btn-orange btn-sm pull-right modal-button"
+                                class="btn-floating my-auto btn-orange btn-sm float-right modal-button"
                                 data-toggle="modal"
                                 data-target="#nuevaPublicacion"
                                 title="Nueva publicación"
@@ -80,7 +74,6 @@
                                 <i class="fa fa-plus"></i>
                             </a>
                         </h3>
-
                         <div class="row">
                             <div class="col-md-12">
                                 <post 
@@ -106,10 +99,7 @@
                             aria-hidden="true"
                             data-backdrop="false"
                         >
-                            <div
-                                class="modal-dialog modal-side modal-top-right modal-notify modal-warning"
-                                role="document"
-                            >
+                            <div class="modal-dialog modal-side modal-top-right modal-notify modal-warning" role="document">
                                 <!-- Content -->
 
                                 <div class="modal-content">
@@ -135,7 +125,8 @@
                                     <div class="modal-body">
                                         <div class="text-center">
                                             <i class="fa fa-newspaper fa-4x mb-3 animated rotateIn"></i>
-
+                                        </div>
+                                        <div>
                                             <p class="form-inline">
                                                 <div class="input-group">
                                                     <select
@@ -154,7 +145,7 @@
                                                 <div class="input-group md-form">
                                                     <input
                                                         type="text"
-                                                        class="form-control"
+                                                        class="form-control px-0"
                                                         v-model="publicacion.titulo"
                                                         placeholder="¿Cúal es tu titulo del mensaje para los alumnos?"
                                                     ></input>
@@ -196,130 +187,57 @@
                     <!-- Temario -->
                     <div  class="tab-pane fade" id="temario" role="tabpanel" >
                         <h3 class="mt-2 mb-4 h3">
-                            <i class="fa fa-pencil mr-2"></i>
+                            <i class="fa fa-pencil-alt mr-2"></i>
                             Temario
                         </h3>
                         <div class="row">
                             <div class="col-md-12">
-                                <div
-                                    class="progress"
-                                    style="height: 30px"
-                                >
+                                <div class="progress" style="height: 30px">
                                     <div
                                         class="progress-bar teal lighten-2"
                                         role="progressbar"
-                                        style="width: 25%; height: 30px"
-                                        aria-valuenow="25"
+                                        v-bind:style="'width:' + porcentaje + '%; height: 30px'"
+                                        v-bind:aria-valuenow="porcentaje"
                                         aria-valuemin="0"
                                         aria-valuemax="100"
                                     >
-                                        Vaya! llevas un progreso de 25%
+                                        {{ progreso }}
                                     </div>
                                 </div>
                             </div>
-
                             <div v-for="tema in temas" class="col-md-4 my-2">
                                 <tema
                                     v-bind:titulo="tema.titulo"
                                     v-bind:descripcion="tema.descripcion"
                                     v-bind:save="tema.save"
+                                    v-bind:estado="tema.estado"
                                 >
                                 </tema>
                             </div>
                         </div>
                     </div>
-
-                    <div
-                        class="tab-pane fade"
-                        id="retos"
-                        role="tabpanel"
-                    >
+                    <!-- Retos -->
+                    <div class="tab-pane fade" id="retos" role="tabpanel">
                         <h3 class="mt-2 mb-4 h3">
-                            <i class="fa fa-star mr-2"></i>
+                            <i class="fa fa-trophy mr-2"></i>
                             Retos
                         </h3>
                     </div>
-
-                    <div
-                        class="tab-pane fade"
-                        id="info"
-                        role="tabpanel"
-                    >
+                    <div class="tab-pane fade" id="info" role="tabpanel">
                         <h3 class="mt-2 mb-4 h3">
-                            <i class="fa fa-info-circle
-													mr-2"></i>
+                            <i class="fa fa-info-circle mr-2"></i>
                             Información
                         </h3>
-
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <ul class="list-group
-														list-group-flush">
-                                    <li class="list-group-item
-															flex-column
-															align-items-start">
-                                        <div class="d-flex
-																w-100
-																justify-content-between">
+                                <ul class="list-group list-group-flush">
+                                    <li v-for="info in informacion" class="list-group-item flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
                                             <h5 class="mb-3 h6">
-                                                <i class="fa
-																		fa-file-text"></i>
-                                                Descripción
+                                                <i v-bind:class="info.icono + ' mr-2'"></i> {{ info.titulo }}
                                             </h5>
                                         </div>
-
-                                        <p class="mb-1 h5">
-                                            Desarrollar algoritmos con la finalidad de fortalecer los conocimientos adquiridos, poniendo énfasis en la eficiencia algorítmica, y las habilidades de elaboración de soluciones algorítmicas a problemas basados en un conjunto de componentes que deben
-                                            interactuar entre si.
-                                        </p>
-                                    </li>
-
-                                    <li class="list-group-item
-															flex-column
-															align-items-start">
-                                        <div class="d-flex
-																w-100
-																justify-content-between">
-                                            <h5 class="mb-3 h6">
-                                                <i class="fa
-																		fa-user"></i>
-                                                Tutor
-                                            </h5>
-                                        </div>
-
-                                        <p class="mb-1 h4">Juan Espinoza</p>
-                                    </li>
-
-                                    <li class="list-group-item
-															flex-column
-															align-items-start">
-                                        <div class="d-flex
-																w-100
-																justify-content-between">
-                                            <h5 class="mb-3 h6">
-                                                <i class="fa
-																		fa-bookmark"></i>
-                                                Tema actual
-                                            </h5>
-                                        </div>
-
-                                        <p class="mb-1 h5">Ordenamiento</p>
-                                    </li>
-
-                                    <li class="list-group-item
-															flex-column
-															align-items-start">
-                                        <div class="d-flex
-																w-100
-																justify-content-between">
-                                            <h5 class="mb-3 h6">
-                                                <i class="fa
-																		fa-calendar"></i>
-                                                Horario
-                                            </h5>
-                                        </div>
-
-                                        <p class="mb-1 h5">Todos los jueves a las 2 pm</p>
+                                        <p class="mb-1 h5">{{ info.descripcion }}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -372,7 +290,7 @@
                                     <a data-toggle="collapse" v-bind:href="'#comentario' + id"  aria-expanded="true" v-bind:aria-controls="'comentario' + id">
                                         <h6 class="teal-text mb-0 h6">
                                             <i class="fa fa-comments mr-2"></i>
-                                            Todos los comentarios ({{ comentarios.length }})
+                                            Todos los comentarios
                                             <i class="fa fa-angle-down rotate-icon"></i>
                                         </h6>
                                     </a>
@@ -431,13 +349,14 @@
             <div class="card-body">
                 <h4 class="card-title">
                     {{ titulo }}
-                    <i class="fa fa-check-circle teal-text"></i>
+                    <i v-if="estado" class="fa fa-check-circle teal-text"></i>
                 </h4>
                 <p> {{ descripcion }}</p>
                 <hr>
                 <p class="card-meta text-center text-indigo mb-0">
                     <a
                         class="btn btn-flat btn-lg px-1 my-0 mx-3"
+                        v-bind:class="{ disabled: !estado }"
                         data-toggle="tooltip"
                         data-placement="bottom"
                         title="Guardar en la nube"
@@ -445,39 +364,77 @@
                     >
                         <i class="fa fa-cloud-download-alt"></i>
                     </a>
-
                     <a
                         class="btn btn-flat btn-lg px-1 my-0 mx-3"
+                        v-bind:class="{ disabled: !estado }"
                         data-toggle="tooltip"
                         data-placement="bottom"
                         title="Ver clase grabada"
-                        v-on:click="verVideoGrabado"
+                        v-bind:href="save.videoURL"
                     >
                         <i class="fa fa-video"></i>
                     </a>
-
                     <a
-                        class="btn btn-flat btn-lg px-1 my-0 mx-3"
-                        data-toggle="tooltip"
+                        class="btn btn-flat btn-lg px-1 my-0 mx-3 modal-button"
+                        v-bind:class="{ disabled: !estado }"
+                        data-toggle="modal"
                         data-placement="bottom"
                         title="Archivos de la clase"
-                        v-on:click="verArchivosTema"
+                        v-bind:data-target="'#archivosModal_' + titulo"
                     >
                         <i class="fa fa-folder"></i>
                     </a>
                 </p>
             </div>
+            <!-- Modal Archivos -->
+            <div class="modal fade" v-bind:id="'archivosModal_' + titulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-warning" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="heading lead">Archivos</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <div class="text-center">
+                                    <i class="fa fa-file-alt fa-4x mb-3 animated rotateIn"></i>
+                                </div>
+                                <ul class="list-group items">
+                                    <li v-for="file in save.folders" class="list-group-item">
+                                        <span class="my-1">
+                                            <i v-bind:class="file.type | icono"></i>
+                                            <span class="ml-2">{{ file.name }}</span>
+                                        </span>
+                                        <a 
+                                            v-on:click="changeTooltip(file)"
+                                            class="btn btn-warning btn-sm float-right m-0" 
+                                            data-toggle="tooltip" 
+                                            title="Descargando"
+                                            v-bind:data-original-title="file.estado"
+                                        >
+                                            <i class="fa fa-download"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
         </div>
     </template>
 
-    <script>
+    <script th:inline="javascript">
         // Componente <tema></tema>
         Vue.component("tema", {
             template: "#tTema",
             props: [
                 "titulo",
                 "descripcion",
-                "save"
+                "save",
+                "estado"
             ],
             data(){
                 return {
@@ -486,13 +443,33 @@
             },
             methods:{
                 verGuardarNube(){
-
+                    if(!this.save.estadoNube) {
+                        this.save.estadoNube = true;
+                        toastr.info('<h5>Archivos guardados!</h5>El material de la clase ha sido guardado en la carpeta Decademy/Algoritmica 3/Hoare de tu nube personal.');
+                    } else {
+                        toastr.error('<h5>Archivos ya están guardados!</h5>El material de la clase ya ha sido guardado en la carpeta Decademy/Algoritmica 3/Hoare de tu nube personal.');
+                    }
+                    
                 },
                 verVideoGrabado(){
 
                 },
                 verArchivosTema(){
 
+                },
+                changeTooltip(file){
+                    file.estado = "Descarga en curso!"
+                    $("[data-toggle='tooltip']").tooltip();
+                }
+            },
+            filters: {
+                icono(type){
+                    let iconType =  {
+                        "pdf": "fa fa-file-pdf",
+                        "xlsx": "fa fa-file-excel",
+                        "docx": "fa fa-file-word"
+                    };
+                    return iconType[type];
                 }
             }
         });
@@ -525,7 +502,7 @@
 
                     toastr.options = { closeButton: true }
                     
-                    toastr.info("Genial! Tu comentario ha publicado");
+                    toastr.info("<h5>Publicación exitosa!</h5> Genial! Tu comentario ha publicado");
                 }
             },
             filters: {
@@ -534,11 +511,11 @@
                 }
             }
         });
-
-
+        // Aplicacion Vue
         const app = new Vue({
             el: "#app",
             data: {
+                porcentaje: 1 * 100/1,
                 publicacion: {
                     titulo:"",
                     contenido:"",
@@ -552,8 +529,34 @@
                 ],
                 usuarioActual: {
                     username: "Pedro Romero", 
-                    imgPerfil: "http://localhost:8080/img/foto_perfil.jpg"   
+                    imgPerfil: "/img/foto_perfil.jpg"   
                 },
+                informacion: [
+                    { 
+                        titulo: "Descripcion",
+                        descripcion: ` 
+                        Desarrollar algoritmos con la finalidad de fortalecer los conocimientos adquiridos, poniendo énfasis
+                        en la eficiencia algorítmica, y las habilidades de elaboración de soluciones algorítmicas a problemas
+                        basados en un conjunto de componentes que deben interactuar entre si.`,
+                        icono: "fa fa-file"
+                    },
+                    { 
+                        titulo: "Tutor",
+                        descripcion: "Juan Espinoza",
+                        icono: "fa fa-graduation-cap"
+                    },
+                    { 
+                        titulo: "Tema actual",
+                        index: 1,
+                        descripcion: "Hoare",
+                        icono: "fa fa-bookmark"
+                    },
+                    { 
+                        titulo: "Horario",
+                        descripcion: "Todos los jueves a las 2 pm",
+                        icono: "fa fa-calendar-alt"
+                    }
+                ],
                 publicaciones: [
                     {
                         titulo: "Comunicado a la clase",
@@ -574,14 +577,38 @@
                 temas: [
                     {
                         titulo:"Hoare",
+                        estado: true,
                         descripcion:"Uso de la notación de Hoare",
                         save: {
+                            estadoNube: false,
                             nubeURL:"https://drive.google.com",
-                            videoURL:"https://decademy.unmsm.edu.pe/cursos/algo3/clase/hoare",
-                            folderURL:"https://decademy.unmsm.edu.pe/cursos/algo3/clase/hoare/files"
+                            videoURL:"/cursos/algo3/temario/hoare",
+                            folders: [
+                                { name:"decademy_algo3_hoare_diapos.pdf", type:"pdf", estado:"Descargar" },
+                                { name:"decademy_algo3_hoare_ejercicios.pdf", type:"pdf", estado:"Descargar" }
+                            ]
+                        }
+                    },
+                    {
+                        titulo:"Ordenamiento",
+                        estado: false,
+                        descripcion:"Algoritmos de ordenamiento",
+                        save: {
+                            estadoNube: false,
+                            nubeURL:"https://drive.google.com",
+                            videoURL:"/cursos/algo3/temario/ordenamiento",
+                            folders: [
+                                { name:"decademy_algo3_ordenamiento_diapos.pdf", type:"pdf", estado:"Descargar" },
+                                { name:"decademy_algo3_ordenamiento_ejercicios.pdf", type:"pdf", estado:"Descargar" }
+                            ]
                         }
                     }
                 ]
+            },
+            computed:{
+                progreso(){
+                    return `Tienes un ${this.porcentaje}% de progreso en el curso`; 
+                }
             },
             methods:{
                 addPublicacion(){
