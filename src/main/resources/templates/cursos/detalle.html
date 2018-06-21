@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="/fragments/head :: headFragment('Sesión Virtual')"></head>
+
+<body class="fixed-sn">
+    <header th:include="/fragments/navbar :: navbar"></header>
+    <main id="app" class="container-fluid mx-auto">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="nav md-pills pills-teal-light flex-column" role="tablist">
+                    <li class="nav-item">
+                        <a
+                            class="nav-link active"
+                            data-toggle="tab"
+                            href="#publicaciones"
+                            role="tab"
+                        >
+                            <i class="fa fa-history mr-2"></i>
+                            Publicaciones
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#temario"
+                            role="tab"
+                        >
+                            <i class="fa fa-pencil-alt mr-2"></i>
+                            Temario
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#retos"
+                            role="tab"
+                        >
+                            <i class="fa fa-trophy mr-2"></i>
+                            Retos
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            data-toggle="tab"
+                            href="#info"
+                            role="tab"
+                        >
+                            <i class="fa fa-info-circle mr-2"></i>
+                            Información
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <!-- Tab panels -->
+                <div class="tab-content vertical">
+                    <!-- Publicaciones -->
+                    <div class="tab-pane fade in show active" id="publicaciones" role="tabpanel">
+                        <h3 class="mt-2 mb-4 h3">
+                            <i class="fa fa-history mr-2"></i>
+                            Publicaciones
+                            <a
+                                class="btn-floating my-auto btn-orange btn-sm float-right modal-button"
+                                data-toggle="modal"
+                                data-target="#nuevaPublicacion"
+                                title="Nueva publicación"
+                            >
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <post 
+                                    v-for="(post, index) in publicaciones"
+                                    v-bind:key="post.id"
+                                    v-bind:id="index"
+                                    v-bind:titulo="post.titulo"
+                                    v-bind:contenido="post.contenido"
+                                    v-bind:usuario="usuarioActual"
+                                    v-bind:icono="post.icono"
+                                >
+                                </post>
+
+                            </div>
+                        </div>
+
+                        <div
+                            class="modal fade right"
+                            id="nuevaPublicacion"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="myModalLabel"
+                            aria-hidden="true"
+                            data-backdrop="false"
+                        >
+                            <div class="modal-dialog modal-side modal-top-right modal-notify modal-warning" role="document">
+                                <!-- Content -->
+
+                                <div class="modal-content">
+                                    <!-- Header -->
+                                    <div class="modal-header">
+                                        <p class="heading lead">Nueva Publicacion</p>
+
+                                        <button
+                                            type="button"
+                                            class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                        >
+                                            <span
+                                                aria-hidden="true"
+                                                class="white-text"
+                                            >&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Body -->
+
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <i class="fa fa-newspaper fa-4x mb-3 animated rotateIn"></i>
+                                        </div>
+                                        <div>
+                                            <p class="form-inline">
+                                                <div class="input-group">
+                                                    <select
+                                                        class="mdb-select w-100"
+                                                        v-model="publicacion.icono"
+                                                    >
+                                                        <option
+                                                            v-for="tipo in tiposPublicacion"
+                                                            v-bind:value="tipo.value"
+                                                        >{{ tipo.type }}</option>
+                                                    </select>
+
+                                                    <label>Tipo de mensaje</label>
+                                                </div>
+
+                                                <div class="input-group md-form">
+                                                    <input
+                                                        type="text"
+                                                        class="form-control px-0"
+                                                        v-model="publicacion.titulo"
+                                                        placeholder="¿Cúal es tu titulo del mensaje para los alumnos?"
+                                                    ></input>
+
+                                                    <label for="nuevoComentario">Titulo del mensaje</label>
+                                                </div>
+
+                                                <div class="input-group md-form">
+                                                    <textarea
+                                                        class="md-textarea form-control"
+                                                        v-model="publicacion.contenido"
+                                                        name="nuevoComentario"
+                                                        id="nuevoComentario"
+                                                        placeholder="¿Cúal es tu mensaje para los alumnos?"
+                                                    ></textarea>
+
+                                                    <label for="nuevoComentario">Mensaje</label>
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Footer -->
+
+                                    <div class="modal-footer justify-content-center">
+                                        <a type="button"  class="btn btn-warning" v-on:click="addPublicacion">
+                                            Publicar
+                                            <i class="fa fa-share-square ml-1"></i>
+                                        </a>
+
+                                        <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Cancelar</a>
+                                    </div>
+                                </div>
+
+                                <!-- /.Content -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Temario -->
+                    <div  class="tab-pane fade" id="temario" role="tabpanel" >
+                        <h3 class="mt-2 mb-4 h3">
+                            <i class="fa fa-pencil-alt mr-2"></i>
+                            Temario
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="progress" style="height: 30px">
+                                    <div
+                                        class="progress-bar teal lighten-2"
+                                        role="progressbar"
+                                        v-bind:style="'width:' + porcentaje + '%; height: 30px'"
+                                        v-bind:aria-valuenow="porcentaje"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                    >
+                                        {{ progreso }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-for="tema in temas" class="col-md-4 my-2">
+                                <tema
+                                    v-bind:titulo="tema.titulo"
+                                    v-bind:descripcion="tema.descripcion"
+                                    v-bind:save="tema.save"
+                                    v-bind:estado="tema.estado"
+                                >
+                                </tema>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Retos -->
+                    <div class="tab-pane fade" id="retos" role="tabpanel">
+                        <h3 class="mt-2 mb-4 h3">
+                            <i class="fa fa-trophy mr-2"></i>
+                            Retos
+                        </h3>
+                    </div>
+                    <div class="tab-pane fade" id="info" role="tabpanel">
+                        <h3 class="mt-2 mb-4 h3">
+                            <i class="fa fa-info-circle mr-2"></i>
+                            Información
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <ul class="list-group list-group-flush">
+                                    <li v-for="info in informacion" class="list-group-item flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-3 h6">
+                                                <i v-bind:class="info.icono + ' mr-2'"></i> {{ info.titulo }}
+                                            </h5>
+                                        </div>
+                                        <p class="mb-1 h5">{{ info.descripcion }}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:include="/fragments/head :: finalSection"></div>
+    <div th:include="/fragments/head :: scripts"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <!-- Componente publicacion -->
+    <template id="tPublicacion">
+        <div class="card mb-3">
+            <div class="card-body p-4">
+                <h4 class="card-title">
+                    <i v-bind:class="icono + ' mr-2'"></i>
+                    {{ titulo }}
+                </h4>
+                <p class="card-text mb-1">{{ contenido }}</p>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="md-form input-group mt-1">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Comentario"
+                                id="comentario"
+                                v-model="comentarioActual"
+                            ></input>
+
+                            <div class="input-group-append">
+                                <button class="btn teal lighten-2" type="button" v-on:click="addComentario">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Comentar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 my-0">
+                        <div class="accordion" id="accordionEx" role="tablist"  aria-multiselectable="true">
+                            <div class="card">
+                                <div class="card-header px-0" role="tab" id="headingOne">
+                                    <a data-toggle="collapse" v-bind:href="'#comentario' + id"  aria-expanded="true" v-bind:aria-controls="'comentario' + id">
+                                        <h6 class="teal-text mb-0 h6">
+                                            <i class="fa fa-comments mr-2"></i>
+                                            Todos los comentarios
+                                            <i class="fa fa-angle-down rotate-icon"></i>
+                                        </h6>
+                                    </a>
+                                </div>
+
+                                <div  v-bind:id="'comentario' + id" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
+                                    <div class="card-body p-0">
+                                        <ul class="list-group list-group-flush">
+                                            <li v-for="c in comentarios" v-bind:key="c.comentario" class="list-group-item" >
+                                                <div class="media">
+                                                    <img
+                                                        class="d-flex align-self-start mr-3 rounded-circle"
+                                                        v-bind:src="c.usuario.imgPerfil"
+                                                        width="80"
+                                                        height="80"
+                                                    >
+
+                                                    <div class="media-body">
+                                                        <h5 class="mt-0 font-weight-bold">{{ c.usuario.username }}</h5>
+                                                        <p>{{ c.comentario }}</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rounded-bottom teal lighten-2 text-center pt-3">
+                <ul class="list-unstyled list-inline font-small">
+                    <li class="list-inline-item pr-2 white-text">
+                        <i class="fa fa-calendar-alt pr-1"></i>
+                        {{ fechaPublicacion | moment }}
+                    </li>
+
+                    <li class="list-inline-item pr-2">
+                        <a
+                            href="#"
+                            class="white-text"
+                        >
+                            <i class="fa fa-comments pr-1"></i>
+                            {{ comentarios.length }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </template>
+    <!-- Componente tema -->
+    <template id="tTema">
+        <div class="card mb-r mx-2">
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{ titulo }}
+                    <i v-if="estado" class="fa fa-check-circle teal-text"></i>
+                </h4>
+                <p> {{ descripcion }}</p>
+                <hr>
+                <p class="card-meta text-center text-indigo mb-0">
+                    <a
+                        class="btn btn-flat btn-lg px-1 my-0 mx-3"
+                        v-bind:class="{ disabled: !estado }"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="Guardar en la nube"
+                        v-on:click="verGuardarNube"
+                    >
+                        <i class="fa fa-cloud-download-alt"></i>
+                    </a>
+                    <a
+                        class="btn btn-flat btn-lg px-1 my-0 mx-3"
+                        v-bind:class="{ disabled: !estado }"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="Ver clase grabada"
+                        v-bind:href="save.videoURL"
+                    >
+                        <i class="fa fa-video"></i>
+                    </a>
+                    <a
+                        class="btn btn-flat btn-lg px-1 my-0 mx-3 modal-button"
+                        v-bind:class="{ disabled: !estado }"
+                        data-toggle="modal"
+                        data-placement="bottom"
+                        title="Archivos de la clase"
+                        v-bind:data-target="'#archivosModal_' + titulo"
+                    >
+                        <i class="fa fa-folder"></i>
+                    </a>
+                </p>
+            </div>
+            <!-- Modal Archivos -->
+            <div class="modal fade" v-bind:id="'archivosModal_' + titulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-warning" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="heading lead">Archivos</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <div class="text-center">
+                                    <i class="fa fa-file-alt fa-4x mb-3 animated rotateIn"></i>
+                                </div>
+                                <ul class="list-group items">
+                                    <li v-for="file in save.folders" class="list-group-item">
+                                        <span class="my-1">
+                                            <i v-bind:class="file.type | icono"></i>
+                                            <span class="ml-2">{{ file.name }}</span>
+                                        </span>
+                                        <a 
+                                            v-on:click="changeTooltip(file)"
+                                            class="btn btn-warning btn-sm float-right m-0" 
+                                            data-toggle="tooltip" 
+                                            title="Descargando"
+                                            v-bind:data-original-title="file.estado"
+                                        >
+                                            <i class="fa fa-download"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script th:inline="javascript">
+        // Componente <tema></tema>
+        Vue.component("tema", {
+            template: "#tTema",
+            props: [
+                "titulo",
+                "descripcion",
+                "save",
+                "estado"
+            ],
+            data(){
+                return {
+                    
+                }
+            },
+            methods:{
+                verGuardarNube(){
+                    if(!this.save.estadoNube) {
+                        this.save.estadoNube = true;
+                        toastr.info('<h5>Archivos guardados!</h5>El material de la clase ha sido guardado en la carpeta Decademy/Algoritmica 3/Hoare de tu nube personal.');
+                    } else {
+                        toastr.error('<h5>Archivos ya están guardados!</h5>El material de la clase ya ha sido guardado en la carpeta Decademy/Algoritmica 3/Hoare de tu nube personal.');
+                    }
+                    
+                },
+                verVideoGrabado(){
+
+                },
+                verArchivosTema(){
+
+                },
+                changeTooltip(file){
+                    file.estado = "Descarga en curso!"
+                    $("[data-toggle='tooltip']").tooltip();
+                }
+            },
+            filters: {
+                icono(type){
+                    let iconType =  {
+                        "pdf": "fa fa-file-pdf",
+                        "xlsx": "fa fa-file-excel",
+                        "docx": "fa fa-file-word"
+                    };
+                    return iconType[type];
+                }
+            }
+        });
+        // Componente <post> -> Representa una publicacion
+        Vue.component('post',{
+            template: "#tPublicacion",
+            props:[
+                "id",
+                "usuario",
+                "titulo",
+                "contenido",
+                "icono"
+            ],
+            data() {
+                return {
+                    comentarioActual: "",
+                    comentarios: [],
+                    fechaPublicacion: new Date()
+                };
+            },
+            methods:{
+                addComentario() {
+                    let comentario = {
+                        usuario: this.usuario, 
+                        comentario: this.comentarioActual
+                    };
+
+                    this.comentarios.push(comentario);
+                    this.comentarioActual = "";
+
+                    toastr.options = { closeButton: true }
+                    
+                    toastr.info("<h5>Publicación exitosa!</h5> Genial! Tu comentario ha publicado");
+                }
+            },
+            filters: {
+                moment: function (date) {
+                    return moment(date).format('DD/MM/YYYY, h:mm:ss a');
+                }
+            }
+        });
+        // Aplicacion Vue
+        const app = new Vue({
+            el: "#app",
+            data: {
+                porcentaje: 1 * 100/1,
+                publicacion: {
+                    titulo:"",
+                    contenido:"",
+                    icono: "fa fa-podcast",
+                    comentarios: [],
+                    fechaPublicacion: ""
+                },
+                tiposPublicacion: [
+                    { value: "fa fa-podcast", type: "Comunicado"},
+                    { value: "fa fa-flag", type: "Tarea" }
+                ],
+                usuarioActual: {
+                    username: "Pedro Romero", 
+                    imgPerfil: "/img/foto_perfil.jpg"   
+                },
+                informacion: [
+                    { 
+                        titulo: "Descripcion",
+                        descripcion: ` 
+                        Desarrollar algoritmos con la finalidad de fortalecer los conocimientos adquiridos, poniendo énfasis
+                        en la eficiencia algorítmica, y las habilidades de elaboración de soluciones algorítmicas a problemas
+                        basados en un conjunto de componentes que deben interactuar entre si.`,
+                        icono: "fa fa-file"
+                    },
+                    { 
+                        titulo: "Tutor",
+                        descripcion: "Juan Espinoza",
+                        icono: "fa fa-graduation-cap"
+                    },
+                    { 
+                        titulo: "Tema actual",
+                        index: 1,
+                        descripcion: "Hoare",
+                        icono: "fa fa-bookmark"
+                    },
+                    { 
+                        titulo: "Horario",
+                        descripcion: "Todos los jueves a las 2 pm",
+                        icono: "fa fa-calendar-alt"
+                    }
+                ],
+                publicaciones: [
+                    {
+                        titulo: "Comunicado a la clase",
+                        icono: "fa fa-podcast",
+                        contenido: "Buenos días jovenes, por motivo del partido de mañana de Perú - Dinamarca se suspemden las clases y se recuperaran de 6pm a 8pm",
+                        comentarios: [
+                            {
+                                usuario: { 
+                                    username: "Sarah Connor", 
+                                    imgPerfil: "http://localhost:8080/img/perfil2.jpg" 
+                                },
+                                comentario: "Buena profe,ahora podremos ver el mundial tranquilos :')" 
+                            }
+                        ],
+                        fechaPublicacion: new Date()
+                    }
+                ],
+                temas: [
+                    {
+                        titulo:"Hoare",
+                        estado: true,
+                        descripcion:"Uso de la notación de Hoare",
+                        save: {
+                            estadoNube: false,
+                            nubeURL:"https://drive.google.com",
+                            videoURL:"/cursos/algo3/temario/hoare",
+                            folders: [
+                                { name:"decademy_algo3_hoare_diapos.pdf", type:"pdf", estado:"Descargar" },
+                                { name:"decademy_algo3_hoare_ejercicios.pdf", type:"pdf", estado:"Descargar" }
+                            ]
+                        }
+                    },
+                    {
+                        titulo:"Ordenamiento",
+                        estado: false,
+                        descripcion:"Algoritmos de ordenamiento",
+                        save: {
+                            estadoNube: false,
+                            nubeURL:"https://drive.google.com",
+                            videoURL:"/cursos/algo3/temario/ordenamiento",
+                            folders: [
+                                { name:"decademy_algo3_ordenamiento_diapos.pdf", type:"pdf", estado:"Descargar" },
+                                { name:"decademy_algo3_ordenamiento_ejercicios.pdf", type:"pdf", estado:"Descargar" }
+                            ]
+                        }
+                    }
+                ]
+            },
+            computed:{
+                progreso(){
+                    return `Tienes un ${this.porcentaje}% de progreso en el curso`; 
+                }
+            },
+            methods:{
+                addPublicacion(){
+                    let publi = {
+                        titulo:this.publicacion.titulo,
+                        contenido:this.publicacion.contenido,
+                        icono: this.publicacion.icono,
+                        comentarios: [],
+                        fechaPublicacion: new Date()
+                    };
+                    
+                    $("#nuevaPublicacion").modal("hide");
+                    toastr.options = { closeButton: true }
+                    this.publicaciones.push(publi);
+                    toastr.info("Genial! Has publicado un nuevo mensaje.");
+                }
+            },
+            filters: {
+                moment: function (date) {
+                    return moment(date).format('DD/MM/YYYY, h:mm:ss a');
+                }
+            },
+            mounted(){
+                $('.mdb-select').material_select();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -5,7 +5,7 @@
    <title th:text="${pageTitle}">Template title</title>
    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
    <!-- Font Awesome -->
-   <link rel="stylesheet" th:href="@{/css/font-awesome.css}">
+   <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
    <!-- Bootstrap core CSS -->
    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
    <!-- Material Design Bootstrap -->
@@ -16,7 +16,6 @@
    <link rel="stylesheet" th:href="@{/css/fullcalendar.min.css}">
 </head>
 <html>
-
    <div th:fragment="scripts">
       <!-- JQuery -->
       <script type="text/javascript" th:src="@{/js/jquery-3.js}"></script>
@@ -29,12 +28,15 @@
       <script type="text/javascript" th:src="@{/js/locale/es.js}"></script>
       <!-- MDB core JavaScript -->
       <script type="text/javascript" th:src="@{/js/mdb.js}"></script>
+      <script type="text/javascript" th:src="@{/js/moment-with-locales.js}"></script>
       <script>
          // SideNav Initialization
          $(".button-collapse").sideNav();
          new WOW().init();
          $(function () {
             $('[data-toggle="tooltip"]').tooltip()
+            $('.modal-button').tooltip()
+            
         })
       </script>
    </div>

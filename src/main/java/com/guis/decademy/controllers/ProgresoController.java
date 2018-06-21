@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.guis.decademy.constants.ViewConstants;
 
 @Controller
-@RequestMapping("/retos")
-public class RetosController {
-
+@RequestMapping("/progreso")
+public class ProgresoController {
 	
-	@GetMapping("/{idCurso}")
-	public String detalle(@PathVariable("idCurso") String curso) {
-		return ViewConstants.RETOS_DETALLE;
+	@GetMapping("/consulta/{idAlumno}")
+	public String consulta(@PathVariable("idAlumno") String idAlumno) {
+		return ViewConstants.PROGRESO_CONSULTA;
 	}
 }
