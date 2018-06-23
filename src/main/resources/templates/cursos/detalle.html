@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:include="/fragments/head :: headFragment('Sesión Virtual')"></head>
+<head th:include="/fragments/head :: headFragment(${curso})"></head>
 
 <body class="fixed-sn">
-    <header th:include="/fragments/navbar :: navbar"></header>
+    <header th:include="/fragments/navbar :: navbar(${curso})"></header>
     <main id="app" class="container-fluid mx-auto">
         <div class="row">
             <div class="col-md-3">
@@ -345,50 +345,52 @@
     </template>
     <!-- Componente tema -->
     <template id="tTema">
-        <div class="card mb-r mx-2">
+        <div class="card mb-r mx-2 h-100">
             <div class="card-body">
                 <h4 class="card-title">
                     {{ titulo }}
                     <i v-if="estado" class="fa fa-check-circle teal-text"></i>
                 </h4>
                 <p> {{ descripcion }}</p>
-                <hr>
-                <p class="card-meta text-center text-indigo mb-0">
-                    <a
-                        class="btn btn-flat btn-lg px-1 my-0 mx-3"
-                        v-bind:class="{ disabled: !estado }"
-                        data-toggle="tooltip"
-                        data-placement="bottom"
-                        title="Guardar en la nube"
-                        v-on:click="verGuardarNube"
-                    >
-                        <i class="fa fa-cloud-download-alt"></i>
-                    </a>
-                    <a
-                        class="btn btn-flat btn-lg px-1 my-0 mx-3"
-                        v-bind:class="{ disabled: !estado }"
-                        data-toggle="tooltip"
-                        data-placement="bottom"
-                        title="Ver clase grabada"
-                        v-bind:href="save.videoURL"
-                    >
-                        <i class="fa fa-video"></i>
-                    </a>
-                    <a
-                        class="btn btn-flat btn-lg px-1 my-0 mx-3 modal-button"
-                        v-bind:class="{ disabled: !estado }"
-                        data-toggle="modal"
-                        data-placement="bottom"
-                        title="Archivos de la clase"
-                        v-bind:data-target="'#archivosModal_' + titulo"
-                    >
-                        <i class="fa fa-folder"></i>
-                    </a>
-                </p>
+
+
+            </div>
+            <div class="card-footer text-center text-indigo mb-0">
+                <a
+                    class="btn btn-flat btn-lg px-1 my-0 mx-3"
+                    v-bind:class="{ disabled: !estado }"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Guardar en la nube"
+                    v-on:click="verGuardarNube"
+                >
+                    <i class="fa fa-cloud-download-alt"></i>
+                </a>
+                <a
+                    class="btn btn-flat btn-lg px-1 my-0 mx-3"
+                    v-bind:class="{ disabled: !estado }"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Ver clase grabada en YouTube"
+                    v-bind:href="save.videoURL"
+                    target="_blank"
+                >
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a
+                    class="btn btn-flat btn-lg px-1 my-0 mx-3 modal-button"
+                    v-bind:class="{ disabled: !estado }"
+                    data-toggle="modal"
+                    data-placement="bottom"
+                    title="Archivos de la clase"
+                    v-bind:data-target="'#archivosModal_' + titulo"
+                >
+                    <i class="fa fa-folder"></i>
+                </a>
             </div>
             <!-- Modal Archivos -->
             <div class="modal fade" v-bind:id="'archivosModal_' + titulo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-warning" role="document">
+                <div class="modal-dialog modal-notify modal-warning modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <p class="heading lead">Archivos</p>
@@ -409,10 +411,12 @@
                                         </span>
                                         <a 
                                             v-on:click="changeTooltip(file)"
-                                            class="btn btn-warning btn-sm float-right m-0" 
+                                            class="btn btn-warning btn-sm float-right m-0 px-3" 
                                             data-toggle="tooltip" 
                                             title="Descargando"
                                             v-bind:data-original-title="file.estado"
+                                            v-bind:href="'/docs/' + file.name"
+                                            v-bind:download="file.name"
                                         >
                                             <i class="fa fa-download"></i>
                                         </a>
@@ -427,6 +431,8 @@
     </template>
 
     <script th:inline="javascript">
+        var curso = /*[[${curso}]]*/ ""
+
         // Componente <tema></tema>
         Vue.component("tema", {
             template: "#tTema",
@@ -445,17 +451,11 @@
                 verGuardarNube(){
                     if(!this.save.estadoNube) {
                         this.save.estadoNube = true;
-                        toastr.info('<h5>Archivos guardados!</h5>El material de la clase ha sido guardado en la carpeta Decademy/Algoritmica 3/Hoare de tu nube personal.');
+                        toastr.info(`<h5>Archivos guardados!</h5>El material de la clase ha sido guardado en la carpeta Decademy/${curso}/${this.titulo} de tu nube personal.`);
                     } else {
-                        toastr.error('<h5>Archivos ya están guardados!</h5>El material de la clase ya ha sido guardado en la carpeta Decademy/Algoritmica 3/Hoare de tu nube personal.');
+                        toastr.error(`<h5>Archivos ya están guardados!</h5>El material de la clase ya ha sido guardado en la carpeta Decademy/${curso}/${this.titulo} de tu nube personal.`);
                     }
                     
-                },
-                verVideoGrabado(){
-
-                },
-                verArchivosTema(){
-
                 },
                 changeTooltip(file){
                     file.estado = "Descarga en curso!"
@@ -515,7 +515,7 @@
         const app = new Vue({
             el: "#app",
             data: {
-                porcentaje: 1 * 100/1,
+                porcentaje: 1 * 100/2,
                 publicacion: {
                     titulo:"",
                     contenido:"",
@@ -576,30 +576,28 @@
                 ],
                 temas: [
                     {
-                        titulo:"Hoare",
+                        titulo:"Complejidad Algoritmica",
                         estado: true,
-                        descripcion:"Uso de la notación de Hoare",
+                        descripcion:"Complejidad Espacial, Temporal",
                         save: {
                             estadoNube: false,
                             nubeURL:"https://drive.google.com",
-                            videoURL:"/cursos/algo3/temario/hoare",
+                            videoURL:"https://youtu.be/aEyEcH7SEmE",
                             folders: [
-                                { name:"decademy_algo3_hoare_diapos.pdf", type:"pdf", estado:"Descargar" },
-                                { name:"decademy_algo3_hoare_ejercicios.pdf", type:"pdf", estado:"Descargar" }
+                                { name:"Sesión 01 - Complejidad algorítmica.pdf", type:"pdf", estado:"Descargar" }
                             ]
                         }
                     },
                     {
-                        titulo:"Ordenamiento",
+                        titulo:"Análisis de Estructuras de Control",
                         estado: false,
-                        descripcion:"Algoritmos de ordenamiento",
+                        descripcion:"Como es el comportamiento de un algoritmo con estas estructuras",
                         save: {
                             estadoNube: false,
                             nubeURL:"https://drive.google.com",
-                            videoURL:"/cursos/algo3/temario/ordenamiento",
+                            videoURL:"https://youtu.be/Sibd8jSTdUQ",
                             folders: [
-                                { name:"decademy_algo3_ordenamiento_diapos.pdf", type:"pdf", estado:"Descargar" },
-                                { name:"decademy_algo3_ordenamiento_ejercicios.pdf", type:"pdf", estado:"Descargar" }
+                                { name:"Sesión 02 - Análisis de las Estructuras de Control.pdf", type:"pdf", estado:"Descargar" }
                             ]
                         }
                     }

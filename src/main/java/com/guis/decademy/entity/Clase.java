@@ -1,29 +1,57 @@
 package com.guis.decademy.entity;
 
-public class Clase {
-	
-	private String tema;
-	
-	private String descripcion;
+import java.util.List;
 
-	public String getTema() {
+public class Clase {
+
+	private Tutor tutor;
+	
+	private Grupo grupo;
+	
+	private Tema tema;
+	
+	private List<Archivo> archivos;
+	
+	private ClaseVirtual claseVirtual;
+
+	public Tutor getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
+	}
+
+	public Grupo getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
+	}
+
+	public Tema getTema() {
 		return tema;
 	}
 
-	public void setTema(String tema) {
+	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public List<Archivo> getArchivos() {
+		return archivos;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setArchivos(List<Archivo> archivos) {
+		this.archivos = archivos;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("Clase [tema=%s, descripcion=%s]", tema, descripcion);
+	public ClaseVirtual getClaseVirtual() {
+		return claseVirtual;
 	}
+
+	public void setClaseVirtual(ClaseVirtual claseVirtual) {
+		this.claseVirtual = claseVirtual;
+	}
+	
 }
