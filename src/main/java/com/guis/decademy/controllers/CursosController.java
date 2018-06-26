@@ -1,7 +1,7 @@
 package com.guis.decademy.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,6 +18,15 @@ import com.guis.decademy.constants.ViewConstants;
 public class CursosController {
 	
 	private static final Log LOG  = LogFactory.getLog(CursosController.class);
+		
+	private Map<String, String> cursos = new HashMap<>();
+	
+	public CursosController() {
+		cursos.put("ia", "Inteligencia Artificial");
+		cursos.put("algo3", "Algoritmica 3");
+		cursos.put("so", "Sistemas Operativos");
+		cursos.put("bd3", "Bases de Datos 3");
+	}
 	@GetMapping("")
 	public String index () {
 		LOG.info("[/cursos] - METHOD [index] -- Entrando al método ");
@@ -29,6 +38,7 @@ public class CursosController {
 		LOG.info("[/cursos] - METHOD [detalle] -- Entrando al método ");
 		LOG.info("[/cursos] - METHOD [detalle] -- idCurso: " + idCurso);
 		
+		model.addAttribute("curso", cursos.get(idCurso));
 		return ViewConstants.CURSOS_DETALLE;
 	}
 	

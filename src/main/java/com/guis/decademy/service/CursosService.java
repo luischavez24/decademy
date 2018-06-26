@@ -3,7 +3,6 @@ package com.guis.decademy.service;
 import java.util.List;
 
 import com.guis.decademy.entity.Curso;
-import com.guis.decademy.entity.Horario;
 /**
  * 
  * @author lucho
@@ -24,9 +23,4 @@ public interface CursosService {
 	 */
 	public Curso insertCurso(Curso curso);
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public List<Horario> findHorarios();
 }

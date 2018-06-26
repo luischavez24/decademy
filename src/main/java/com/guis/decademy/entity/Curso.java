@@ -13,10 +13,10 @@ public class Curso {
 	
 	private String codigo;
 	
-	private String curso;
+	private String nombre;
 	
-	private List<Clase> clases;
-
+	private String semestre;
+	
 	public String getId() {
 		return id;
 	}
@@ -24,6 +24,42 @@ public class Curso {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(String semestre) {
+		this.semestre = semestre;
+	}
+
+	public String getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(String carrera) {
+		this.carrera = carrera;
+	}
+
+	public List<Tema> getTemas() {
+		return temas;
+	}
+
+	public void setTemas(List<Tema> temas) {
+		this.temas = temas;
+	}
+
+	private String carrera;
+	
+	private List<Tema> temas;
 
 	public String getCodigo() {
 		return codigo;
@@ -33,24 +69,4 @@ public class Curso {
 		this.codigo = codigo;
 	}
 
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
-	public List<Clase> getClases() {
-		return clases;
-	}
-
-	public void setClases(List<Clase> clases) {
-		this.clases = clases;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("Curso [id=%s, codigo=%s, curso=%s, clases=%s]", id, codigo, curso, clases);
-	}
 }
