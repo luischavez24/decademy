@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:include="/fragments/head :: headFragment(${curso})"></head>
-
 <body class="fixed-sn">
     <header th:include="/fragments/navbar :: navbar(${curso})"></header>
     <main id="app" class="container-fluid mx-auto">
@@ -296,7 +295,7 @@
                                     </a>
                                 </div>
 
-                                <div  v-bind:id="'comentario' + id" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
+                                <div v-bind:id="'comentario' + id" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
                                     <div class="card-body p-0">
                                         <ul class="list-group list-group-flush">
                                             <li v-for="c in comentarios" v-bind:key="c.comentario" class="list-group-item" >
