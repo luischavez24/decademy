@@ -12,8 +12,9 @@ import com.guis.decademy.constants.ViewConstants;
 public class RetosController {
 
 	
-	@GetMapping("/{idCurso}")
-	public String detalle(@PathVariable("idCurso") String curso) {
+	@GetMapping("/{idCurso}/{idTema}")
+	public String detalle(@PathVariable("idCurso") String curso,
+			@PathVariable("idTema") String idTema) {
 		return ViewConstants.RETOS_DETALLE;
 	}
 }
