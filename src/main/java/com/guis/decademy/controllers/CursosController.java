@@ -53,12 +53,14 @@ public class CursosController {
 	}
 	
 	@GetMapping("/{idCurso}/temario/{idTema}")
-	public String temarioDetalle (@PathVariable("idCurso") String idCurso, @PathVariable("idTema") String idTema) {
+	public String temarioDetalle (@PathVariable("idCurso") String idCurso, 
+			@PathVariable("idTema") String idTema) {
 		return ViewConstants.CURSOS_TEMARIO_DETALLE;
 	}
 	
 	@GetMapping("/{idCurso}/temario/{idTema}/iniciar")
-	public String temarioIniciar (@PathVariable("idCurso") String idCurso, @PathVariable("idTema") String idTema) {
+	public String temarioIniciar (@PathVariable("idCurso") String idCurso, 
+			@PathVariable("idTema") String idTema) {
 		return ViewConstants.CURSOS_TEMARIO_DETALLE;
 	}
 	

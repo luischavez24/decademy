@@ -2,6 +2,22 @@
 <html lang="en">
 <head th:include="/fragments/head :: headFragment(${curso})"></head>
 <body class="fixed-sn">
+    <style>
+    .radio-teal [type="radio"]:checked+label:after {
+        border-color: #4db6ac;
+        background-color: #4db6ac;
+    }
+    /*Gap*/
+
+    .radio-teal-gap [type="radio"].with-gap:checked+label:before {
+        border-color: #4db6ac;
+    }
+
+    .radio-teal-gap [type="radio"]:checked+label:after {
+        border-color: #4db6ac;
+        background-color: #4db6ac;
+    }
+    </style>
     <header th:include="/fragments/navbar :: navbar(${curso})"></header>
     <main id="app" class="container-fluid mx-auto">
         <div class="row">
@@ -221,6 +237,160 @@
                             <i class="fa fa-trophy mr-2"></i>
                             Retos
                         </h3>
+                        <div class="row">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-tabs nav-justified teal-light" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#panel5" role="tab">
+                                                    <i class="fa fa-book"></i> Propuestos
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#panel6" role="tab">
+                                                    <i class="fa fa-calendar"></i> Exámenes
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade in show active p-3" id="panel5" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-md-12 mb-3">
+                                                        <div id="propuestos-retos" class="carousel slide carousel-fade carousel-multi-item" data-ride="carousel" data-interval="false">
+                                                            <div class="carousel-inner" role="listbox">
+                                                                <div class="carousel-item active">
+                                                                    <div class="card h-100">
+                                                                        <div class="card-body m-2">
+                                                                            <h4 class="card-title">¿Qué tipos de complejidad existen?</h4>
+                                                                            <div class="card-text">
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio100">
+                                                                                    <label class="form-check-label" for="radio100">Complejidad Temporal</label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio101">
+                                                                                    <label class="form-check-label" for="radio101">Complejidad Espacial</label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio102">
+                                                                                    <label class="form-check-label" for="radio102">Complejidad Espacial y Temporal</label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio103">
+                                                                                    <label class="form-check-label" for="radio103">Ninguna de las anteriores</label>
+                                                                                </div>                                                    
+                                                                            </div>
+                                                                            <div class="text-center">
+                                                                                <button class="btn teal lighten-2">
+                                                                                    <i class="fa fa-check"></i>
+                                                                                    Evaluar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                    <div class="card h-100">
+                                                                        <div class="card-body m-2">
+                                                                            <h4 class="card-title">¿Qué es la complejidad espacial?</h4>
+                                                                            <div class="card-text">
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio100">
+                                                                                    <label class="form-check-label" for="radio100">
+                                                                                        Se refiere al tiempo que se demora en ejecutar un determinado algorítmo
+                                                                                        para una determinidad cantidad de datos.
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio101">
+                                                                                    <label class="form-check-label" for="radio101">
+                                                                                        Se refiere a cuanto espacio ocupa en memoria principal de un determinado
+                                                                                        algoritmo para una determinada cantidad de datos.
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio102">
+                                                                                    <label class="form-check-label" for="radio102">
+                                                                                        Se referiere a que tan dificil es encontrar el algoritmo adecuado para
+                                                                                        un determinado problema.
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio103">
+                                                                                    <label class="form-check-label" for="radio103">
+                                                                                        Ninguna de las anteriores
+                                                                                    </label>
+                                                                                </div>                                                    
+                                                                            </div>
+                                                                            <div class="text-center">
+                                                                                <button class="btn teal lighten-2">
+                                                                                    <i class="fa fa-check"></i>
+                                                                                    Evaluar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="carousel-item">
+                                                                    <div class="card h-100">
+                                                                        <div class="card-body m-2">
+                                                                            <h4 class="card-title">¿Qué es la complejidad temporal?</h4>
+                                                                            <div class="card-text">
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio100">
+                                                                                    <label class="form-check-label" for="radio100">
+                                                                                        Se refiere al tiempo que se demora en ejecutar un determinado algorítmo
+                                                                                        para una determinidad cantidad de datos.
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio101">
+                                                                                    <label class="form-check-label" for="radio101">
+                                                                                        Se refiere a cuanto espacio ocupa en memoria principal de un determinado
+                                                                                        algoritmo para una determinada cantidad de datos.
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio102">
+                                                                                    <label class="form-check-label" for="radio102">
+                                                                                        Se referiere a que tan dificil es encontrar el algoritmo adecuado para
+                                                                                        un determinado problema.
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check radio-teal">
+                                                                                    <input class="form-check-input" name="group100" type="radio" id="radio103">
+                                                                                    <label class="form-check-label" for="radio103">
+                                                                                        Ninguna de las anteriores
+                                                                                    </label>
+                                                                                </div>                                                    
+                                                                            </div>
+                                                                            <div class="text-center">
+                                                                                <button class="btn teal lighten-2">
+                                                                                    <i class="fa fa-check"></i>
+                                                                                    Evaluar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="controls-top mt-2">
+                                                                <a class="btn-floating teal lighten-2" href="#propuestos-retos" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                                                                <a class="btn-floating teal lighten-2" href="#propuestos-retos" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                                                            </div>                                                             
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade p-4" id="panel6" role="tabpanel">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="info" role="tabpanel">
                         <h3 class="mt-2 mb-4 h3">
