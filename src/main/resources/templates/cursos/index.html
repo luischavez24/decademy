@@ -27,10 +27,6 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div id="carousel" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carousel" data-slide-to="1"></li>
-                                            </ol>
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
                                                     <div class="card-deck">
@@ -151,7 +147,7 @@
                                                                             </dd>
                                                                         </dl>
                                                                     </p>
-                                                                    <a class="btn btn-teal " th:href="@{/cursos/algo3}" disabled>
+                                                                    <a class="btn btn-teal " th:href="@{/cursos/bd2}" disabled>
                                                                         <i class="fa fa-play left"></i> Ir a la clase</a>
                                                                 </div>
                                                             </div>
@@ -192,7 +188,7 @@
                                                                             </dd>
                                                                         </dl>
                                                                     </p>
-                                                                    <a class="btn btn-teal" th:href="@{/cursos/ia}" disabled>
+                                                                    <a class="btn btn-teal" th:href="@{/cursos/io}" disabled>
                                                                         <i class="fa fa-play left"></i> Ir a la clase</a>
                                                                 </div>
                                                             </div>
@@ -201,15 +197,13 @@
                                                     </div><!--End Card deck-->
                                                 </div>        
                                             </div>
-                                            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a> 
                                         </div>
+                                        <div class="row justify-content-center">
+                                            <div class="controls-top mt-2">
+                                                <a class="btn-floating teal lighten-2" href="#carousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                                                <a class="btn-floating teal lighten-2" href="#carousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                                            </div>
+                                        </div>      
                                     </div>
                                 </div>
                             </div>
