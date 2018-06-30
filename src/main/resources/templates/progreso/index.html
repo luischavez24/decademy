@@ -47,381 +47,429 @@
     </style>
     <header th:include="/fragments/navbar :: navbar('')"></header>
 
-    <main class="container-fluid ml-0">
-
-        <!-- Card -->
-        <!--<div class="card card-image" style="background-image: url();">-->
-
-        <!-- Content -->
-        <div class="py-5 px-4">
-            <div class="row d-flex justify-content-center ">
-                <div class="col-md-10 col-xl-8">
-                    <!--Accordion wrapper-->
-                    <div class="accordion accordion-5" id="accordionEx5" role="tablist" aria-multiselectable="true">
-
-                        <!-- Accordion card Calificaciones -->
-                        <div class="card mb-4">
-
-                            <!-- Card header -->
-                            <div class="card-header p-0 z-depth-1" role="tab" id="heading30">
-                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse30" aria-expanded="true" aria-controls="collapse30">
-                                    <i class="fa fa-user-check fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
-                                    <h4 class="white-text mb-0 py-3 mt-1">
-                                        Calificaciones
-                                    </h4>
-                                </a>
-                            </div>
-
-                            <!-- Card body -->
-                            <div id="collapse30" class="collapse show" role="tabpanel" aria-labelledby="heading30" data-parent="#accordionEx5">
-                                <div class="card-body white-text z-depth-1">
-                                    <div id="carousel" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carousel" data-slide-to="1"></li>
-                                        </ol>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div class="card-deck">
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <!-- Title -->
-                                                            <h4 class="card-title">
-                                                                <a>Algorítmica 3</a>
-                                                            </h4>
-                                                            <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-calif-a3" class="chartjs" width="419" height="209"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <!-- Title -->
-                                                            <h4 class="card-title">
-                                                                <a>Sistemas Operativos</a>
-                                                            </h4>
-                                                            <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-calif-so" class="chartjs" width="419" height="209"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div class="card-deck">
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <!-- Title -->
-                                                            <h4 class="card-title">
-                                                                <a>Inteligencia Artificial</a>
-                                                            </h4>
-                                                            <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-calif-ia" class="chartjs" width="419" height="209"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <!-- Title -->
-                                                            <h4 class="card-title">
-                                                                <a>Base de Datos 2</a>
-                                                            </h4>
-                                                            <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-calif-bd2" class="chartjs" width="419" height="209"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--botones de control para los slides-->
-                                        <div class="controls-top mt-2 text-center">
-                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
-                                                <i class="fa fa-chevron-left"></i>
-                                            </a>
-                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
-                                                <i class="fa fa-chevron-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- fin Accordion card Calificaciones -->
-
-                        <!-- Accordion card Progreso -->
-                        <div class="card mb-4">
-
-                            <!-- Card header -->
-                            <div class="card-header p-0 z-depth-1" role="tab" id="heading31">
-                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse31" aria-expanded="true" aria-controls="collapse31">
-                                    <i class="fa fa-thumbs-up fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
-                                    <h4 class="white-text mb-0 py-3 mt-1">
-                                        Progreso
-                                    </h4>
-                                </a>
-                            </div>
-
-                            <!-- Card body -->
-                            <div id="collapse31" class="collapse" role="tabpanel" aria-labelledby="heading31" data-parent="#accordionEx5">
-                                <div class="card-body white-text z-depth-1">
-                                    <div id="carousel" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carousel" data-slide-to="1"></li>
-                                        </ol>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div class="card-deck">
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <!-- Title -->
-                                                            <h4 class="card-title">
-                                                                <a>Algorítmica 3</a>
-                                                            </h4>
-                                                            <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-prog-a3" class="chartjs" width="419" height="209"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <!-- Title -->
-                                                            <h4 class="card-title">
-                                                                <a>Sistemas Operativos</a>
-                                                            </h4>
-                                                            <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-prog-so" class="chartjs" width="419" height="209"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div class="card-deck">
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <!-- Title -->
-                                                            <h4 class="card-title">
-                                                                <a>Inteligencia Artificial</a>
-                                                            </h4>
-                                                            <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-prog-ia" class="chartjs" width="419" height="209"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <!-- Title -->
-                                                            <h4 class="card-title">
-                                                                <a>Base de Datos 2</a>
-                                                            </h4>
-                                                            <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-prog-bd2" class="chartjs" width="419" height="209"></canvas>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--botones de control para los slides-->
-                                        <div class="controls-top mt-2 text-center">
-                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
-                                                <i class="fa fa-chevron-left"></i>
-                                            </a>
-                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
-                                                <i class="fa fa-chevron-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- fin Accordion card Progreso -->
-
-                        <!-- Accordion card Tareas -->
-                        <div class="card mb-4">
-
-                            <!-- Card header -->
-                            <div class="card-header p-0 z-depth-1" role="tab" id="heading32">
-                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse32" aria-expanded="true" aria-controls="collapse32">
-                                    <i class="fa fa-tasks fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
-                                    <h4 class="white-text mb-0 py-3 mt-1">
-                                        Tareas Pendientes
-                                    </h4>
-                                </a>
-                            </div>
-
-                            <!-- Card body -->
-                            <div id="collapse32" class="collapse" role="tabpanel" aria-labelledby="heading32" data-parent="#accordionEx5">
-                                <div class="card-body black-text z-depth-1">
-                                    <h6>
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Tema 2 - Complejidad Algorítmica
-                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Reto 1 - Tipo Examen
-                                                <span class="badge badge-pill indigo">Inteligencia Artificial</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Tema 3 - Abrazo Mortal
-                                                <span class="badge badge-pill indigo">Sistemas Operativos</span>
-                                            </li>
-                                        </ul>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- fin Accordion card Tareas-->
-
-                        <!-- Accordion card Comentarios-->
-                        <div class="card mb-4">
-
-                            <!-- Card header -->
-                            <div class="card-header p-0 z-depth-1" role="tab" id="heading33">
-                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse33" aria-expanded="true" aria-controls="collapse32">
-                                    <i class="fa fa-comment-dots fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
-                                    <h4 class="white-text mb-0 py-3 mt-1">
-                                        Comentarios de los Profesores
-                                    </h4>
-                                </a>
-                            </div>
-
-                            <!-- Card body -->
-                            <div id="collapse33" class="collapse" role="tabpanel" aria-labelledby="heading33" data-parent="#accordionEx5">
-                                <div class="card-body black-text z-depth-1">
-                                    <div id="carousel" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carousel" data-slide-to="1"></li>
-                                        </ol>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div class="card-deck">
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <h6>
-                                                                <div class="chip chip-md black-text">
-                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
-                                                                </div>
-                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
-
-                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                                    accusamus terry richardson ad squid. 3 wolf moon officia
-                                                                    aute, non cupidatat skateboard dolor brunch.
-                                                                </p>
-                                                            </h6>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <h6>
-                                                                <div class="chip chip-md black-text">
-                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
-                                                                </div>
-                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
-                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                                    accusamus terry richardson ad squid. 3 wolf moon officia
-                                                                    aute, non cupidatat skateboard dolor brunch.
-                                                                </p>
-                                                            </h6>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div class="card-deck">
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <h6>
-                                                                <div class="chip chip-md black-text">
-                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
-                                                                </div>
-                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
-                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                                    accusamus terry richardson ad squid. 3 wolf moon officia
-                                                                    aute, non cupidatat skateboard dolor brunch.
-                                                                </p>
-                                                            </h6>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                    <!-- Card -->
-                                                    <div class="card mb-6">
-                                                        <!-- Card content -->
-                                                        <div class="card-body">
-                                                            <h6>
-                                                                <div class="chip chip-md black-text">
-                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
-                                                                </div>
-                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
-                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life
-                                                                    accusamus terry richardson ad squid. 3 wolf moon officia
-                                                                    aute, non cupidatat skateboard dolor brunch.
-                                                                </p>
-                                                            </h6>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Card -->
-                                                </div>
-                                            </div>
-                                            <!--botones de control para los slides-->
-                                            <div class="controls-top mt-2 text-center">
-                                                <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
-                                                    <i class="fa fa-chevron-left"></i>
-                                                </a>
-                                                <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
-                                                    <i class="fa fa-chevron-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- fin Accordion card Comentarios-->
-                        </div>
-                    </div>
-                    <!--/.Accordion wrapper-->
-                </div>
+    <main id="app" class="container-fluid mx-auto">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="nav md-pills pills-teal-light flex-column" role="tablist">
+                    <li class="nav-item">
+                        <a 
+                            class="nav-link active" 
+                            data-toggle="tab" 
+                            href="#perfil_hijo" 
+                            role="tab"
+                        >
+                            <i class="fa fa-user mr-2"></i>
+                            Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a 
+                            class="nav-link" 
+                            data-toggle="tab"
+                            href="#informacion_hijo" 
+                            role="tab"
+                        >
+                            <i class="fa fa-info-circle mr-2"></i>
+                            Información
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <!-- Content -->
+            <div class="col-md-9">
+                <!-- Tab panels -->
+                <div class="tab-content vertical">
+                    <!-- Perfil -->
+                    <div class="tab-pane fade in show active" id="perfil_hijo" role="tabpanel">
+                        <h3 class="mt-2 mb-4 h3">
+                            <i class="fa fa-user mr-2"></i>
+                            Perfil
+                        </h3>
+                    </div>
+                    <!-- Información -->
+                    <div class="tab-pane" id="informacion_hijo" role="tabpanel">
+                        <h3 class="mt-2 mb-4 h3">
+                            <i class="fa fa-info-circle mr-2"></i>
+                            Información General
+                        </h3>
+                        <!-- Content -->
+                        <div class="py-5 px-4">
+                            <div class="row d-flex justify-content-center ">
+                                <div class="col-md-12">
+                                    <!--Accordion wrapper-->
+                                    <div class="accordion accordion-5" id="accordionEx5" role="tablist" aria-multiselectable="true">
+    
+                                        <!-- Accordion card Calificaciones -->
+                                        <div class="card mb-4">
+    
+                                            <!-- Card header -->
+                                            <div class="card-header p-0 z-depth-1" role="tab" id="heading30">
+                                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse30" aria-expanded="true" aria-controls="collapse30">
+                                                    <h4 class="white-text mb-0 pl-4 py-3 mt-1">
+                                                        <i class="fas fa-user-check mr-2" aria-hidden="true"></i>
+                                                        Calificaciones
+                                                    </h4>
+                                                </a>
+                                            </div>
+    
+                                            <!-- Card body -->
+                                            <div id="collapse30" class="collapse show" role="tabpanel" aria-labelledby="heading30" data-parent="#accordionEx5">
+                                                <div class="card-body white-text z-depth-1">
+                                                    <div id="carousel" class="carousel slide" data-ride="carousel">
+                                                        <ol class="carousel-indicators">
+                                                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                                                            <li data-target="#carousel" data-slide-to="1"></li>
+                                                        </ol>
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                <div class="card-deck">
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <!-- Title -->
+                                                                            <h4 class="card-title">
+                                                                                <a>Algorítmica 3</a>
+                                                                            </h4>
+                                                                            <div class="chartjs-wrapper">
+                                                                                <canvas id="chartjs-calif-a3" class="chartjs" width="419" height="209"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <!-- Title -->
+                                                                            <h4 class="card-title">
+                                                                                <a>Sistemas Operativos</a>
+                                                                            </h4>
+                                                                            <div class="chartjs-wrapper">
+                                                                                <canvas id="chartjs-calif-so" class="chartjs" width="419" height="209"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="card-deck">
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <!-- Title -->
+                                                                            <h4 class="card-title">
+                                                                                <a>Inteligencia Artificial</a>
+                                                                            </h4>
+                                                                            <div class="chartjs-wrapper">
+                                                                                <canvas id="chartjs-calif-ia" class="chartjs" width="419" height="209"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <!-- Title -->
+                                                                            <h4 class="card-title">
+                                                                                <a>Base de Datos 2</a>
+                                                                            </h4>
+                                                                            <div class="chartjs-wrapper">
+                                                                                <canvas id="chartjs-calif-bd2" class="chartjs" width="419" height="209"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+    
+                                                        <!--botones de control para los slides-->
+                                                        <div class="controls-top mt-2 text-center">
+                                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
+                                                                <i class="fa fa-chevron-left"></i>
+                                                            </a>
+                                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
+                                                                <i class="fa fa-chevron-right"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- fin Accordion card Calificaciones -->
+    
+                                        <!-- Accordion card Progreso -->
+                                        <div class="card mb-4">
+    
+                                            <!-- Card header -->
+                                            <div class="card-header p-0 z-depth-1" role="tab" id="heading31">
+                                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse31" aria-expanded="true" aria-controls="collapse31">
+                                                    <h4 class="white-text mb-0 pl-4 py-3 mt-1">
+                                                        <i class="fas fa-thumbs-up mr-2" aria-hidden="true"></i>
+                                                        Progreso
+                                                    </h4>
+                                                </a>
+                                            </div>
+    
+                                            <!-- Card body -->
+                                            <div id="collapse31" class="collapse" role="tabpanel" aria-labelledby="heading31" data-parent="#accordionEx5">
+                                                <div class="card-body white-text z-depth-1">
+                                                    <div id="carousel" class="carousel slide" data-ride="carousel">
+                                                        <ol class="carousel-indicators">
+                                                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                                                            <li data-target="#carousel" data-slide-to="1"></li>
+                                                        </ol>
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                <div class="card-deck">
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <!-- Title -->
+                                                                            <h4 class="card-title">
+                                                                                <a>Algorítmica 3</a>
+                                                                            </h4>
+                                                                            <div class="chartjs-wrapper">
+                                                                                <canvas id="chartjs-prog-a3" class="chartjs" width="419" height="209"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <!-- Title -->
+                                                                            <h4 class="card-title">
+                                                                                <a>Sistemas Operativos</a>
+                                                                            </h4>
+                                                                            <div class="chartjs-wrapper">
+                                                                                <canvas id="chartjs-prog-so" class="chartjs" width="419" height="209"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="card-deck">
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <!-- Title -->
+                                                                            <h4 class="card-title">
+                                                                                <a>Inteligencia Artificial</a>
+                                                                            </h4>
+                                                                            <div class="chartjs-wrapper">
+                                                                                <canvas id="chartjs-prog-ia" class="chartjs" width="419" height="209"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <!-- Title -->
+                                                                            <h4 class="card-title">
+                                                                                <a>Base de Datos 2</a>
+                                                                            </h4>
+                                                                            <div class="chartjs-wrapper">
+                                                                                <canvas id="chartjs-prog-bd2" class="chartjs" width="419" height="209"></canvas>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+    
+                                                        <!--botones de control para los slides-->
+                                                        <div class="controls-top mt-2 text-center">
+                                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
+                                                                <i class="fa fa-chevron-left"></i>
+                                                            </a>
+                                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
+                                                                <i class="fas fa-chevron-right"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- fin Accordion card Progreso -->
+    
+                                        <!-- Accordion card Tareas -->
+                                        <div class="card mb-4">
+    
+                                            <!-- Card header -->
+                                            <div class="card-header p-0 z-depth-1" role="tab" id="heading32">
+                                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse32" aria-expanded="true" aria-controls="collapse32">
+    
+                                                    <h4 class="white-text mb-0 pl-4 py-3 mt-1">
+                                                        <i class="fas fa-tasks mr-2" aria-hidden="true"></i>
+                                                        Tareas Pendientes
+                                                    </h4>
+                                                </a>
+                                            </div>
+    
+                                            <!-- Card body -->
+                                            <div id="collapse32" class="collapse" role="tabpanel" aria-labelledby="heading32" data-parent="#accordionEx5">
+                                                <div class="card-body black-text z-depth-1">
+                                                    <h6>
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                Tema 2 - Complejidad Algorítmica
+                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+                                                            </li>
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                Reto 1 - Tipo Examen
+                                                                <span class="badge badge-pill indigo">Inteligencia Artificial</span>
+                                                            </li>
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                Tema 3 - Abrazo Mortal
+                                                                <span class="badge badge-pill indigo">Sistemas Operativos</span>
+                                                            </li>
+                                                        </ul>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- fin Accordion card Tareas-->
+    
+                                        <!-- Accordion card Comentarios-->
+                                        <div class="card mb-4">
+    
+                                            <!-- Card header -->
+                                            <div class="card-header p-0 z-depth-1" role="tab" id="heading33">
+                                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse33" aria-expanded="true" aria-controls="collapse32">
+    
+                                                    <h4 class="white-text mb-0 pl-4 py-3 mt-1">
+                                                        <i class="fas fa-comment-dots mr-2" aria-hidden="true"></i>
+                                                        Comentarios de los Profesores
+                                                    </h4>
+                                                </a>
+                                            </div>
+    
+                                            <!-- Card body -->
+                                            <div id="collapse33" class="collapse" role="tabpanel" aria-labelledby="heading33" data-parent="#accordionEx5">
+                                                <div class="card-body black-text z-depth-1">
+                                                    <div id="carousel" class="carousel slide" data-ride="carousel">
+                                                        <ol class="carousel-indicators">
+                                                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                                                            <li data-target="#carousel" data-slide-to="1"></li>
+                                                        </ol>
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                <div class="card-deck">
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <h6>
+                                                                                <div class="chip chip-md black-text">
+                                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
+                                                                                </div>
+                                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+    
+                                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod
+                                                                                    high life accusamus terry richardson ad squid.
+                                                                                    3 wolf moon officia aute, non cupidatat skateboard
+                                                                                    dolor brunch.
+                                                                                </p>
+                                                                            </h6>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <h6>
+                                                                                <div class="chip chip-md black-text">
+                                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
+                                                                                </div>
+                                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+                                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod
+                                                                                    high life accusamus terry richardson ad squid.
+                                                                                    3 wolf moon officia aute, non cupidatat skateboard
+                                                                                    dolor brunch.
+                                                                                </p>
+                                                                            </h6>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                </div>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <div class="card-deck">
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <h6>
+                                                                                <div class="chip chip-md black-text">
+                                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
+                                                                                </div>
+                                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+                                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod
+                                                                                    high life accusamus terry richardson ad squid.
+                                                                                    3 wolf moon officia aute, non cupidatat skateboard
+                                                                                    dolor brunch.
+                                                                                </p>
+                                                                            </h6>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                    <!-- Card -->
+                                                                    <div class="card mb-6">
+                                                                        <!-- Card content -->
+                                                                        <div class="card-body">
+                                                                            <h6>
+                                                                                <div class="chip chip-md black-text">
+                                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
+                                                                                </div>
+                                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+                                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod
+                                                                                    high life accusamus terry richardson ad squid.
+                                                                                    3 wolf moon officia aute, non cupidatat skateboard
+                                                                                    dolor brunch.
+                                                                                </p>
+                                                                            </h6>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Card -->
+                                                                </div>
+                                                            </div>
+                                                            <!--botones de control para los slides-->
+                                                            <div class="controls-top mt-2 text-center">
+                                                                <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
+                                                                    <i class="fa fa-chevron-left"></i>
+                                                                </a>
+                                                                <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
+                                                                    <i class="fa fa-chevron-right"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- fin Accordion card Comentarios-->
+                                        </div>
+                                    </div>
+                                    <!--/.Accordion wrapper-->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Content -->
+                    </div>
+                </div>      
+            </div>
         </div>
     </main>
 
