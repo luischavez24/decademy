@@ -255,18 +255,15 @@
             var curStep = $(this).closest(".setup-content-2"),
                curStepBtn = curStep.attr("id"),
                nextStepSteps = $('div.setup-panel-2 div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-               curInputs = curStep.find("input[type='text'],input[type='url']"),
-               isValid = true;
-
-            /*$(".form-group").removeClass("has-error");
-            for(var i=0; i< curInputs.length; i++){
-               if (!curInputs[i].validity.valid){
-                  isValid = false;
-                  $(curInputs[i]).closest(".form-group").addClass("has-error");
+               curInputs = curStep.find("input[type='text'],input[type='url']");
+               console.log(curStepBtn)
+               if(curStepBtn == "step-4") {
+                  console.log("Evaluando las preguntas");
+                  console.log($("input[name='group100']:checked").val());
+                  console.log(document.getElementsByName("group200"));
+                  console.log(document.getElementsByName("group300"));
                }
-            }
 
-            if (isValid)*/
                nextStepSteps.removeAttr('disabled').trigger('click');
          });
 
