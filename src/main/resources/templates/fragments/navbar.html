@@ -1,127 +1,135 @@
 <!DOCTYPE html>
-<html 
-   lang="en" 
-   xmlns:th="http://www.thymeleaf.org" 
-   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
 </head>
+
 <body>
-   <header th:fragment="navbar(title)">
-      <!-- Sidebar navigation -->
-      <div id="slide-out" class="side-nav sn-bg-1 fixed orange darken-3 custom-scrollbar" style="transform: translateX(-100%); font-size: 5%;">
-         <ul class="custom-scrollbar">
-            <!-- Logo -->
-            <li>
-               <div class="logo-wrapper waves-light waves-effect waves-light">
-                  <a th:href="@{/inicio}"><img th:src="@{/img/img-logo.png}" class="img-fluid flex-center"></a>
-               </div>
-            </li>
-            <!--/. Logo -->
-            <!-- Side navigation links -->
-            <li>
-               <ul class="collapsible collapsible-accordion">
-                  <li th:if="${notLogin == null}">
-                     <a th:href="@{/cursos}" class="waves-effect">
-                        <i class="fa fa-book"></i>
-                        Mis cursos
-                     </a>
-                  </li>
-                  <li th:if="${notLogin == null}">
-                     <a th:href="@{/cursos}" class="waves-effect">
-                        <i class="fa fa-trophy"></i>
-                        Mis retos
-                     </a>
-                  </li>
-                  <li>
-                     <a class="collapsible-header waves-effect arrow-r">
-                        <i class="fa fa-search"></i> Explorar<i class="fa fa-angle-down rotate-icon"></i>
-                     </a>
-                     <div class="collapsible-body">
-                        <ul class="list-unstyled">
-                           <li>
-                              <a th:href="@{/explorar/cursos}" class="waves-effect">
-                                <i class="fa fa-book"></i>Cursos
-                              </a>
-                           </li>
-                           <li>
-                              <a th:href="@{/explorar/tutores}" class="waves-effect">
-                                 <i class="fa fa-graduation-cap"></i>Tutores
-                              </a>
-                           </li>
-                        </ul>
-                     </div>
-                  </li>
-                  <li>
-                     <a th:href="@{/nosotros}" class="waves-effect arrow-r">
-                        <i class="fa fa-address-card"></i> 
-                        Nosotros
-                     </a>
-                  </li>
-               </ul>
-            </li>
-            <!--/. Side navigation links -->
-         </ul>
-         <div class="sidenav-bg mask-strong"></div>
-      </div>
-      <!--/. Sidebar navigation -->
-      <!-- Navbar -->
-      <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar orange darken-3 double-nav">
-         <!-- SideNav slide-out button -->
-         <div class="float-left">
-            <a data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
-         </div>
-         <div class="float-left ml-3">
-             <h5 class="my-auto" th:text="${title}"></h5>
-         </div>
-         <ul th:if="${notLogin == null}" class="nav navbar-nav nav-flex-icons ml-auto">
-            <li class="nav-item">
-               <a class="nav-link p-1">
-                  <img th:src="@{/img/foto_perfil.jpg}" alt="user-image" class="rounded-circle img-fluid" width="30">
-                  <span class="clearfix d-none d-sm-inline-block">Pedro Romero</span>
-               </a>
-            </li>
-            <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-bell"></i>
-               </a>
-               <div class="dropdown-menu dropdown-default dropdown-menu-right" style="width: 400px;">
-                  <a class="dropdown-item-text" href="#">
-                     <h5 class="p-0"><i class="fa fa-flag"></i> Tarea</h5>
-                     Se ha subido una nueva tarea a Algoritmica 3
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item-text" href="#">
-                     <h5 class="p-0"><i class="fa fa-flag"></i> Tarea</h5>
-                     Se ha subido una nueva tarea a Interfaz Hombre Computador
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item-text" href="#">
-                     <h5 class="p-0"><i class="fa fa-flag"></i> Tarea</h5>
-                     Se ha subido una nueva tarea a Patrones de Construccion de Sistemas
-                  </a>
-               </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-cog"></i>
-              </a>
-              <div class="dropdown-menu dropdown-default dropdown-menu-right">
-                  <a class="dropdown-item" href="#">
-                      <i class="fa fa-sign-out"></i> Cerra Sesión
-                  </a>
-              </div>
-            </li>
-         </ul>
-         <ul th:if="${notLogin != null}" class="nav navbar-nav nav-flex-icons ml-auto">
-            <li class="nav-item">
-               <a class="nav-link">
-                  <i class="fa fa-sign-in"></i> Inicia Sesión
-               </a>
-            </li>
-         </ul>
-      </nav>
-   </header>   
+    <header th:fragment="navbar(title)">
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav sn-bg-1 fixed orange darken-3 custom-scrollbar" style="transform: translateX(-100%); font-size: 5%;">
+            <ul class="custom-scrollbar">
+                <!-- Logo -->
+                <li>
+                    <div class="logo-wrapper waves-light waves-effect waves-light">
+                        <a th:href="@{/inicio}">
+                            <img th:src="@{/img/img-logo.png}" class="img-fluid flex-center">
+                        </a>
+                    </div>
+                </li>
+                <!--/. Logo -->
+                <!-- Side navigation links -->
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <li th:if="${notLogin == null}">
+                            <a th:href="@{/cursos}" class="waves-effect">
+                                <i class="fa fa-book"></i>
+                                Mis cursos
+                            </a>
+                        </li>
+                        <li th:if="${notLogin == null}">
+                            <a th:href="@{/cursos}" class="waves-effect">
+                                <i class="fa fa-trophy"></i>
+                                Mis retos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="collapsible-header waves-effect arrow-r">
+                                <i class="fa fa-search"></i> Explorar
+                                <i class="fa fa-angle-down rotate-icon"></i>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a th:href="@{/explorar/cursos}" class="waves-effect">
+                                            <i class="fa fa-book"></i>Cursos
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/explorar/tutores}" class="waves-effect">
+                                            <i class="fa fa-graduation-cap"></i>Tutores
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a th:href="@{/nosotros}" class="waves-effect arrow-r">
+                                <i class="fa fa-address-card"></i>
+                                Nosotros
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
+            <div class="sidenav-bg mask-strong"></div>
+        </div>
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar orange darken-3 double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-left">
+                <a data-activates="slide-out" class="button-collapse">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="float-left ml-3">
+                <h5 class="my-auto" th:text="${title}"></h5>
+            </div>
+            <ul th:if="${notLogin == null}" class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link p-1">
+                        <img th:src="@{/img/foto_perfil.jpg}" alt="user-image" class="rounded-circle img-fluid" width="30">
+                        <span class="clearfix d-none d-sm-inline-block">Pedro Romero</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bell"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-default dropdown-menu-right" style="width: 400px;">
+                        <a class="dropdown-item-text" href="#">
+                            <h5 class="p-0">
+                                <i class="fa fa-flag"></i> Tarea</h5>
+                            Se ha subido una nueva tarea a Algoritmica 3
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item-text" href="#">
+                            <h5 class="p-0">
+                                <i class="fa fa-flag"></i> Tarea</h5>
+                            Se ha subido una nueva tarea a Interfaz Hombre Computador
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item-text" href="#">
+                            <h5 class="p-0">
+                                <i class="fa fa-flag"></i> Tarea</h5>
+                            Se ha subido una nueva tarea a Patrones de Construccion de Sistemas
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-default dropdown-menu-right">
+                        <a class="dropdown-item" href="#">
+                            <i class="fa fa-sign-out"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <ul th:if="${notLogin != null}" class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#modal_login">
+                        <i class="fa fa-sign-in"></i> Iniciar Sesión
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
 </body>
+
 </html>
