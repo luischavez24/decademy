@@ -33,19 +33,29 @@
             border-bottom-right-radius: 3px;
             border-bottom-left-radius: 3px;
         }
+
+        .chip.chip-md {
+            height: 42px;
+            line-height: 42px;
+            border-radius: 21px;
+        }
+
+        .chip.chip-md img {
+            height: 42px;
+            width: 42px;
+        }
     </style>
     <header th:include="/fragments/navbar :: navbar('')"></header>
 
     <main class="container-fluid ml-0">
 
         <!-- Card -->
-        <!---->
-        <div class="card card-image" style="background-image: url(\img\fondo_results_padres.jpg);"></div>
+        <!--<div class="card card-image" style="background-image: url();">-->
+
         <!-- Content -->
         <div class="py-5 px-4">
             <div class="row d-flex justify-content-center ">
                 <div class="col-md-10 col-xl-8">
-
                     <!--Accordion wrapper-->
                     <div class="accordion accordion-5" id="accordionEx5" role="tablist" aria-multiselectable="true">
 
@@ -76,7 +86,7 @@
                                                     <!-- Card -->
                                                     <div class="card mb-6">
                                                         <!-- Card content -->
-                                                        <div class="card-body" style="background-color: rgb(241, 255, 255);">
+                                                        <div class="card-body">
                                                             <!-- Title -->
                                                             <h4 class="card-title">
                                                                 <a>Algorítmica 3</a>
@@ -90,7 +100,7 @@
                                                     <!-- Card -->
                                                     <div class="card mb-6">
                                                         <!-- Card content -->
-                                                        <div class="card-body" style="background-color: rgb(241, 255, 255);">
+                                                        <div class="card-body">
                                                             <!-- Title -->
                                                             <h4 class="card-title">
                                                                 <a>Sistemas Operativos</a>
@@ -108,7 +118,7 @@
                                                     <!-- Card -->
                                                     <div class="card mb-6">
                                                         <!-- Card content -->
-                                                        <div class="card-body" style="background-color: rgb(241, 255, 255);">
+                                                        <div class="card-body">
                                                             <!-- Title -->
                                                             <h4 class="card-title">
                                                                 <a>Inteligencia Artificial</a>
@@ -122,7 +132,7 @@
                                                     <!-- Card -->
                                                     <div class="card mb-6">
                                                         <!-- Card content -->
-                                                        <div class="card-body" style="background-color: rgb(241, 255, 255);">
+                                                        <div class="card-body">
                                                             <!-- Title -->
                                                             <h4 class="card-title">
                                                                 <a>Base de Datos 2</a>
@@ -137,14 +147,15 @@
                                             </div>
                                         </div>
 
-                                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
+                                        <!--botones de control para los slides-->
+                                        <div class="controls-top mt-2 text-center">
+                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </a>
+                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -178,13 +189,13 @@
                                                     <!-- Card -->
                                                     <div class="card mb-6">
                                                         <!-- Card content -->
-                                                        <div class="card-body" style="background-color: rgb(241, 255, 255);">
+                                                        <div class="card-body">
                                                             <!-- Title -->
                                                             <h4 class="card-title">
                                                                 <a>Algorítmica 3</a>
                                                             </h4>
                                                             <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-a3" class="chartjs" width="419" height="209" style="display: block; width: 419px; height: 209px;"></canvas>
+                                                                <canvas id="chartjs-prog-a3" class="chartjs" width="419" height="209"></canvas>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -192,13 +203,13 @@
                                                     <!-- Card -->
                                                     <div class="card mb-6">
                                                         <!-- Card content -->
-                                                        <div class="card-body" style="background-color: rgb(241, 255, 255);">
+                                                        <div class="card-body">
                                                             <!-- Title -->
                                                             <h4 class="card-title">
                                                                 <a>Sistemas Operativos</a>
                                                             </h4>
                                                             <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-so" class="chartjs" width="419" height="209" style="display: block; width: 419px; height: 209px;"></canvas>
+                                                                <canvas id="chartjs-prog-so" class="chartjs" width="419" height="209"></canvas>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -210,13 +221,13 @@
                                                     <!-- Card -->
                                                     <div class="card mb-6">
                                                         <!-- Card content -->
-                                                        <div class="card-body" style="background-color: rgb(241, 255, 255);">
+                                                        <div class="card-body">
                                                             <!-- Title -->
                                                             <h4 class="card-title">
                                                                 <a>Inteligencia Artificial</a>
                                                             </h4>
                                                             <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-ia" class="chartjs" width="419" height="209" style="display: block; width: 419px; height: 209px;"></canvas>
+                                                                <canvas id="chartjs-prog-ia" class="chartjs" width="419" height="209"></canvas>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -224,13 +235,13 @@
                                                     <!-- Card -->
                                                     <div class="card mb-6">
                                                         <!-- Card content -->
-                                                        <div class="card-body" style="background-color: rgb(241, 255, 255);">
+                                                        <div class="card-body">
                                                             <!-- Title -->
                                                             <h4 class="card-title">
                                                                 <a>Base de Datos 2</a>
                                                             </h4>
                                                             <div class="chartjs-wrapper">
-                                                                <canvas id="chartjs-bd2" class="chartjs" width="419" height="209" style="display: block; width: 419px; height: 209px;"></canvas>
+                                                                <canvas id="chartjs-prog-bd2" class="chartjs" width="419" height="209"></canvas>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -239,19 +250,19 @@
                                             </div>
                                         </div>
 
-                                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
+                                        <!--botones de control para los slides-->
+                                        <div class="controls-top mt-2 text-center">
+                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </a>
+                                            <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <!-- fin Accordion card Progreso -->
 
                         <!-- Accordion card Tareas -->
@@ -260,7 +271,7 @@
                             <!-- Card header -->
                             <div class="card-header p-0 z-depth-1" role="tab" id="heading32">
                                 <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse32" aria-expanded="true" aria-controls="collapse32">
-                                    <i class="fas fa-tasks fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
+                                    <i class="fa fa-tasks fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                                     <h4 class="white-text mb-0 py-3 mt-1">
                                         Tareas Pendientes
                                     </h4>
@@ -269,12 +280,23 @@
 
                             <!-- Card body -->
                             <div id="collapse32" class="collapse" role="tabpanel" aria-labelledby="heading32" data-parent="#accordionEx5">
-                                <div class="card-body rgba-black-light white-text z-depth-1">
-                                    <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
-                                        ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                                        quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                        on it squid single-origin coffee nulla assumenda shoreditch et.
-                                    </p>
+                                <div class="card-body black-text z-depth-1">
+                                    <h6>
+                                        <ul class="list-group">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Tema 2 - Complejidad Algorítmica
+                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Reto 1 - Tipo Examen
+                                                <span class="badge badge-pill indigo">Inteligencia Artificial</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Tema 3 - Abrazo Mortal
+                                                <span class="badge badge-pill indigo">Sistemas Operativos</span>
+                                            </li>
+                                        </ul>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -286,7 +308,7 @@
                             <!-- Card header -->
                             <div class="card-header p-0 z-depth-1" role="tab" id="heading33">
                                 <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse33" aria-expanded="true" aria-controls="collapse32">
-                                    <i class="fas fa-comment-dots fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
+                                    <i class="fa fa-comment-dots fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                                     <h4 class="white-text mb-0 py-3 mt-1">
                                         Comentarios de los Profesores
                                     </h4>
@@ -295,24 +317,111 @@
 
                             <!-- Card body -->
                             <div id="collapse33" class="collapse" role="tabpanel" aria-labelledby="heading33" data-parent="#accordionEx5">
-                                <div class="card-body rgba-black-light white-text z-depth-1">
-                                    <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson
-                                        ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                                        quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                        on it squid single-origin coffee nulla assumenda shoreditch et.
-                                    </p>
+                                <div class="card-body black-text z-depth-1">
+                                    <div id="carousel" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carousel" data-slide-to="1"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="card-deck">
+                                                    <!-- Card -->
+                                                    <div class="card mb-6">
+                                                        <!-- Card content -->
+                                                        <div class="card-body">
+                                                            <h6>
+                                                                <div class="chip chip-md black-text">
+                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
+                                                                </div>
+                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+
+                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life
+                                                                    accusamus terry richardson ad squid. 3 wolf moon officia
+                                                                    aute, non cupidatat skateboard dolor brunch.
+                                                                </p>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Card -->
+                                                    <!-- Card -->
+                                                    <div class="card mb-6">
+                                                        <!-- Card content -->
+                                                        <div class="card-body">
+                                                            <h6>
+                                                                <div class="chip chip-md black-text">
+                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
+                                                                </div>
+                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life
+                                                                    accusamus terry richardson ad squid. 3 wolf moon officia
+                                                                    aute, non cupidatat skateboard dolor brunch.
+                                                                </p>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Card -->
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="card-deck">
+                                                    <!-- Card -->
+                                                    <div class="card mb-6">
+                                                        <!-- Card content -->
+                                                        <div class="card-body">
+                                                            <h6>
+                                                                <div class="chip chip-md black-text">
+                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
+                                                                </div>
+                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life
+                                                                    accusamus terry richardson ad squid. 3 wolf moon officia
+                                                                    aute, non cupidatat skateboard dolor brunch.
+                                                                </p>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Card -->
+                                                    <!-- Card -->
+                                                    <div class="card mb-6">
+                                                        <!-- Card content -->
+                                                        <div class="card-body">
+                                                            <h6>
+                                                                <div class="chip chip-md black-text">
+                                                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Victor Bustamante
+                                                                </div>
+                                                                <span class="badge badge-pill indigo">Algorítmica 3</span>
+                                                                <p class="p-md-4 mb-0">Anim pariatur cliche reprehenderit, enim eiusmod high life
+                                                                    accusamus terry richardson ad squid. 3 wolf moon officia
+                                                                    aute, non cupidatat skateboard dolor brunch.
+                                                                </p>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Card -->
+                                                </div>
+                                            </div>
+                                            <!--botones de control para los slides-->
+                                            <div class="controls-top mt-2 text-center">
+                                                <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="prev">
+                                                    <i class="fa fa-chevron-left"></i>
+                                                </a>
+                                                <a class="btn-floating teal lighten-2 btn-sm" href="#carousel" data-slide="next">
+                                                    <i class="fa fa-chevron-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- fin Accordion card Comentarios-->
                         </div>
-                        <!-- fin Accordion card Comentarios-->
                     </div>
                     <!--/.Accordion wrapper-->
-
                 </div>
             </div>
         </div>
         <!-- Content -->
-        </div>
         </div>
     </main>
 
@@ -324,11 +433,11 @@
             {
                 type: "bar",
                 data: {
-                    labels: ['12/05', '19/05', '26/05','28/05','03/06','10/06'],
+                    labels: ['12/05', '19/05', '26/05', '28/05', '03/06', '10/06'],
                     datasets: [{
                         label: ['Nota de la sesión'],
-                        data: ['18', '15', '16','12', '0', '0'],
-                        backgroundColor: [  
+                        data: ['18', '15', '16', '12', '0', '0'],
+                        backgroundColor: [
                             'rgba(67, 65, 184, 0.8)',
                             'rgba(67, 65, 184, 0.8)',
                             'rgba(67, 65, 184, 0.8)',
@@ -348,14 +457,14 @@
                 }
             });
         new Chart(document.getElementById("chartjs-calif-so"),
-        {
+            {
                 type: "bar",
                 data: {
-                    labels: ['13/05', '18/05', '24/05','30/05','05/06','08/06'],
+                    labels: ['13/05', '18/05', '24/05', '30/05', '05/06', '08/06'],
                     datasets: [{
                         label: ['Nota de la sesión'],
-                        data: ['15', '16', '16','0', '0', '0'],
-                        backgroundColor: [  
+                        data: ['15', '16', '16', '0', '0', '0'],
+                        backgroundColor: [
                             'rgba(67, 65, 184, 0.8)',
                             'rgba(67, 65, 184, 0.8)',
                             'rgba(67, 65, 184, 0.8)',
@@ -375,14 +484,14 @@
                 }
             });
         new Chart(document.getElementById("chartjs-calif-ia"),
-        {
+            {
                 type: "bar",
                 data: {
-                    labels: ['10/05', '14/05', '20/05','26/05','04/06','09/06'],
+                    labels: ['10/05', '14/05', '20/05', '26/05', '04/06', '09/06'],
                     datasets: [{
                         label: ['Nota de la sesión'],
-                        data: ['16', '13', '17','08', '0', '0'],
-                        backgroundColor: [  
+                        data: ['16', '13', '17', '08', '0', '0'],
+                        backgroundColor: [
                             'rgba(67, 65, 184, 0.8)',
                             'rgba(67, 65, 184, 0.8)',
                             'rgba(67, 65, 184, 0.8)',
@@ -402,14 +511,14 @@
                 }
             });
         new Chart(document.getElementById("chartjs-calif-bd2"),
-        {
+            {
                 type: "bar",
                 data: {
-                    labels: ['28/04', '06/05', '25/05','01/06','06/06','17/06'],
+                    labels: ['28/04', '06/05', '25/05', '01/06', '06/06', '17/06'],
                     datasets: [{
                         label: ['Nota de la sesión'],
-                        data: ['15', '16', '19','0', '0', '0'],
-                        backgroundColor: [  
+                        data: ['15', '16', '19', '0', '0', '0'],
+                        backgroundColor: [
                             'rgba(67, 65, 184, 0.8)',
                             'rgba(67, 65, 184, 0.8)',
                             'rgba(67, 65, 184, 0.8)',
@@ -430,47 +539,47 @@
             });
 
         // Progreso de Cursos
-        new Chart(document.getElementById("chartjs-a3"),
+        new Chart(document.getElementById("chartjs-prog-a3"),
             {
                 "type": "doughnut",
                 "data": {
-                    "labels": ["1", "2"],
+                    "labels": ["Completado", "No completado"],
                     "datasets": [{
-                        "data": ["12", "20"],
-                        "backgroundColor": ["rgb(54, 162, 235,0.8)", "rgb(255, 99, 132,0.8)"]
+                        "data": ["60", "40"],
+                        "backgroundColor": ['rgba(67, 65, 184, 0.8)', 'rgba(67, 65, 184, 0.3)']
                     }]
                 }
             });
-        new Chart(document.getElementById("chartjs-so"),
+        new Chart(document.getElementById("chartjs-prog-so"),
             {
                 "type": "doughnut",
                 "data": {
-                    "labels": ["1", "2"],
+                    "labels": ["Completado", "No completado"],
                     "datasets": [{
-                        "data": ["12", "20"],
-                        "backgroundColor": ["rgb(54, 162, 235, 0.8)", "rgb(255, 99, 132,0.8)"]
+                        "data": ["65", "35"],
+                        "backgroundColor": ['rgba(67, 65, 184, 0.8)', 'rgba(67, 65, 184, 0.3)']
                     }]
                 }
             });
-        new Chart(document.getElementById("chartjs-ia"),
+        new Chart(document.getElementById("chartjs-prog-ia"),
             {
                 "type": "doughnut",
                 "data": {
-                    "labels": ["1", "2"],
+                    "labels": ["Completado", "No completado"],
                     "datasets": [{
-                        "data": ["12", "20"],
-                        "backgroundColor": ["rgb(54, 162, 235, 0.8)", "rgb(255, 99, 132,0.8)"]
+                        "data": ["55", "45"],
+                        "backgroundColor": ['rgba(67, 65, 184, 0.8)', 'rgba(67, 65, 184, 0.3)']
                     }]
                 }
             });
-        new Chart(document.getElementById("chartjs-bd2"),
+        new Chart(document.getElementById("chartjs-prog-bd2"),
             {
                 "type": "doughnut",
                 "data": {
-                    "labels": ["1", "2"],
+                    "labels": ["Completado", "No completado"],
                     "datasets": [{
-                        "data": ["12", "20"],
-                        "backgroundColor": ["rgb(54, 162, 235, 0.6)", "rgb(255, 99, 132,0.6)"]
+                        "data": ["50", "50"],
+                        "backgroundColor": ['rgba(67, 65, 184, 0.8)', 'rgba(67, 65, 184, 0.3)']
                     }]
                 }
             });
