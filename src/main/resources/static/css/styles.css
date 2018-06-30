@@ -44,3 +44,19 @@ body {
     height: 14.2857vw;
   }
 }
+
+
+.radio-teal [type="radio"]:checked+label:after {
+  border-color: #4db6ac;
+  background-color: #4db6ac;
+}
+/*Gap*/
+
+.radio-teal-gap [type="radio"].with-gap:checked+label:before {
+  border-color: #4db6ac;
+}
+
+.radio-teal-gap [type="radio"]:checked+label:after {
+  border-color: #4db6ac;
+  background-color: #4db6ac;
+}

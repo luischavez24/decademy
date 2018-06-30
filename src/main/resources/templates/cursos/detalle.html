@@ -244,20 +244,20 @@
                                         <ul class="nav nav-tabs nav-justified teal-light" role="tablist">
                                             <li class="nav-item">
                                                 <a class="nav-link active" data-toggle="tab" href="#panel5" role="tab">
-                                                    <i class="fa fa-book"></i> Propuestos
+                                                    <i class="fa fa-dumbbell mr-2"></i> Propuestos
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" data-toggle="tab" href="#panel6" role="tab">
-                                                    <i class="fa fa-calendar"></i> Exámenes
+                                                    <i class="fa fa-file-alt mr-2"></i> Exámenes
                                                 </a>
                                             </li>
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-pane fade in show active p-3" id="panel5" role="tabpanel">
                                                 <div class="row">
-                                                    <div class="col-md-12 mb-3">
-                                                        <div id="propuestos-retos" class="carousel slide carousel-fade carousel-multi-item" data-ride="carousel" data-interval="false">
+                                                    <div class="col-md-12">
+                                                        <div id="propuestos-retos" class="carousel slide carousel-fade carousel-multi-item mb-0" data-ride="carousel" data-interval="false">
                                                             <div class="carousel-inner" role="listbox">
                                                                 <div class="carousel-item active">
                                                                     <div class="card h-100">
@@ -283,7 +283,7 @@
                                                                             </div>
                                                                             <div class="text-center">
                                                                                 <button class="btn teal lighten-2">
-                                                                                    <i class="fa fa-check"></i>
+                                                                                    <i class="fa fa-question mr-2"></i>
                                                                                     Evaluar
                                                                                 </button>
                                                                             </div>
@@ -375,16 +375,56 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="controls-top mt-2">
-                                                                <a class="btn-floating teal lighten-2" href="#propuestos-retos" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                                                                <a class="btn-floating teal lighten-2" href="#propuestos-retos" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-                                                            </div>                                                             
+                                                                <div class="controls-top mt-2">
+                                                                    <a class="btn-floating teal lighten-2" href="#propuestos-retos" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                                                                    <a class="btn-floating teal lighten-2" href="#propuestos-retos" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                                                                </div>                                                          
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade p-4" id="panel6" role="tabpanel">
-
+                                                <div class="list-group list-group-flush">
+                                                    <a th:href="@{/retos/algo3/1}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1">Complejidad Algoritmica 
+                                                            <span class="ml-2 badge teal lighten-2 py-2">
+                                                                <i class="fa fa-check-circle mr-2"></i>
+                                                                Completado
+                                                            </span>
+                                                        </h5>
+                                                        <small>Hace 3 dias</small>
+                                                        </div>
+                                                        <p class="mb-1">
+                                                            <h6 class="h6">
+                                                                <i class="fa fa-bookmark mr-2"></i>
+                                                                ¿Qué temas vendrán?
+                                                            </h6>
+                                                            <ul>
+                                                                <li>Complejidad Espacial</li>
+                                                                <li>Complejidad Temporal</li>
+                                                                <li>Problemas P/NP</li>
+                                                            </ul>
+                                                        </p>
+                                                    </a>
+                                                    <a th:href="@{/retos/algo3/2}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1">Análisis de Estructuras de Control</h5>
+                                                        <small>Hace 5 dias</small>
+                                                        </div>
+                                                        <p class="mb-1">
+                                                            <h6 class="h6">
+                                                                <i class="fa fa-bookmark mr-2"></i>
+                                                                ¿Qué temas vendrán?
+                                                            </h6>
+                                                            <ul>
+                                                                <li>Análisis de Secuencias</li>
+                                                                <li>Análisis de Condicionales</li>
+                                                                <li>Análisis de Bucles</li>
+                                                            </ul>
+                                                        </p>
+                                                    </a>                                                    
+                                                </div>                                                
                                             </div>
                                         </div>
                                     </div>
