@@ -34,6 +34,6 @@ public interface ViewConstants {
 	
 	public static final String ADMINISTRAR_MALLA_AGREGAR= "/administrar/malla/agregar";
 	
-	public static final String PROGRESO_CONSULTA = "/progreso/consulta";
+	public static final String PROGRESO_CONSULTA = "/progreso/index";
 
 }
