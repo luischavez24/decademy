@@ -143,6 +143,7 @@
     <div th:include="/fragments/head :: scripts"></div>
     
     <script th:inline="javascript">
+
       // Tooltips Initialization
       $(function () {
          $('[data-toggle="tooltip"]').tooltip()
@@ -260,7 +261,7 @@
                         }]
                      }
                   });
-                  $("#nota").html(`<h1>Tu nota es de: ${(pCorrectas * 0.2).toFixed()}</h1>`);
+                  $("#nota").html(`<h1>Tu nota es de ${(pCorrectas * 0.2).toFixed()}</h1>`);
                   resultados.html(content);
                }
                

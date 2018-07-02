@@ -19,7 +19,6 @@ import com.guis.decademy.entity.Pregunta;
 public class RetosController {
 
 	private static final Log LOG = LogFactory.getLog(RetosController.class);
-	
 	private List<Pregunta> preguntas;
 
 	public RetosController() {
@@ -44,7 +43,7 @@ public class RetosController {
 		p2.setRespuesta(1);
 		
 		Pregunta p3 = new Pregunta();
-		p3.setPregunta("Un problema el cual tiene una solución en un tiempo razonable de ejecuciónpertence a la clase:");
+		p3.setPregunta("Un problema el cual tiene una solución en un tiempo razonable de ejecución pertence a la clase:");
 		p3.addOpcion("Clase P");
 		p3.addOpcion("Clase NP");
 		p3.addOpcion("Clase P/NP");

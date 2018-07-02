@@ -20,7 +20,6 @@ public class CursosController {
 	private static final Log LOG  = LogFactory.getLog(CursosController.class);
 		
 	private Map<String, String> cursos = new HashMap<>();
-	
 	public CursosController() {
 		cursos.put("ia", "Inteligencia Artificial");
 		cursos.put("algo3", "Algoritmica 3");
@@ -35,6 +34,7 @@ public class CursosController {
 	
 	@GetMapping("/{idCurso}")
 	public String detalle (Model model, @PathVariable("idCurso") String idCurso) {
+		
 		LOG.info("[/cursos] - METHOD [detalle] -- Entrando al método ");
 		LOG.info("[/cursos] - METHOD [detalle] -- idCurso: " + idCurso);
 		
