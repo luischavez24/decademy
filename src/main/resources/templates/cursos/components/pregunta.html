@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<body>
+   <div th:fragment="pregunta">
+      <template id="preguntaTemplate">
+         <div class="card h-100">
+            <div class="card-body m-2">
+                <h4 class="card-title">{{ titulo }}</h4>
+                <div class="card-text">
+                    <div v-for="(op,index) in opciones" class="form-check radio-teal">
+                        <input 
+	                        class="form-check-input" 
+	                        v-model="selected" 
+	                        v-bind:value="index" 
+	                        v-bind:name="preguntaid" 
+	                        type="radio" 
+	                        v-bind:id="preguntaid + '' + index"
+	                        v-on:click="resetPregunta"
+	                    >
+                        <label class="form-check-label" v-bind:for="preguntaid + '' + index">
+                            {{ op }} 
+                            <span class="teal-text ml-3" v-if="index == selected && correcta"> 
+                                <i class="fa fa-check-circle mr-2"></i>
+                                Genial! Tu respuesta es la correcta.
+                            </span>
+                            <span class="orange-text ml-3" v-if="index == selected && incorrecta"> 
+                                <i class="fa fa-times-circle mr-2"></i>
+                                Vaya! Sigue intentándolo.
+                            </span>
+                        </label>
+                    </div>                                             
+                </div>
+                <div class="text-center">
+                    <button class="btn teal lighten-2" v-on:click="verificar">
+                        <i class="fa fa-question mr-2"></i>
+                        Evaluar
+                    </button>
+                </div>
+            </div>
+        </div>
+      </template>
+      <script th:inline="javascript">
+         Vue.component("pregunta", {
+            template: "#preguntaTemplate",
+            props: [
+               "preguntaid",
+               "titulo",
+               "opciones",
+               "respuesta"
+            ],
+            data(){
+               return {
+                  selected: "",
+                  correcta: false,
+                  incorrecta: false
+               }
+            },
+            methods:{
+               resetPregunta() {
+            	   this.incorrecta = false;
+            	   this.correcta = false;
+               },
+               verificar(){
+                   if(this.selected == this.respuesta) {
+                       console.log("Respuesta correcta!");
+                       this.correcta = true;
+                   } else {
+                       console.log("Respuesta incorrecta");
+                       this.incorrecta = true;
+                   }
+               }
+            }
+        });
+      </script>
+   </div>
+</body>
+</html>
