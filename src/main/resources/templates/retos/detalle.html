@@ -69,26 +69,26 @@
                </div>
                
                <!-- First Step -->
-               <form role="form" action="#" method="post">
+               <form role="form" th:action="@{/retos/guardarResultado}" method="POST" th:object="${resultado}">
                   <div class="row setup-content-2 py-5 px-3" id="step-1">
                      <div class="col-md-12">
                         <h2>Información de la prueba</h2>
                         <p>
-                           Antes de empezar la prueba debes considerar lo siguiente
-                           <ul class="h5">
-                              <li class="mb-2">
-                                 Esta prueba mide tus concimiento adquiridos en las sesiones 
-                                 virtuales y puedes realizarlas las veces que desees. 
-                              </li>
-                              <li class="mb-2">
-                                 Cada vez que obtengas un puntaje mejor al anterior
-                                 este tomará su lugar y será tu nuevo puntaje. 
-                              </li>
-                              <li class="mb-2">
-                                 Las preguntas son elegidas aleatoriamente
-                                 de un banco de preguntas establecido por tu profesor.
-                              </li>
-                           </ul>
+                          Antes de empezar la prueba debes considerar lo siguiente
+                          <ul class="h5">
+                            <li class="mb-2">
+                              Esta prueba mide tus concimiento adquiridos en las sesiones 
+                              virtuales y puedes realizarlas las veces que desees. 
+                            </li>
+                            <li class="mb-2">
+                              Cada vez que obtengas un puntaje mejor al anterior
+                              este tomará su lugar y será tu nuevo puntaje. 
+                            </li>
+                            <li class="mb-2">
+                              Las preguntas son elegidas aleatoriamente
+                              de un banco de preguntas establecido por tu profesor.
+                            </li>
+                          </ul>
                         </p>
                         <p class="h4 text-center my-4">
                            ¿Listo para comenzar?
@@ -130,7 +130,13 @@
                               </div>
                            </div>
                         </div>
-                        <a th:href="@{/cursos/__${idCurso}__}" class="btn btn-indigo float-right">Volver al curso</a>
+                        
+                        <input type="hidden" th:field="*{idTema}" th:value="*{idTema}" id="idTema" />
+                        <input type="hidden" th:field="*{idCurso}" th:value="*{idCurso}" id="idCurso" />
+                        <input type="hidden" th:field="*{porcentajeBuenas}" id="porcentajeBuenas" />
+                        <input type="hidden" th:field="*{porcentajeMalas}" id="porcentajeMalas" />
+                        <input type="hidden" th:field="*{porcentajeIncompletas}" id="porcentajeIncompletas" />
+                        <button type="submit" class="btn btn-indigo float-right">Volver al curso</button>
                      </div>
                   </div>
                </form>
@@ -143,17 +149,17 @@
     <div th:include="/fragments/head :: scripts"></div>
     
     <script th:inline="javascript">
-
+      
       // Tooltips Initialization
       $(function () {
          $('[data-toggle="tooltip"]').tooltip()
       })
       
+
       // Steppers
       $(document).ready(function () {
-         var preguntas =  /*[[${preguntas}]]*/  ""
-         console.log(preguntas);
-
+         var preguntas =  /*[[${preguntas}]]*/  "";
+        
          var navListItems = $('div.setup-panel-2 div a'),
             allWells = $('.setup-content-2'),
             allNextBtn = $('.nextBtn-2'),
@@ -263,6 +269,9 @@
                   });
                   $("#nota").html(`<h1>Tu nota es de ${(pCorrectas * 0.2).toFixed()}</h1>`);
                   resultados.html(content);
+                  $("#porcentajeBuenas").val(correctas / total);
+                  $("#porcentajeMalas").val(incorrectas / total);
+                  $("#porcentajeIncompletas").val(noRespondidas / total);
                }
                
                nextStepSteps.removeAttr('disabled').trigger('click');

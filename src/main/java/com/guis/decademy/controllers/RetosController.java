@@ -1,18 +1,27 @@
 package com.guis.decademy.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.guis.decademy.constants.ViewConstants;
+import com.guis.decademy.entity.Alumno;
 import com.guis.decademy.entity.Pregunta;
+import com.guis.decademy.entity.ResultadoExamen;
 
 @Controller
 @RequestMapping("/retos")
@@ -20,7 +29,10 @@ public class RetosController {
 
 	private static final Log LOG = LogFactory.getLog(RetosController.class);
 	private List<Pregunta> preguntas;
-
+	@Autowired
+	@Qualifier("alumnoPrueba")
+	private Alumno alumnoPrueba;
+	
 	public RetosController() {
 		cargaDePreguntas();
 	}
@@ -58,11 +70,37 @@ public class RetosController {
 	@GetMapping("/{idCurso}/{idTema}")
 	public String detalle(Model model,
 			@PathVariable("idCurso") String idCurso,
-			@PathVariable("idTema") String idTema) {
+			@PathVariable("idTema") int idTema) {
 		
+		List<ResultadoExamen> resultadosAnteriores = alumnoPrueba.getResultados().stream()
+				.filter(r -> r.getIdCurso().equals(idCurso) && r.getIdTema() == idTema)
+				.sorted((r1, r2) -> r1.getFechaExamen().compareTo(r2.getFechaExamen()))
+				.limit(5)
+				.collect(Collectors.toList());
+
+		ResultadoExamen resultado = new ResultadoExamen();
+		
+		resultado.setIdCurso(idCurso);
+		resultado.setIdTema(idTema);
+		model.addAttribute("resultado", resultado);
 		model.addAttribute("preguntas", preguntas);
 		model.addAttribute("idCurso", idCurso);
+		model.addAttribute("resultadosAnteriores", resultadosAnteriores);
+		
 		LOG.info(preguntas);
 		return ViewConstants.RETOS_DETALLE;
+	}
+	
+	@PostMapping("/guardarResultado")
+	public String guardarResultado(@ModelAttribute("resultado") ResultadoExamen resultado) {
+		
+		resultado.setFechaExamen(LocalDate.now());
+		
+		alumnoPrueba.addResultado(resultado);
+		
+		LOG.info(resultado);
+		LOG.info(alumnoPrueba);
+		
+		return String.format("redirect:/cursos/%s", resultado.getIdCurso());
 	}
 }
