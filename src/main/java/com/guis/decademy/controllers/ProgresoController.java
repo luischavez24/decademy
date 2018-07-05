@@ -15,4 +15,8 @@ public class ProgresoController {
 	public String consulta(@PathVariable("idAlumno") String idAlumno) {
 		return ViewConstants.PROGRESO_CONSULTA;
 	}
+	@GetMapping("/alumno/{idAlumno}")
+	public String alumno(@PathVariable("idAlumno") String idAlumno) {
+		return ViewConstants.PROGRESO_ALUMNO;
+	}
 }

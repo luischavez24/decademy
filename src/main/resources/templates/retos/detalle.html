@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="/fragments/head :: headFragment('Examen')"></head>
+<body class="fixed-sn">
+    <header th:include="/fragments/navbar :: navbar('Examen')"></header>
+    <style>
+      .steps-form-2 {
+         display: table;
+         width: 100%;
+         position: relative; }
+      .steps-form-2 .steps-row-2 {
+         display: table-row; }
+      .steps-form-2 .steps-row-2:before {
+         top: 14px;
+         bottom: 0;
+         position: absolute;
+         content: " ";
+         width: 100%;
+         height: 2px;
+         background-color: #4db6ac; }
+      .steps-form-2 .steps-row-2 .steps-step-2 {
+         display: table-cell;
+         text-align: center;
+         position: relative; }
+      .steps-form-2 .steps-row-2 .steps-step-2 p {
+         margin-top: 0.5rem; }
+      .steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {
+         opacity: 1 !important;
+         filter: alpha(opacity=100) !important; }
+      .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {
+         width: 70px;
+         height: 70px;
+         border: 2px solid #4db6ac;
+         background-color: white !important;
+         color: #4db6ac !important;
+         border-radius: 50%;
+         padding: 22px 18px 15px 18px;
+         margin-top: -22px; }
+      .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {
+         border: 2px solid #009688;
+         color: #009688 !important;
+         background-color: white !important; }
+      .steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa {
+         font-size: 1.7rem; }
+    </style>
+    <main id="app" class="container-fluid mx-auto">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-10 pt-5 mx-auto">
+               <!-- Stepper -->
+               <div class="steps-form-2">
+                  <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+                     <div class="steps-step-2">
+                        <a href="#step-1" type="button" class="btn btn-amber btn-circle-2 waves-effect ml-0" data-toggle="tooltip" data-placement="top" title="Información de la Prueba">
+                           <i class="fa fa-file-alt" aria-hidden="true"></i>
+                        </a>
+                     </div>
+                     <div th:each="step : ${#numbers.sequence(2, #lists.size(preguntas) + 1)}" class="steps-step-2">
+                        <a th:href="'#step-' + ${step}" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" th:attr="title='Pregunta __${step - 1}__'">
+                           <h4><span th:text="${step - 1}"></span></h4>
+                        </a>
+                     </div>
+                     <div class="steps-step-2">
+                        <a href="#step-5" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top" title="Resultados">
+                           <i class="fa fa-check"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               
+               <!-- First Step -->
+               <form role="form" th:action="@{/retos/guardarResultado}" method="POST" th:object="${resultado}">
+                  <div class="row setup-content-2 py-5 px-3" id="step-1">
+                     <div class="col-md-12">
+                        <h2>Información de la prueba</h2>
+                        <p>
+                          Antes de empezar la prueba debes considerar lo siguiente
+                          <ul class="h5">
+                            <li class="mb-2">
+                              Esta prueba mide tus concimiento adquiridos en las sesiones 
+                              virtuales y puedes realizarlas las veces que desees. 
+                            </li>
+                            <li class="mb-2">
+                              Cada vez que obtengas un puntaje mejor al anterior
+                              este tomará su lugar y será tu nuevo puntaje. 
+                            </li>
+                            <li class="mb-2">
+                              Las preguntas son elegidas aleatoriamente
+                              de un banco de preguntas establecido por tu profesor.
+                            </li>
+                          </ul>
+                        </p>
+                        <p class="h4 text-center my-4">
+                           ¿Listo para comenzar?
+                        </p>
+                        <button class="btn teal lighten-2 nextBtn-2 float-right" type="button">Empecemos</button>
+                        <a th:href="@{/cursos/__${idCurso}__}" class="btn btn-indigo float-right" type="submit">Deseo prepararme más</a>
+                     </div>
+                  </div>
+               
+                  <div th:each="p, ip : ${preguntas}" class="row setup-content-2 py-5 px-3" th:id="'step-' + ${ip.index + 2}">
+                     <div class="col-md-12">
+                        <h2>Pregunta <span th:text="${ip.index + 1}"></span></h2>
+                        <div class="my-3">
+                           <span th:text="${p.pregunta}"></span>
+                           <br></br>
+                           <div th:each="op, iop : ${p.opciones}" class="form-check radio-teal">
+                              <input class="form-check-input" th:value="${iop.index}" th:name="group__${ip.index}__00" type="radio" th:id="radio__${ip.index}__0__${iop.index}__">
+                              <label class="form-check-label" th:for="radio__${ip.index}__0__${iop.index}__">
+                                 <span th:text="${op}"></span>
+                              </label>
+                           </div>             
+                        </div>
+                        <button class="btn teal lighten-2 prevBtn-2 float-left" type="button">Anterior</button>
+                        <button class="btn teal lighten-2 nextBtn-2 float-right" type="button">Siguiente</button>
+                     </div>
+                  </div>
+                  <!-- Fifth Step -->
+                  <div class="row setup-content-2 py-5 px-3" id="step-5">
+                     <div class="col-md-12">
+                        <h2>Resultados</h2>
+                        <div class="container-fluid">
+                           <div class="row">
+                              <div class="col-md-12 my-3 text-center">
+                                 <span id="nota"></span>
+                              </div>
+                              <div class="col-md-8" id="resultados"></div>
+                              <div class="col-md-4 m-auto" id="graficos">
+                                 <canvas id="chartResultados" width="400" height="400"></canvas>
+                              </div>
+                           </div>
+                        </div>
+                        
+                        <input type="hidden" th:field="*{idTema}" th:value="*{idTema}" id="idTema" />
+                        <input type="hidden" th:field="*{idCurso}" th:value="*{idCurso}" id="idCurso" />
+                        <input type="hidden" th:field="*{porcentajeBuenas}" id="porcentajeBuenas" />
+                        <input type="hidden" th:field="*{porcentajeMalas}" id="porcentajeMalas" />
+                        <input type="hidden" th:field="*{porcentajeIncompletas}" id="porcentajeIncompletas" />
+                        <button type="submit" class="btn btn-indigo float-right">Volver al curso</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+    </main>
+
+    <div th:include="/fragments/head :: finalSection"></div>
+    <div th:include="/fragments/head :: scripts"></div>
+    
+    <script th:inline="javascript">
+      
+      // Tooltips Initialization
+      $(function () {
+         $('[data-toggle="tooltip"]').tooltip()
+      })
+      
+
+      // Steppers
+      $(document).ready(function () {
+         var preguntas =  /*[[${preguntas}]]*/  "";
+        
+         var navListItems = $('div.setup-panel-2 div a'),
+            allWells = $('.setup-content-2'),
+            allNextBtn = $('.nextBtn-2'),
+            allPrevBtn = $('.prevBtn-2');
+
+         allWells.hide();
+
+         navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                  $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+               navListItems.removeClass('btn-amber').addClass('btn-blue-grey');
+               $item.addClass('btn-amber');
+               allWells.hide();
+               $target.show();
+               $target.find('input:eq(0)').focus();
+            }
+         });
+
+         allPrevBtn.click(function(){
+            var curStep = $(this).closest(".setup-content-2"),
+               curStepBtn = curStep.attr("id"),
+               prevStepSteps = $('div.setup-panel-2 div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
+
+               prevStepSteps.removeAttr('disabled').trigger('click');
+         });
+         allNextBtn.click(function(){
+            var curStep = $(this).closest(".setup-content-2"),
+               curStepBtn = curStep.attr("id"),
+               nextStepSteps = $('div.setup-panel-2 div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+               curInputs = curStep.find("input[type='text'],input[type='url']");
+               console.log(curStepBtn);
+               let content = '<ul class="list-group list-group-flush">';
+               if(curStepBtn == "step-4") {
+                  let resultados = $("#resultados");
+                  let correctas = 0, incorrectas = 0, noRespondidas = 0;
+                  for(let i = 0; i < preguntas.length; i ++) {
+                     let resp = parseInt($(`input[name='group${i}00']:checked`).val() || -1);
+                     let respCorrecta = preguntas[i].respuesta;
+                     if(resp == -1) {
+                        content += `
+                        <li class='list-group-item'>
+                           <h4 class='h4 orange-text'> 
+                              <i class='fa fa-exclamation mr-2'></i>Pregunta ${i + 1}
+                            </h4>
+                           <h5 class="h5">No respondiste la pregunta, continua repasando.</h5>
+                           <span class='text-muted'> La respuesta correcta es: <strong>${preguntas[i].opciones[respCorrecta]} </strong> </span> <br>
+                        </li>
+                        `;
+                        noRespondidas++;
+                     }else if(respCorrecta == resp) {
+                        content += `
+                        <li class='list-group-item'>
+                           <h4 class='h4 teal-text'> 
+                              <i class='fa fa-check mr-2'></i>Pregunta ${i + 1}
+                            </h4>
+                           <h5 class="h5">Muy bien!, tu respuesta fue la correcta</h5>
+                           <span class='text-muted'> Tu respuesta fue: <strong>${preguntas[i].opciones[resp]}</strong></span>
+                        </li>
+                        `;
+                        correctas ++;
+                        
+                     } else {
+                        content += `
+                        <li class='list-group-item'>
+                           <h4 class='h4 indigo-text'> 
+                              <i class='fa fa-times mr-2'></i> Pregunta ${i + 1} 
+                           </h4>
+                           <h5 class="h5">Estuviste cerca, sigue repasando con el material del tema </h5>
+                           <span class='text-muted'> La respuesta correcta es: <strong>${preguntas[i].opciones[respCorrecta]} </strong> </span> <br>
+                           <span class='text-muted'> Tu respuesta fue: <strong>${preguntas[i].opciones[resp]}</strong></span>
+                        </li>
+                        `;
+                        incorrectas ++;
+                     }
+                  }
+                  
+                  content += '</ul>';
+                  let total = preguntas.length, 
+                     pCorrectas = parseInt((correctas * 100/total).toFixed()), 
+                     pIncorrectas = parseInt((incorrectas * 100/total).toFixed()),
+                     pNoRespondidas = parseInt((noRespondidas * 100/total).toFixed());
+                  var ctx = document.getElementById("chartResultados");
+                  var chartResultados = new Chart(ctx, {
+                     type: 'doughnut',
+                     data: {
+                        labels: ["Correctas", "Incorrectas","No respondidas"],
+                        datasets: [{
+                           label: 'Respuestas',
+                           data: [ pCorrectas, pIncorrectas, pNoRespondidas],
+                           backgroundColor: [
+                              '#4db6ac',
+                              '#303f9f',
+                              "#ff9800"
+                              
+                           ],
+                           borderColor: [
+                              '#4db6ac',
+                              '#303f9f',
+                              "#ff9800"
+                           ],
+                           borderWidth: 1
+                        }]
+                     }
+                  });
+                  $("#nota").html(`<h1>Tu nota es de ${(pCorrectas * 0.2).toFixed()}</h1>`);
+                  resultados.html(content);
+                  $("#porcentajeBuenas").val(correctas / total);
+                  $("#porcentajeMalas").val(incorrectas / total);
+                  $("#porcentajeIncompletas").val(noRespondidas / total);
+               }
+               
+               nextStepSteps.removeAttr('disabled').trigger('click');
+         });
+   
+         $('div.setup-panel-2 div a.btn-amber').trigger('click');
+      });
+    </script>
+</body>
+</html>

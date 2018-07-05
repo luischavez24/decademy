@@ -26,88 +26,184 @@
                             <div class="tab-pane fade in show active p-3" id="panel5" role="tabpanel">
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="card-deck">
-                                            <!-- Card -->
-                                            <div class="card card-image mb-3" style="background-image: url('https://google.tecnoad.com/wp-content/uploads/2016/05/algoritmo-google.jpg');">
-                                                <!-- Content -->
-                                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                                                    <div>
-                                                        <h5 class="teal-text font-weight-bold">
-                                                            Algoritmica 3
-                                                        </h5>
-                                                        <h3 class="card-title pt-2">
-                                                            <strong>Próxima clase: Viernes 15 de Junio, 3 pm</strong>
-                                                        </h3>
-                                                        <p>
-                                                            <dl>
-                                                                <dt>
-                                                                    <strong>¿Que tema desarrollaremos?</strong>
-                                                                </dt>
-                                                                <dd>
-                                                                    <h4>Hoare</h4>
-                                                                </dd>
-                                                                <dt>
-                                                                    <strong>¿Qué veremos en este tema?</strong>
-                                                                </dt>
-                                                                <dd>
-                                                                    <h4>Como usar la notación de Hoare</h4>
-                                                                </dd>
-                                                                <dt>
-                                                                    <strong>¿Qué dificultad tiene?</strong>
-                                                                </dt>
-                                                                <dd>
-                                                                    <h4>Media</h4>
-                                                                </dd>
-                                                            </dl>
-                                                        </p>
-                                                        <a class="btn btn-teal" th:href="@{/cursos/algo3}">
-                                                            <i class="fa fa-play left"></i> Ir a la clase</a>
-                                                    </div>
-                                                </div>
-                                                <!-- Content -->
-                                            </div>
-                                            <!-- Card -->
-                                            <div class="card card-image mb-3" style="background-image: url('http://contentum.co.za/wp-content/uploads/2016/01/journey.jpg');">
-                                                <!-- Content -->
-                                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                                                    <div>
-                                                        <h5 class="teal-text font-weight-bold">
-                                                            Inteligencia Artificial
-                                                        </h5>
-                                                        <h3 class="card-title pt-2">
-                                                            <strong>Próxima clase: Jueves 14 de Junio, 5 pm</strong>
-                                                        </h3>
-                                                        <p>
-                                                            <dl>
-                                                                <dt>
-                                                                    <strong>¿Que tema desarrollaremos?</strong>
-                                                                </dt>
-                                                                <dd>
-                                                                    <h4>Algoritmos de Clasificación</h4>
-                                                                </dd>
-                                                                <dt>
-                                                                    <strong>¿Qué veremos en este tema?</strong>
-                                                                </dt>
-                                                                <dd>
-                                                                    <h4>
-                                                                        El funcionamiento de un clasificador
-                                                                    </h4>
-                                                                </dd>
-                                                                <dt>
-                                                                    <strong>¿Qué dificultad tiene?</strong>
-                                                                </dt>
-                                                                <dd>
-                                                                    <h4>Dificil</h4>
-                                                                </dd>
-                                                            </dl>
-                                                        </p>
-                                                        <a class="btn btn-teal" th:href="@{/cursos/ia}">
-                                                            <i class="fa fa-play left"></i> Ir a la clase</a>
-                                                    </div>
-                                                </div>
-                                                <!-- Content -->
+                                        <div id="carousel" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <div class="card-deck">
+                                                        <!-- Card -->
+                                                        <div class="card card-image mb-3" style="background-image: url('https://google.tecnoad.com/wp-content/uploads/2016/05/algoritmo-google.jpg');">
+                                                            <!-- Content -->
+                                                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                                                <div>
+                                                                    <h5 class="teal-text font-weight-bold">
+                                                                        Algoritmica 3
+                                                                    </h5>
+                                                                    <h3 class="card-title pt-2">
+                                                                        <strong>Próxima clase: Viernes 15 de Junio, 3 pm</strong>
+                                                                    </h3>
+                                                                    <p>
+                                                                        <dl>
+                                                                            <dt>
+                                                                                <strong>¿Que tema desarrollaremos?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Hoare</h4>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <strong>¿Qué veremos en este tema?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Como usar la notación de Hoare</h4>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <strong>¿Qué dificultad tiene?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Media</h4>
+                                                                            </dd>
+                                                                        </dl>
+                                                                    </p>
+                                                                    <a class="btn btn-teal" th:href="@{/cursos/algo3}">
+                                                                        <i class="fa fa-play left"></i> Ir a la clase</a>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Content -->
+                                                        </div>
+                                                        <!-- Card -->
+                                                        <div class="card card-image mb-3" style="background-image: url('http://contentum.co.za/wp-content/uploads/2016/01/journey.jpg');">
+                                                            <!-- Content -->
+                                                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                                                <div>
+                                                                    <h5 class="teal-text font-weight-bold">
+                                                                        Inteligencia Artificial
+                                                                    </h5>
+                                                                    <h3 class="card-title pt-2">
+                                                                        <strong>Próxima clase: Jueves 14 de Junio, 5 pm</strong>
+                                                                    </h3>
+                                                                    <p>
+                                                                        <dl>
+                                                                            <dt>
+                                                                                <strong>¿Que tema desarrollaremos?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Algoritmos de Clasificación</h4>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <strong>¿Qué veremos en este tema?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>
+                                                                                    El funcionamiento de un clasificador
+                                                                                </h4>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <strong>¿Qué dificultad tiene?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Dificil</h4>
+                                                                            </dd>
+                                                                        </dl>
+                                                                    </p>
+                                                                    <a class="btn btn-teal" th:href="@{/cursos/ia}">
+                                                                        <i class="fa fa-play left"></i> Ir a la clase</a>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Content -->
+                                                        </div>
+                                                    </div><!--End Card deck-->
+                                                </div>    
+                                                <div class="carousel-item">
+                                                    <div class="card-deck">
+                                                        <!-- Card -->
+                                                        <div class="card card-image mb-3" style="background-image: url('https://st.depositphotos.com/1001877/4879/i/950/depositphotos_48796083-stock-photo-database-storage-and-laptops-networking.jpg');">
+                                                            <!-- Content -->
+                                                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                                                <div>
+                                                                    <h5 class="teal-text font-weight-bold">
+                                                                        Base de Datos II
+                                                                    </h5>
+                                                                    <h3 class="card-title pt-2">
+                                                                        <strong>Próxima clase: Jueves 05 de Julio, 3 pm</strong>
+                                                                    </h3>
+                                                                    <p>
+                                                                        <dl>
+                                                                            <dt>
+                                                                                <strong>¿Que tema desarrollaremos?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Triggers</h4>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <strong>¿Qué veremos en este tema?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>La creacion y ejecución de triggers</h4>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <strong>¿Qué dificultad tiene?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Media</h4>
+                                                                            </dd>
+                                                                        </dl>
+                                                                    </p>
+                                                                    <a class="btn btn-teal " th:href="@{/cursos/bd2}" disabled>
+                                                                        <i class="fa fa-play left"></i> Ir a la clase</a>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Content -->
+                                                        </div>
+                                                        <!-- Card -->
+                                                        <div class="card card-image mb-3" style="background-image: url('https://2.bp.blogspot.com/-Tk1SLi49fAg/WUtP_ECgBxI/AAAAAAAACEI/kIJu8GH1c7EKBUaMjQax6_UaLTAy_YMNgCLcBGAs/s750/Investigacion_de_operaciones.jpg');">
+                                                            <!-- Content -->
+                                                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                                                <div>
+                                                                    <h5 class="teal-text font-weight-bold">
+                                                                        Investigación Operativa
+                                                                    </h5>
+                                                                    <h3 class="card-title pt-2">
+                                                                        <strong>Próxima clase: Miercoles 11 de Julio, 5 pm</strong>
+                                                                    </h3>
+                                                                    <p>
+                                                                        <dl>
+                                                                            <dt>
+                                                                                <strong>¿Que tema desarrollaremos?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Método Simplex Dual</h4>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <strong>¿Qué veremos en este tema?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>
+                                                                                    El desarrollo y ejercicios
+                                                                                </h4>
+                                                                            </dd>
+                                                                            <dt>
+                                                                                <strong>¿Qué dificultad tiene?</strong>
+                                                                            </dt>
+                                                                            <dd>
+                                                                                <h4>Media</h4>
+                                                                            </dd>
+                                                                        </dl>
+                                                                    </p>
+                                                                    <a class="btn btn-teal" th:href="@{/cursos/io}" disabled>
+                                                                        <i class="fa fa-play left"></i> Ir a la clase</a>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Content -->
+                                                        </div>
+                                                    </div><!--End Card deck-->
+                                                </div>        
                                             </div>
                                         </div>
+                                        <div class="row justify-content-center">
+                                            <div class="controls-top mt-2">
+                                                <a class="btn-floating teal lighten-2" href="#carousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                                                <a class="btn-floating teal lighten-2" href="#carousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                                            </div>
+                                        </div>      
                                     </div>
                                 </div>
                             </div>
@@ -211,6 +307,10 @@
                 textColor: "white"
                 }
             ]
+        });
+        //Inicializar carousel
+        $('#carousel').carousel({
+            interval: 2500  
         });
     });
     </script>

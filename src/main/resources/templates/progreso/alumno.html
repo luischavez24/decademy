@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:include="/fragments/head :: headFragment('')"></head>
+
+<body class="fixed-sn">
+    <header th:include="/fragments/navbar :: navbar('')"></header>
+
+    <main class="container-fluid ml-0">
+        <div class="py-5 px-4">
+            <div class="row d-flex justify-content-center ">
+                <div class="col-md-10 col-xl-8">
+                    <div class="card-deck">
+                        <!-- Card -->
+                        <div class="card testimonial-card">
+
+                            <!-- Bacground color -->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="avatar mx-auto white">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!-- Name -->
+                                <h4 class="card-title">Anna Doe</h4>
+                                <hr>
+                                <!-- Quotation -->
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
+                                    <a th:href="@{/progreso/consulta/152343}"><button type="button" class="btn btn-indigo btn-md">Ver</button></a>
+                            </div>
+
+                        </div>
+                        <!-- Card -->
+                        <!-- Card -->
+                        <div class="card testimonial-card">
+
+                            <!-- Bacground color -->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="avatar mx-auto white">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!-- Name -->
+                                <h4 class="card-title">Anna Doe</h4>
+                                <hr>
+                                <!-- Quotation -->
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
+                                    <a th:href="@{/progreso/consulta/152343}"><button type="button" class="btn btn-indigo btn-md">Ver</button></a>
+                            </div>
+
+                        </div>
+                        <!-- Card -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:include="/fragments/head :: finalSection"></div>
+    <div th:include="/fragments/head :: scripts"></div>
+</body>
