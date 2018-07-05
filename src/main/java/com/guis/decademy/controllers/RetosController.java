@@ -30,6 +30,7 @@ public class RetosController {
 
 	private static final Log LOG = LogFactory.getLog(RetosController.class);
 	private List<Pregunta> preguntas;
+	
 	@Autowired
 	@Qualifier("alumnoPrueba")
 	private Alumno alumnoPrueba;
@@ -68,6 +69,7 @@ public class RetosController {
 		preguntas.add(p2);
 		preguntas.add(p3);
 	}
+	
 	@GetMapping("/{idCurso}/{idTema}")
 	public String detalle(Model model,
 			@PathVariable("idCurso") String idCurso,
@@ -76,6 +78,7 @@ public class RetosController {
 		// TODO: Implementar agente inteligente, saque el promedio de un curso y de acuerdo a ese promedio que te mande a realizar de nuevo el reto del tema con menor nota
 		// TODO: Mostrar el agente inteligente
 		// TODO: Mostrar las calificaciones por tema (al ultimo)
+		
 		List<ResultadoExamen> resultadosAnteriores = alumnoPrueba.getResultados().stream()
 				.filter(r -> r.getIdCurso().equals(idCurso) && r.getIdTema() == idTema)
 				.sorted((r1, r2) -> r1.getFechaExamen().compareTo(r2.getFechaExamen()))
