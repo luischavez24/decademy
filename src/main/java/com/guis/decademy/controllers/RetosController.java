@@ -2,6 +2,7 @@ package com.guis.decademy.controllers;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -72,6 +73,9 @@ public class RetosController {
 			@PathVariable("idCurso") String idCurso,
 			@PathVariable("idTema") int idTema) {
 		
+		// TODO: Implementar agente inteligente, saque el promedio de un curso y de acuerdo a ese promedio que te mande a realizar de nuevo el reto del tema con menor nota
+		// TODO: Mostrar el agente inteligente
+		// TODO: Mostrar las calificaciones por tema (al ultimo)
 		List<ResultadoExamen> resultadosAnteriores = alumnoPrueba.getResultados().stream()
 				.filter(r -> r.getIdCurso().equals(idCurso) && r.getIdTema() == idTema)
 				.sorted((r1, r2) -> r1.getFechaExamen().compareTo(r2.getFechaExamen()))
@@ -80,10 +84,12 @@ public class RetosController {
 
 		ResultadoExamen resultado = new ResultadoExamen();
 		
+		Collections.shuffle(preguntas);
+		
 		resultado.setIdCurso(idCurso);
 		resultado.setIdTema(idTema);
 		model.addAttribute("resultado", resultado);
-		model.addAttribute("preguntas", preguntas);
+		model.addAttribute("preguntas", preguntas.stream().limit(3).collect(Collectors.toList()));
 		model.addAttribute("idCurso", idCurso);
 		model.addAttribute("resultadosAnteriores", resultadosAnteriores);
 		

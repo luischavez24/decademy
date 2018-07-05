@@ -1,0 +1,3401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="/fragments/head :: headFragment('Agregar Malla Curricular')"></head>
+
+<body class="fixed-sn">
+
+   <style>
+      input[type="file"] {
+            margin: 0 0 15px;
+            padding: 10px 1%;
+            
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+      }
+      
+      .principal {
+            width: 80%;
+            margin: 0 auto;
+            padding: 3% 0 6% 0;
+            clear: both;
+      }
+      
+      .barra {
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            box-shadow: inset 0px 0px 5px rgba(0,0,0,.2);
+            height: 25px;
+      }
+      
+      .cancel {
+            background: #ed1f3c !important;
+      }
+      
+      
+      .barra_azul {
+            background-color: #247CC0;
+            border-radius: 10px;
+            display: block;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            width: 0%;
+      }
+      
+      .barra_verde {
+            background-color: #2EA265 !important;
+      }
+      
+      .barra_roja {
+            background-color: #DE3152 !important;
+      }
+      
+      #form_subir {
+            margin: 1.5% 0;
+            padding: 2%;
+      }
+      
+      #barra_estado span {
+            color: #fff;
+            font-weight: bold;
+            line-height: 25px;
+      }
+      
+   </style>
+        
+   <link
+      rel="stylesheet"
+      th:href="@{/css/wizard.css}"
+   ></link>
+
+   <header th:include="/fragments/navbar :: navbar('Agregar Malla Curricular')"></header>
+
+   <main>
+      <!-- Stepper -->
+
+      <div class="steps-form-2 mt-5">
+         <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+            <div class="steps-step-2">
+               <a
+                  href="#step-1"
+                  type="button"
+                  class="btn btn-amber btn-circle-2 waves-effect ml-0"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Facultad y escuela académica"
+               >
+                  <i
+                     class="fa fa-university"
+                     aria-hidden="true"
+                  ></i>
+               </a>
+            </div>
+
+            <div class="steps-step-2">
+               <a
+                  href="#step-2"
+                  type="button"
+                  class="btn btn-blue-grey btn-circle-2 waves-effect"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Información sobre los ciclos"
+               >
+                  <i
+                     class="fa fa-pencil"
+                     aria-hidden="true"
+                  ></i>
+               </a>
+            </div>
+
+            <div class="steps-step-2">
+               <a
+                  href="#step-3"
+                  type="button"
+                  class="btn btn-blue-grey btn-circle-2 waves-effect"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Llenado de cursos"
+               >
+                  <i
+                     class="fa fa-book"
+                     aria-hidden="true"
+                  ></i>
+               </a>
+            </div>
+
+            <div class="steps-step-2">
+               <a
+                  href="#step-4"
+                  type="button"
+                  class="btn btn-blue-grey btn-circle-2 waves-effect mr-0"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Relacionar cursos"
+               >
+                  <i
+                     class="fa fa-check-square-o"
+                     aria-hidden="true"
+                  ></i>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <!-- First Step -->
+
+      <form
+         role="form"
+         action=""
+         method="post"
+      >
+         <div
+            class="row setup-content-2"
+            id="step-1"
+         >
+            <div class="col-md-12">
+               <h3 class="font-weight-bold pl-0 my-4">
+                  <strong>Facultad y Escuela académica</strong>
+               </h3>
+
+               <div class="form-group">
+                  <label
+                     class="font-weight-bold"
+                     for="facultad"
+                  >Facultad</label>
+
+                  <select
+                     name="facultad"
+                     id="facultad"
+                     class="mdb-select"
+                     searchable="Buscar"
+                  >
+                     <option
+                        value="FISI"
+                        selected="selected"
+                     >
+                        Facultad de Ingeniería de Sistemas e Informática
+                     </option>
+
+                     <option value="FO">Facultad de Odontología</option>
+                  </select>
+               </div>
+
+               <div class="form-group">
+                  <label
+                     class="font-weight-bold"
+                     for="escuela"
+                  >Escuela</label>
+
+                  <select
+                     name="escuela"
+                     id="escuela"
+                     class="mdb-select"
+                     searchable="Buscar"
+                  >
+                     <option
+                        value="sistemas"
+                        selected="selected"
+                     >Ingeniería de Sistemas</option>
+
+                     <option value="software">Ingeniería de Software</option>
+                  </select>
+               </div>
+
+               <button
+                  class="btn btn-mdb-color btn-rounded nextBtn-2 float-right"
+                  type="button"
+               >Siguiente</button>
+            </div>
+         </div>
+
+         <!-- Second Step -->
+
+         <div
+            class="row setup-content-2"
+            id="step-2"
+         >
+            <div class="col-md-12">
+               <h3 class="font-weight-bold pl-0 my-4">
+                  <strong>Ciclos</strong>
+               </h3>
+
+               <label class="font-weight-bold">Seleccione su régimen</label>
+
+               <br>
+               <br>
+
+               <div class="form-group">
+                  <div class="row">
+                     <div class="col-md-2 form-check">
+                        <input
+                           type="checkbox"
+                           id="checkbox111"
+                           class="form-check-input"
+                        ></input>
+
+                        <label
+                           for="checkbox111"
+                           class="form-check-label"
+                        >Anual</label>
+                     </div>
+
+                     <div class="col-md-2 form-check">
+                        <input
+                           type="checkbox"
+                           id="checkbox112"
+                           class="form-check-input"
+                        ></input>
+
+                        <label
+                           for="checkbox112"
+                           class="form-check-label"
+                        >Semestral</label>
+                     </div>
+                  </div>
+               </div>
+
+               <br>
+
+               <label class="font-weight-bold">Número de ciclos</label>
+
+               <div class="form-group md-form">
+                  <label
+                     for="yourEmail-2"
+                     data-error="wrong"
+                     data-success="right"
+                  >Ciclos</label>
+
+                  <input
+                     id="yourEmail-2"
+                     type="text"
+                     required="required"
+                     class="form-control validate"
+                  ></input>
+               </div>
+
+               <button
+                  class="btn btn-mdb-color btn-rounded prevBtn-2 float-left"
+                  type="button"
+               >Anterior</button>
+
+               <button
+                  class="btn btn-mdb-color btn-rounded nextBtn-2 float-right"
+                  type="button"
+               >Siguiente</button>
+            </div>
+         </div>
+
+         <!-- Third Step -->
+
+         <div
+            class="row setup-content-2"
+            id="step-3"
+         >
+            <div class="col-md-12">
+               <h3 class="font-weight-bold pl-0 my-4">
+                  <strong>Llenado de cursos</strong>
+               </h3>
+
+               <div class="container">
+                  <!-- <h4 class="text-center titulo">Elige una opción</h4> -->
+
+                  <div class="form-group">
+                     <a
+                        href="#"
+                        class="accordion-titulo"
+                     >
+                        Cargar archivo Excel
+
+                        <span class="toggle-icon"></span>
+                     </a>
+
+                     <div class="accordion-content">
+                        <div class="card">
+                           <div class="card-body text-center">
+                              <input type="file"></input>
+
+                              <input
+                                 type="submit"
+                                 class="btn btn-success"
+                              ></input>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="form-group">
+                     <a
+                        href="#"
+                        class="accordion-titulo"
+                     >
+                        Llenar manualmente
+
+                        <span class="toggle-icon"></span>
+                     </a>
+
+                     <div class="accordion-content">
+                        <div class="form-group">
+                           <a
+                              href="#"
+                              class="accordion-titulo"
+                           >
+                              Ciclo 1
+
+                              <span class="toggle-icon"></span>
+                           </a>
+
+                           <div class="accordion-content">
+                              <div class="row">
+                                 <div class="form-group col-md-6">
+                                    <div class="form-group md-form mt-3">
+                                       <label
+                                          class="font-weight-bold"
+                                          for="nroCursos"
+                                       >Número de cursos</label>
+
+                                       <input
+                                          id="nroCursos"
+                                          type="text"
+                                          required="required"
+                                          class="form-control validate"
+                                       ></input>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-6">
+                                    <button
+                                       class="btn btn-success float-left"
+                                       type="submit"
+                                    >Subir información</button>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 1
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 2
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 3
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 4
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 5
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 6
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="form-group">
+                           <a
+                              href="#"
+                              class="accordion-titulo"
+                           >
+                              Ciclo 2
+
+                              <span class="toggle-icon"></span>
+                           </a>
+
+                           <div class="accordion-content">
+                              <div class="row">
+                                 <div class="form-group col-md-6">
+                                    <div class="form-group md-form mt-3">
+                                       <label
+                                          class="font-weight-bold"
+                                          for="nroCursos"
+                                       >Número de cursos</label>
+
+                                       <input
+                                          id="nroCursos"
+                                          type="text"
+                                          required="required"
+                                          class="form-control validate"
+                                       ></input>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-6">
+                                    <button
+                                       class="btn btn-success float-left"
+                                       type="submit"
+                                    >Subir información</button>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 1
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 2
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 3
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 4
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 5
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 6
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="form-group">
+                           <a
+                              href="#"
+                              class="accordion-titulo"
+                           >
+                              Ciclo 3
+
+                              <span class="toggle-icon"></span>
+                           </a>
+
+                           <div class="accordion-content">
+                              <div class="row">
+                                 <div class="form-group col-md-6">
+                                    <div class="form-group md-form mt-3">
+                                       <label
+                                          class="font-weight-bold"
+                                          for="nroCursos"
+                                       >Número de cursos</label>
+
+                                       <input
+                                          id="nroCursos"
+                                          type="text"
+                                          required="required"
+                                          class="form-control validate"
+                                       ></input>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-6">
+                                    <button
+                                       class="btn btn-success float-left"
+                                       type="submit"
+                                    >Subir información</button>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 1
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 2
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 3
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 4
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 5
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 6
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="form-group">
+                           <a
+                              href="#"
+                              class="accordion-titulo"
+                           >
+                              Ciclo 4
+
+                              <span class="toggle-icon"></span>
+                           </a>
+
+                           <div class="accordion-content">
+                              <div class="row">
+                                 <div class="form-group col-md-6">
+                                    <div class="form-group md-form mt-3">
+                                       <label
+                                          class="font-weight-bold"
+                                          for="nroCursos"
+                                       >Número de cursos</label>
+
+                                       <input
+                                          id="nroCursos"
+                                          type="text"
+                                          required="required"
+                                          class="form-control validate"
+                                       ></input>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-6">
+                                    <button
+                                       class="btn btn-success float-left"
+                                       type="submit"
+                                    >Subir información</button>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 1
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 2
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 3
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 4
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 5
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 6
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="form-group">
+                           <a
+                              href="#"
+                              class="accordion-titulo"
+                           >
+                              Ciclo 5
+
+                              <span class="toggle-icon"></span>
+                           </a>
+
+                           <div class="accordion-content">
+                              <div class="row">
+                                 <div class="form-group col-md-6">
+                                    <div class="form-group md-form mt-3">
+                                       <label
+                                          class="font-weight-bold"
+                                          for="nroCursos"
+                                       >Número de cursos</label>
+
+                                       <input
+                                          id="nroCursos"
+                                          type="text"
+                                          required="required"
+                                          class="form-control validate"
+                                       ></input>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-6">
+                                    <button
+                                       class="btn btn-success float-left"
+                                       type="submit"
+                                    >Subir información</button>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 1
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 2
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 3
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 4
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 5
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 6
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="form-group">
+                           <a
+                              href="#"
+                              class="accordion-titulo"
+                           >
+                              Ciclo 6
+
+                              <span class="toggle-icon"></span>
+                           </a>
+
+                           <div class="accordion-content">
+                              <div class="row">
+                                 <div class="form-group col-md-6">
+                                    <div class="form-group md-form mt-3">
+                                       <label
+                                          class="font-weight-bold"
+                                          for="nroCursos"
+                                       >Número de cursos</label>
+
+                                       <input
+                                          id="nroCursos"
+                                          type="text"
+                                          required="required"
+                                          class="form-control validate"
+                                       ></input>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-6">
+                                    <button
+                                       class="btn btn-success float-left"
+                                       type="submit"
+                                    >Aceptar</button>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 1
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 2
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 3
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="row">
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 4
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 5
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group col-md-4">
+                                    <div class="form-group">
+                                       <a
+                                          href="#"
+                                          class="accordion-titulo"
+                                       >
+                                          Curso 6
+
+                                          <span class="toggle-icon"></span>
+                                       </a>
+
+                                       <div class="accordion-content">
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="codigoC"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Código del curso</label>
+
+                                             <input
+                                                id="codigoC"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nombre"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Nombre</label>
+
+                                             <input
+                                                id="nombre"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form">
+                                             <label
+                                                for="nroCreditos"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Número de créditos</label>
+
+                                             <input
+                                                id="nroCreditos"
+                                                type="text"
+                                                required="required"
+                                                class="form-control validate"
+                                             ></input>
+                                          </div>
+
+                                          <div class="form-group md-form mt-3">
+                                             <label
+                                                for="descripcion"
+                                                data-error="wrong"
+                                                data-success="right"
+                                             >Descripción</label>
+
+                                             <textarea
+                                                id="y"
+                                                type="text"
+                                                required="required"
+                                                rows="2"
+                                                class="md-textarea validate form-control"
+                                             ></textarea>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <button
+                           class="btn btn-success btn-rounded float-right"
+                           type="submit"
+                        >Subir información</button>
+                     </div>
+                  </div>
+               </div>
+
+               <button
+                  class="btn btn-mdb-color btn-rounded prevBtn-2 float-left"
+                  type="button"
+               >Anterior</button>
+
+               <button
+                  class="btn btn-mdb-color btn-rounded nextBtn-2 float-right"
+                  type="button"
+               >Siguiente</button>
+            </div>
+         </div>
+
+         <!-- Fourth Step -->
+
+         <div
+            class="row setup-content-2"
+            id="step-4"
+         >
+            <div class="col-md-12">
+               <h3 class="font-weight-bold pl-0 my-4">
+                  <strong>Relacionar cursos</strong>
+               </h3>
+
+               <h2 class="text-center font-weight-bold my-4">
+                  En esta parte se implementará la relación de cursos con grafos
+               </h2>
+
+               <button
+                  class="btn btn-mdb-color btn-rounded prevBtn-2 float-left"
+                  type="button"
+               >Previous</button>
+
+               <button
+                  class="btn btn-success btn-rounded float-right"
+                  type="submit"
+               >Submit</button>
+            </div>
+         </div>
+      </form>
+   </main>
+
+   <div th:include="/fragments/head :: finalSection"></div>
+   <div th:include="/fragments/head :: scripts"></div>
+   <script th:src="@{/js/wizard.js}"></script>
+   <script th:inline="javascript">
+      $(function(){
+
+         $('.mdb-select').material_select();
+
+         $(".accordion-titulo").click(function(e){
+
+            e.preventDefault();
+
+            var contenido=$(this).next(".accordion-content");
+
+            if(contenido.css("display")=="none"){ //open        
+               contenido.slideDown(250);         
+               $(this).addClass("open");
+            }
+            else{ //close       
+               contenido.slideUp(250);
+               $(this).removeClass("open");  
+            }
+         });
+      });
+   </script>
+</body>
+</html>
