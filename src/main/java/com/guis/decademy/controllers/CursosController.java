@@ -36,7 +36,7 @@ public class CursosController {
 	@GetMapping("/{idCurso}")
 	public String detalle (Model model, @PathVariable("idCurso") String idCurso) {
 		LOG.info("[/cursos] - METHOD [detalle] -- Entrando al método ");
-		LOG.info("[/cursos] - METHOD [detalle] -- idCurso: " + idCurso);
+		LOG.info("[/cursos] - METHOD [detalle] -- idCurso" +  idCurso);
 		
 		model.addAttribute("curso", cursos.get(idCurso));
 		return ViewConstants.CURSOS_DETALLE;
