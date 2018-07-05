@@ -233,19 +233,18 @@
                                                 <!-- Card header -->
                                                 <div class="card-header p-0 z-depth-1" role="tab" id="heading30">
                                                       <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse30" aria-expanded="true" aria-controls="collapse30">
-                                                            <h4 class="white-text mb-0 pl-4 py-3 mt-1">
+                                                            <h6 class="white-text mb-0 pl-4 py-3 mt-1">
                                                                   <i class="fas fa-user-check mr-2"></i>
                                                                   Cargar Archivo
-                                                            </h4>
+                                                            </h6>
                                                       </a>
                                                 </div>
 
                                                 <!-- Card body -->
-                                                <div id="collapse30" class="collapse show" role="tabpanel" aria-labelledby="heading30" data-parent="#accordionEx5">
+                                                <div id="collapse30" class="collapse" role="tabpanel" aria-labelledby="heading30" data-parent="#accordionEx5">
                                                       <div class="card-body white-text z-depth-1">
                                                             <div class="card">
-                                                                  <input type="file" class="btn btn-indigo"></input>
-                                                                  <button type="submit" class="btn btn-indigo">Enviar</button>
+                                                                  <input type="file" class="btn btn-indigo" accept=".xlsx"></input>
                                                             </div>
                                                       </div>
                                                 </div>
@@ -256,67 +255,68 @@
                                                 <!-- Card header -->
                                                 <div class="card-header p-0 z-depth-1" role="tab" id="heading31">
                                                       <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse31" aria-expanded="true" aria-controls="collapse31">
-                                                            <h4 class="white-text mb-0 pl-4 py-3 mt-1">
+                                                            <h6 class="white-text mb-0 pl-4 py-3 mt-1">
                                                                   <i class="fas fa-user mr-2" aria-hidden="true"></i>
                                                                   Llenar manualmente
-                                                            </h4>
+                                                            </h6>
                                                       </a>
                                                 </div>
                                                 <!-- Card body -->
                                                 <div id="collapse31" class="collapse" role="tabpanel" aria-labelledby="heading31" data-parent="#accordionEx5">
                                                       <div class="card-body white-text z-depth-1">
-                                                            <div class="form-group col-md-4">
-                                                                  <a class="black-text">hola</a>
-                                                                  <!-- Componente curso -->
-                                                                  <template id="tCurso">                                                                        
+                                                            <a class="btn-floating my-auto btn-orange btn-sm float-right modal-button" title="Nuevo curso" v-on:click="addPanelCurso">
+                                                                  <i class="fa fa-plus"></i>
+                                                            </a>
+                                                            <div class="form-group col-md-4">                                                      
                                                                         <!--Accordion wrapper-->
                                                                         <div class="accordion accordion-5" id="accordionEx5" role="tablist" aria-multiselectable="true">
-                                                                              <!-- Accordion card 1 -->
-                                                                              <div class="card mb-4">
-                                                                                    <!-- Card header -->
-                                                                                    <div class="card-header p-0 z-depth-1" role="tab" id="heading32">
-                                                                                          <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse32" aria-expanded="true" aria-controls="collapse32">
-                                                                                                <h4 class="black-text mb-0 pl-4 py-3 mt-1">
-                                                                                                      <i class="fas fa-user-check mr-2"></i>
-                                                                                                      {{ nro_curso }}
-                                                                                                </h4>
-                                                                                          </a>
-                                                                                    </div>
+                                                                              <!-- Componente curso -->
+                                                                              <!--<template id="tCurso"> -->
+                                                                                    <!-- Accordion card Curso -->
+                                                                                    <div class="card mb-4">
+                                                                                          <!-- Card header -->
+                                                                                          <div class="card-header p-0 z-depth-1" role="tab" id="heading32">
+                                                                                                <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse32" aria-expanded="true" aria-controls="collapse32">
+                                                                                                      <h6 class="black-text mb-0 pl-4 py-3 mt-1">
+                                                                                                            <i class="fas fa-user-check mr-2"></i>
+                                                                                                            Curso
+                                                                                                      </h6>
+                                                                                                </a>
+                                                                                          </div>
 
-                                                                                    <!-- Card body -->
-                                                                                    <div id="collapse32" class="collapse show" role="tabpanel" aria-labelledby="heading32" data-parent="#accordionEx5">
-                                                                                          <div class="card-body black-text z-depth-1">
-                                                                                                <div class="card">
-                                                                                                      <div class="form-group md-form mt-3">
-                                                                                                            <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                                            <input id="codigoC" type="text" required="required" class="form-control validate"></input>
-                                                                                                      </div>
+                                                                                          <!-- Card body -->
+                                                                                          <div id="collapse32" class="collapse" role="tabpanel" aria-labelledby="heading32" data-parent="#accordionEx5">
+                                                                                                <div class="card-body black-text z-depth-1">
+                                                                                                      <div class="card">
+                                                                                                            <div class="form-group md-form mt-3">
+                                                                                                                  <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
+                                                                                                                  <input id="codigoC" type="text" required="required" class="form-control validate"></input>
+                                                                                                            </div>
 
-                                                                                                      <div class="form-group md-form">
-                                                                                                            <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                                            <input id="nombre" type="text" required="required" class="form-control validate"></input>
-                                                                                                      </div>
+                                                                                                            <div class="form-group md-form">
+                                                                                                                  <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
+                                                                                                                  <input id="nombre" type="text" required="required" class="form-control validate"></input>
+                                                                                                            </div>
 
-                                                                                                      <div class="form-group md-form">
-                                                                                                            <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                                            <input id="nroCreditos" type="text" required="required" class="form-control validate"></input>
-                                                                                                      </div>
+                                                                                                            <div class="form-group md-form">
+                                                                                                                  <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
+                                                                                                                  <input id="nroCreditos" type="text" required="required" class="form-control validate"></input>
+                                                                                                            </div>
 
-                                                                                                      <div class="form-group md-form mt-3">
-                                                                                                            <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                                            <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
+                                                                                                            <div class="form-group md-form mt-3">
+                                                                                                                  <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
+                                                                                                                  <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
+                                                                                                            </div>
                                                                                                       </div>
                                                                                                 </div>
                                                                                           </div>
-                                                                                    </div>
-                                                                              </div>
-                                                                              <a class="btn-floating my-auto btn-orange btn-sm float-right modal-button" title="Nuevo curso" v-on:click="addPanelCurso">
-                                                                                    <i class="fa fa-plus"></i>
-                                                                              </a>
-                                                                        </div>
-                                                                        <!-- fin Componente curso -->
-                                                                  </template>
+                                                                                    </div> 
+                                                                                    <!-- fin Accordion card Curso -->
+                                                                              <!-- fin Componente curso -->
+                                                                              <!--</template>-->
+                                                                        </div>  
                                                             </div>
+                                                            
                                                       </div>
                                                 </div>
                                           </div>
@@ -1866,7 +1866,9 @@
                   });
                   */
             });
-
+            /*
+            // Componente Vue
+            Vue.component("")
             // Aplicacion Vue
             const app = new Vue({
                   el: "#app",
@@ -1884,6 +1886,7 @@
                         }
                   },
             });
+            */
       </script>
 </body>
 
