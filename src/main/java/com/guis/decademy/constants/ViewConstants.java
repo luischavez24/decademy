@@ -32,7 +32,7 @@ public interface ViewConstants {
 	
 	public static final String CURSOS_ALUMNOS = "/cursos/alumnos";
 	
-	public static final String CURSOS_ADMINISTRAR = "/cursos/administrar";
+	public static final String CURSOS_ADMINISTRAR = "/tutoria/curso";
 	
 	public static final String RETOS_DETALLE = "/retos/detalle";
 	
@@ -41,5 +41,7 @@ public interface ViewConstants {
 	public static final String PROGRESO_CONSULTA = "/progreso/index";
 	
 	public static final String PROGRESO_ALUMNO = "/progreso/alumno";
+	
+	public static final String PROFESOR_INDEX= "/tutoria/index";
 
 }

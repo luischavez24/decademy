@@ -1,5 +1,7 @@
 package com.guis.decademy.entity;
+
 public class Usuario {
+	
 	protected String username;
 	protected String nombres;
 	protected String apellidos;
@@ -8,6 +10,7 @@ public class Usuario {
 	public Usuario() {
 		
 	}
+	
 	public Usuario(String username, String nombres, String apellidos, String perfil) {
 		this.username = username;
 		this.nombres = nombres;

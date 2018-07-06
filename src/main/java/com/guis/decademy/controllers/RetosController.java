@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -98,11 +99,17 @@ public class RetosController {
 		// TODO: Mostrar el agente inteligente
 		// TODO: Mostrar las calificaciones por tema (al ultimo)
 		
-		List<ResultadoExamen> resultadosAnteriores = alumno.get().getResultados().stream()
-				.filter(r -> r.getIdCurso().equals(idCurso) && r.getIdTema() == idTema)
-				.sorted((r1, r2) -> r1.getFechaExamen().compareTo(r2.getFechaExamen()))
-				.limit(5)
-				.collect(Collectors.toList());
+		Map<Integer, List<ResultadoExamen>> resultadosAnteriores = alumno.get().getResultados().stream()
+				.filter(r -> r.getIdCurso().equals(idCurso))
+				.collect(Collectors.groupingBy(ResultadoExamen::getIdTema));
+		
+		//final int promedio = 0;
+		resultadosAnteriores.forEach((tema, resultados) -> {
+			 resultados.stream()
+					.map(r -> r.getPorcentajeBuenas() * 20)
+					.min(Double::compareTo)
+					.get();
+		});
 
 		ResultadoExamen resultado = new ResultadoExamen();
 		
@@ -124,7 +131,7 @@ public class RetosController {
 			@CookieValue("username") String username, 
 			@ModelAttribute("resultado") ResultadoExamen resultado) {
 		
-		resultado.setFechaExamen(LocalDate.now());
+		resultado.setFechaExamen(LocalDate.now());//todo eso
 		Optional<Alumno> alumno = usuarios.stream()
 				.filter(u -> {
 					if(u instanceof Alumno) {

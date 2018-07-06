@@ -2,30 +2,29 @@
 <html lang="en">
 <head th:include="/fragments/head :: headFragment(${curso})"></head>
 <body class="fixed-sn">
-    <style>
-    .radio-teal [type="radio"]:checked+label:after {
-        border-color: #4db6ac;
-        background-color: #4db6ac;
-    }
-    /*Gap*/
-
-    .radio-teal-gap [type="radio"].with-gap:checked+label:before {
-        border-color: #4db6ac;
-    }
-
-    .radio-teal-gap [type="radio"]:checked+label:after {
-        border-color: #4db6ac;
-        background-color: #4db6ac;
-    }
-    </style>
     <header th:include="/fragments/navbar :: navbar(${curso})"></header>
+    
     <main id="app" class="container-fluid mx-auto">
-        <div class="row">
+    	<div class="row">
+    		<!-- Barra Lateral -->
             <div class="col-md-3">
                 <ul class="nav md-pills pills-teal-light flex-column" role="tablist">
+                    
                     <li class="nav-item">
                         <a
                             class="nav-link active"
+                            data-toggle="tab"
+                            href="#inciar"
+                            role="tab"
+                        >
+                            <i class="fa fa-play mr-2"></i>
+                            Iniciar Clase
+                        </a>
+                    </li>
+                                        
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
                             data-toggle="tab"
                             href="#publicaciones"
                             role="tab"
@@ -75,11 +74,26 @@
             <div class="col-md-9">
                 <!-- Tab panels -->
                 <div class="tab-content vertical">
+                	<!-- Iniciar Clase -->
+                	<div class="tab-pane fade in show active" id="iniciar" role="tabpanel">
+                		<h3 class="mt-2 mb-4 h3">
+                            <i class="fa fa-play mr-2"></i>
+                            Iniciar Clase
+                        </h3>
+                	</div>
                     <!-- Publicaciones -->
-                    <div class="tab-pane fade in show active" id="publicaciones" role="tabpanel">
+                    <div class="tab-pane fade" id="publicaciones" role="tabpanel">
                         <h3 class="mt-2 mb-4 h3">
                             <i class="fa fa-history mr-2"></i>
                             Publicaciones
+                            <a
+                                class="btn-floating my-auto btn-orange btn-sm float-right modal-button"
+                                data-toggle="modal"
+                                data-target="#nuevaPublicacion"
+                                title="Nueva publicación"
+                            >
+                                <i class="fa fa-plus"></i>
+                            </a>
                         </h3>
                         <div class="row">
                             <div class="col-md-12">
@@ -317,6 +331,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Información -->
                     <div class="tab-pane fade" id="info" role="tabpanel">
                         <h3 class="mt-2 mb-4 h3">
                             <i class="fa fa-info-circle mr-2"></i>
@@ -341,14 +356,12 @@
             </div>
         </div>
     </main>
-
+    
     <div th:include="/fragments/head :: finalSection"></div>
     <div th:include="/fragments/head :: scripts"></div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-    <div th:include="/cursos/components/pregunta :: pregunta"></div>
-
+    
     <!-- Componente publicacion -->
     <template id="tPublicacion">
         <div class="card mb-3">
@@ -446,11 +459,9 @@
             <div class="card-body">
                 <h4 class="card-title">
                     {{ titulo }}
-                    <i v-if="estado" class="fa fa-check-circle teal-text"></i>
                 </h4>
                 <p> {{ descripcion }}</p>
-
-
+                <i v-if="estado" class="fa fa-check-circle teal-text"></i>
             </div>
             <div class="card-footer text-center text-indigo mb-0">
                 <a
@@ -510,7 +521,7 @@
                                             v-on:click="changeTooltip(file)"
                                             class="btn btn-warning btn-sm float-right m-0 px-3" 
                                             data-toggle="tooltip" 
-                                            title="Descargando"
+                                            title="Descargar"
                                             v-bind:data-original-title="file.estado"
                                             v-bind:href="'/docs/' + file.name"
                                             v-bind:download="file.name"
@@ -526,8 +537,8 @@
             </div>
         </div>
     </template>
-    
-    <script th:inline="javascript">
+
+	<script th:inline="javascript">
         var curso = /*[[${curso}]]*/ ""
 
         // Componente <tema></tema>
@@ -612,7 +623,7 @@
         const app = new Vue({
             el: "#app",
             data: {
-                porcentaje: 1 * 100/2,
+                porcentaje: 33,
                 publicacion: {
                     titulo:"",
                     contenido:"",
@@ -625,118 +636,93 @@
                     { value: "fa fa-flag", type: "Tarea" }
                 ],
                 usuarioActual: {
-                    username: "Pedro Romero", 
+                    username: "Ricardo Gareca", 
                     imgPerfil: "/img/foto_perfil.jpg"   
                 },
                 informacion: [
                     { 
                         titulo: "Descripcion",
                         descripcion: ` 
-                        Desarrollar algoritmos con la finalidad de fortalecer los conocimientos adquiridos, poniendo énfasis
-                        en la eficiencia algorítmica, y las habilidades de elaboración de soluciones algorítmicas a problemas
-                        basados en un conjunto de componentes que deben interactuar entre si.`,
+                        Aprender sobre los diferentes modelos de base de datos NoSQL y su comparación con las bases de datos
+                        tradicionales, y aplicarlos a las empresas para generar valor.`,
                         icono: "fa fa-file"
                     },
                     { 
                         titulo: "Tutor",
-                        descripcion: "Juan Espinoza",
+                        descripcion: "Ricardo Gareca",
                         icono: "fa fa-graduation-cap"
                     },
                     { 
                         titulo: "Tema actual",
                         index: 1,
-                        descripcion: "Hoare",
+                        descripcion: "Data Warehouse",
                         icono: "fa fa-bookmark"
                     },
                     { 
                         titulo: "Horario",
-                        descripcion: "Todos los jueves a las 2 pm",
+                        descripcion: "Todos los jueves a las 3 pm",
                         icono: "fa fa-calendar-alt"
                     }
                 ],
                 publicaciones: [
-                    {
-                        titulo: "Comunicado a la clase",
-                        icono: "fa fa-podcast",
-                        contenido: "Buenos días jovenes, por motivo del partido de mañana de Perú - Dinamarca se suspemden las clases y se recuperaran de 6pm a 8pm",
-                        comentarios: [
-                            {
-                                usuario: { 
-                                    username: "Sarah Connor", 
-                                    imgPerfil: "http://localhost:8080/img/perfil2.jpg" 
-                                },
-                                comentario: "Buena profe,ahora podremos ver el mundial tranquilos :')" 
-                            }
-                        ],
-                        fechaPublicacion: new Date()
-                    }
                 ],
                 temas: [
                     {
-                        titulo:"Complejidad Algoritmica",
+                        titulo:"Base de Datos NoSQL",
                         estado: true,
-                        descripcion:"Complejidad Espacial, Temporal",
+                        descripcion:"Introducción al curso",
                         save: {
                             estadoNube: false,
                             nubeURL:"https://drive.google.com",
                             videoURL:"https://youtu.be/aEyEcH7SEmE",
                             folders: [
-                                { name:"Sesión 01 - Complejidad algorítmica.pdf", type:"pdf", estado:"Descargar" }
+                                { name:"Sesión 01 - Introducción.pdf", type:"pdf", estado:"Descargar" }
                             ]
                         }
                     },
                     {
-                        titulo:"Análisis de Estructuras de Control",
+                        titulo:"Data Warehouse",
                         estado: false,
-                        descripcion:"Como es el comportamiento de un algoritmo con estas estructuras",
+                        descripcion:"Crear modelos estrella.",
                         save: {
                             estadoNube: false,
                             nubeURL:"https://drive.google.com",
                             videoURL:"https://youtu.be/Sibd8jSTdUQ",
                             folders: [
-                                { name:"Sesión 02 - Análisis de las Estructuras de Control.pdf", type:"pdf", estado:"Descargar" }
+                                { name:"Sesión 02 - DataWareHouse.pdf", type:"pdf", estado:"Descargar" }
+                            ]
+                        }
+                    },
+                    {
+                        titulo:"Big Data",
+                        estado: false,
+                        descripcion:"Procesamiento de gran vólumen de datos.",
+                        save: {
+                            estadoNube: false,
+                            nubeURL:"https://drive.google.com",
+                            videoURL:"https://youtu.be/Sibd8jSTdUQ",
+                            folders: [
+                                { name:"Sesión 03 - BigData.pdf", type:"pdf", estado:"Descargar" }
                             ]
                         }
                     }
                 ],
                 preguntas: [
                     {
-                        titulo: "¿Qué tipos de complejidad existen?",
+                        titulo: "",
                         opciones: [
-                            "Complejidad Temporal",
-                            "Complejidad Espacial",
-                            "Complejidad Espacial y Temporal",
-                            "Ninguna de las anteriores"
-                        ],
-                        respuesta: 2
-                    },
-                    {
-                        titulo: "¿Qué es la complejidad espacial?",
-                        opciones: [
-                            "Se refiere al tiempo que se demora en ejecutar un determinado algorítmo para una determinidad cantidad de datos.",
-                            "Se refiere a cuanto espacio ocupa en memoria principal de un determinado algoritmo para una determinada cantidad de datos.",
-                            "Se referiere a que tan dificil es encontrar el algoritmo adecuado para un determinado problema.",
-                            "Ninguna de las anteriores"
-                        ],
-                        respuesta: 1
-                    },
-                    {
-                        titulo: "¿Qué es la complejidad temporal?",
-                        opciones: [
-                            "Se refiere al tiempo que se demora en ejecutar un determinado algorítmo para una determinidad cantidad de datos.",
-                            "Se refiere a cuanto espacio ocupa en memoria principal de un determinado algoritmo para una determinada cantidad de datos.",
-                            "Se referiere a que tan dificil es encontrar el algoritmo adecuado para un determinado problema.",
-                            "Ninguna de las anteriores"
+                            "",
+                            "",
+                            "",
+                            ""
                         ],
                         respuesta: 1
                     }
-
-                    
                 ]
             },
             computed:{
                 progreso(){
-                    return `Tienes un ${this.porcentaje}% de progreso en el curso`; 
+                    return `Haz enseñado ${this.porcentaje}% del curso`; 
                 }
             },
             methods:{
@@ -751,8 +737,7 @@
                     
                     $("#nuevaPublicacion").modal("hide");
                     toastr.options = { closeButton: true }
-                    this.publicaciones.unshift(publi);
-                 
+                    this.publicaciones.push(publi);
                     toastr.info("Genial! Has publicado un nuevo mensaje.");
                 }
             },
@@ -766,5 +751,6 @@
             }
         });
     </script>
+		
 </body>
 </html>
