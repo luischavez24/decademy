@@ -759,7 +759,8 @@
                     
                     $("#nuevaPublicacion").modal("hide");
                     toastr.options = { closeButton: true }
-                    this.publicaciones.push(publi);
+                    this.publicaciones.unshift(publi);
+                 
                     toastr.info("Genial! Has publicado un nuevo mensaje.");
                 }
             },

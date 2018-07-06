@@ -60,3 +60,28 @@ body {
   border-color: #4db6ac;
   background-color: #4db6ac;
 }
+
+.modal-dialog.modal-notify.modal-orange .badge,.modal-dialog.modal-notify.modal-orange .modal-header{
+  background-color:#ef6c00
+}
+.modal-dialog.modal-notify.modal-orange .fa{
+  color:#ef6c00
+}
+
+.input-orange:focus + label {
+  color: #ef6c00 !important; 
+}
+
+.input-orange:focus {
+  border-bottom: 1px solid #ef6c00 !important;
+  box-shadow: 0 1px 0 0 #ef6c00 !important; 
+}
+
+.input-teal:focus + label {
+  color: #4db6ac !important; 
+}
+
+.input-teal:focus {
+  border-bottom: 1px solid #4db6ac !important;
+  box-shadow: 0 1px 0 0 #4db6ac !important; 
+}

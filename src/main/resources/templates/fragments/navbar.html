@@ -81,8 +81,8 @@
             <ul th:if="${notLogin == null}" class="nav navbar-nav nav-flex-icons ml-auto">
                 <li class="nav-item">
                     <a class="nav-link p-1">
-                        <img th:src="@{/img/foto_perfil.jpg}" alt="user-image" class="rounded-circle img-fluid" width="30">
-                        <span class="clearfix d-none d-sm-inline-block">Pedro Romero</span>
+                        <img th:src="@{/img/__${loginUsuario.perfil}__}" alt="user-image" class="rounded-circle img-fluid" width="30" height="30">
+                        <span class="clearfix d-none d-sm-inline-block" th:text="@{${loginUsuario.nombres} + ' ' + ${loginUsuario.apellidos}}"></span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -123,7 +123,8 @@
             <ul th:if="${notLogin != null}" class="nav navbar-nav nav-flex-icons ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#modal_login">
-                        <i class="fa fa-sign-in"></i> Iniciar Sesión
+                        <i class="fa fa-user-check mr-1"></i>
+                        Ingresar
                     </a>
                 </li>
             </ul>
