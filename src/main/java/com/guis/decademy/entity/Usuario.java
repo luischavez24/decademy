@@ -6,16 +6,18 @@ public class Usuario {
 	protected String nombres;
 	protected String apellidos;
 	protected String perfil;
+	protected String tipo;
 	
 	public Usuario() {
 		
 	}
 	
-	public Usuario(String username, String nombres, String apellidos, String perfil) {
+	public Usuario(String username, String nombres, String apellidos, String perfil, String tipo) {
 		this.username = username;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.perfil = perfil;
+		this.tipo = tipo;
 	}
 	
 	public String getUsername() {
@@ -46,6 +48,14 @@ public class Usuario {
 	}
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
+	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
 }

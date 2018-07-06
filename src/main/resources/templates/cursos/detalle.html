@@ -63,6 +63,18 @@
                         <a
                             class="nav-link"
                             data-toggle="tab"
+                            href="#progreso"
+                            role="tab"
+                        >
+                            <i class="fa fa-dashboard"></i>
+                            Desempeño
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            data-toggle="tab"
                             href="#info"
                             role="tab"
                         >
@@ -331,6 +343,50 @@
                             </div>
                         </div>
                     </div>
+                    <!--Desempeño-->
+                    <div class="tab-pane fade" id="progreso" role="tabpanel">
+                        <h3 class="mt-2 mb-4 h3">
+                            <i class="fa fa-dashboard mr-2"></i>
+                            Desempeño
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card-deck">
+                                    <!-- Card -->
+                                    <div class="card mb-6">
+                                        <!-- Card content -->
+                                        <div class="card-body">
+                                            <!-- Title -->
+                                            <!--<h4 class="card-title">
+                                                <a>Algorítmica 3</a>
+                                            </h4>-->
+                                            <div class="chartjs-wrapper">
+                                                <canvas id="chartjs-calif-a3" class="chartjs" width="419" height="209"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card-deck">
+                                    <!-- Card -->
+                                    <div class="card mb-6">
+                                        <!-- Card content -->
+                                        <div class="card-body">
+                                            <!-- Title -->
+                                            <!--<h4 class="card-title">
+                                                <a>Algorítmica 3</a>
+                                            </h4>-->
+                                            <div class="chartjs-wrapper">
+                                                <canvas id="chartjs-prog-a3" class="chartjs" width="419" height="209"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Informacion-->
                     <div class="tab-pane fade" id="info" role="tabpanel">
                         <h3 class="mt-2 mb-4 h3">
                             <i class="fa fa-info-circle mr-2"></i>
@@ -653,7 +709,7 @@
                     },
                     { 
                         titulo: "Tutor",
-                        descripcion: "Juan Espinoza",
+                        descripcion: "Ricardo Gareca",
                         icono: "fa fa-graduation-cap"
                     },
                     { 
@@ -779,6 +835,46 @@
                 $('.mdb-select').material_select();
             }
         });
+        // Calificaciones
+        new Chart(document.getElementById("chartjs-calif-a3"),
+            {
+                type: "bar",
+                data: {
+                    labels: ['12/05', '19/05', '26/05', '28/05', '03/06', '10/06'],
+                    datasets: [{
+                        label: ['Nota de la sesión'],
+                        data: ['18', '0'],
+                        backgroundColor: [
+                            'rgba(67, 65, 184, 0.8)',
+                            'rgba(67, 65, 184, 0.8)',
+                            'rgba(67, 65, 184, 0.8)',
+                            'rgba(67, 65, 184, 0.8)',
+                        ]
+
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        // Progreso de Cursos
+        new Chart(document.getElementById("chartjs-prog-a3"),
+            {
+                "type": "doughnut",
+                "data": {
+                    "labels": ["Completado", "No completado"],
+                    "datasets": [{
+                        "data": ["50", "50"],
+                        "backgroundColor": ['rgba(67, 65, 184, 0.8)', 'rgba(67, 65, 184, 0.3)']
+                    }]
+                }
+            });
     </script>
 </body>
 </html>

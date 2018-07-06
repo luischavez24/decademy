@@ -14,7 +14,7 @@
                         <a
                             class="nav-link active"
                             data-toggle="tab"
-                            href="#inciar"
+                            href="#iniciar"
                             role="tab"
                         >
                             <i class="fa fa-play mr-2"></i>
@@ -80,12 +80,24 @@
                             <i class="fa fa-play mr-2"></i>
                             Iniciar Clase
                         </h3>
+                        <h6 class="d-flex justify-content-end mr-5">Usuarios conectados:   <span class="badge badge-pill badge-success"> 4</span></h6>
+                        <div class="col-md-12 mb-3">
+		                  <div class="container-fluid">
+		                     <div class="row">
+		                        <div class="col-12 mb-4">
+		                           <div v-if="!comenzado" class="embed-responsive embed-responsive-21by9">
+		                              <iframe @click="" class="embed-responsive-item" src="https://www.youtube.com/embed/wTcNtgA6gHs" allowfullscreen></iframe>
+		                           </div>
+		                        </div>
+		                     </div>
+		                  </div>
+		               </div>
                 	</div>
                     <!-- Publicaciones -->
                     <div class="tab-pane fade" id="publicaciones" role="tabpanel">
                         <h3 class="mt-2 mb-4 h3">
                             <i class="fa fa-history mr-2"></i>
-                            Publicaciones
+                            	Publicaciones
                             <a
                                 class="btn-floating my-auto btn-orange btn-sm float-right modal-button"
                                 data-toggle="modal"
@@ -469,7 +481,7 @@
                     v-bind:class="{ disabled: !estado }"
                     data-toggle="tooltip"
                     data-placement="bottom"
-                    title="Guardar en la nube"
+                    title="Subir a la nube"
                     v-on:click="verGuardarNube"
                 >
                     <i class="fa fa-cloud-download-alt"></i>
@@ -530,6 +542,11 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <a class="btn mt-4 btn-success btn-sm float-right m-0 px-3"
+                                   data-toggle="tooltip"
+                                   title="Subir Acrhivo">
+                                	<i class="fa fa-upload"></i>
+                                </a>
                             </div>
                         </div>
                     </div>  
@@ -568,6 +585,9 @@
                 changeTooltip(file){
                     file.estado = "Descarga en curso!"
                     $("[data-toggle='tooltip']").tooltip();
+                },
+                agregarArchivo() {
+                	
                 }
             },
             filters: {
@@ -624,6 +644,7 @@
             el: "#app",
             data: {
                 porcentaje: 33,
+                comenzado: false,
                 publicacion: {
                     titulo:"",
                     contenido:"",
@@ -637,7 +658,7 @@
                 ],
                 usuarioActual: {
                     username: "Ricardo Gareca", 
-                    imgPerfil: "/img/foto_perfil.jpg"   
+                    imgPerfil: "/img/ricardo.jpg"   
                 },
                 informacion: [
                     { 
@@ -706,18 +727,6 @@
                             ]
                         }
                     }
-                ],
-                preguntas: [
-                    {
-                        titulo: "",
-                        opciones: [
-                            "",
-                            "",
-                            "",
-                            ""
-                        ],
-                        respuesta: 1
-                    }
                 ]
             },
             computed:{
@@ -737,8 +746,11 @@
                     
                     $("#nuevaPublicacion").modal("hide");
                     toastr.options = { closeButton: true }
-                    this.publicaciones.push(publi);
+                    this.publicaciones.unshift(publi);
                     toastr.info("Genial! Has publicado un nuevo mensaje.");
+                },
+                empezarSesion(){
+                	this.comenzado = true;
                 }
             },
             filters: {

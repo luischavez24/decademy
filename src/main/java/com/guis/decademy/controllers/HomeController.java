@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.guis.decademy.constants.TipoUsuario;
 import com.guis.decademy.constants.ViewConstants;
 import com.guis.decademy.entity.Usuario;
 
@@ -53,7 +54,15 @@ public class HomeController {
 			usuarioActual.setApellidos(busq.get().getApellidos());
 			usuarioActual.setPerfil(busq.get().getPerfil());
 			response.addCookie(new Cookie("username", usuario.getUsername()));
-			return "redirect:/cursos";
+			if(busq.get().getTipo().equalsIgnoreCase(TipoUsuario.TIPO_ADMINISTRATIVO)) {
+				return "redirect:/administrar";
+			} else if(busq.get().getTipo().equalsIgnoreCase(TipoUsuario.TIPO_ALUMNO)) {
+				return "redirect:/cursos";
+			} else if(busq.get().getTipo().equalsIgnoreCase(TipoUsuario.TIPO_PADRE)) {
+				return "redirect:/progreso";
+			} else {
+				return "redirect:/tutoria";
+			}
 		} else {
 			return "redirect:/";
 		}

@@ -7,8 +7,8 @@ public class Profesor extends Usuario{
 	
 	private List<Curso> cursos;
 	
-	public Profesor(String username, String nombres, String apellidos, String perfil) {
-		super(username, nombres, apellidos, perfil);
+	public Profesor(String username, String nombres, String apellidos, String perfil, String tipo) {
+		super(username, nombres, apellidos, perfil, tipo);
 		cursos = new ArrayList<>();
 	}
 	
