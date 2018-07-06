@@ -4,7 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collector;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,17 +25,22 @@ import com.guis.decademy.constants.ViewConstants;
 import com.guis.decademy.entity.Alumno;
 import com.guis.decademy.entity.Pregunta;
 import com.guis.decademy.entity.ResultadoExamen;
+import com.guis.decademy.entity.Usuario;
 
 @Controller
 @RequestMapping("/retos")
 public class RetosController {
 
+	@Autowired
+	@Qualifier("usuarioActual")
+	private Usuario usuarioActual;
+	
 	private static final Log LOG = LogFactory.getLog(RetosController.class);
 	private List<Pregunta> preguntas;
 	
 	@Autowired
-	@Qualifier("alumnoPrueba")
-	private Alumno alumnoPrueba;
+	@Qualifier("usuarios")
+	private List<Usuario> usuarios;
 	
 	public RetosController() {
 		cargaDePreguntas();
@@ -71,19 +78,38 @@ public class RetosController {
 	}
 	
 	@GetMapping("/{idCurso}/{idTema}")
-	public String detalle(Model model,
+	public String detalle(@CookieValue("username") String username,
+			Model model,
 			@PathVariable("idCurso") String idCurso,
 			@PathVariable("idTema") int idTema) {
+		model.addAttribute("loginUsuario", usuarioActual);
+		Optional<Alumno> alumno = usuarios.stream()
+				.filter(u -> {
+					if(u instanceof Alumno) {
+						Alumno a = (Alumno) u ;
+						return a.getUsername().equals(username);
+					} else {
+						return false;
+					}
+				})
+				.map(u -> (Alumno) u)
+				.findFirst();
 		
 		// TODO: Implementar agente inteligente, saque el promedio de un curso y de acuerdo a ese promedio que te mande a realizar de nuevo el reto del tema con menor nota
 		// TODO: Mostrar el agente inteligente
 		// TODO: Mostrar las calificaciones por tema (al ultimo)
 		
-		List<ResultadoExamen> resultadosAnteriores = alumnoPrueba.getResultados().stream()
-				.filter(r -> r.getIdCurso().equals(idCurso) && r.getIdTema() == idTema)
-				.sorted((r1, r2) -> r1.getFechaExamen().compareTo(r2.getFechaExamen()))
-				.limit(5)
-				.collect(Collectors.toList());
+		Map<Integer, List<ResultadoExamen>> resultadosAnteriores = alumno.get().getResultados().stream()
+				.filter(r -> r.getIdCurso().equals(idCurso))
+				.collect(Collectors.groupingBy(ResultadoExamen::getIdTema));
+		
+		//final int promedio = 0;
+		resultadosAnteriores.forEach((tema, resultados) -> {
+			 resultados.stream()
+					.map(r -> r.getPorcentajeBuenas() * 20)
+					.min(Double::compareTo)
+					.get();
+		});
 
 		ResultadoExamen resultado = new ResultadoExamen();
 		
@@ -101,14 +127,27 @@ public class RetosController {
 	}
 	
 	@PostMapping("/guardarResultado")
-	public String guardarResultado(@ModelAttribute("resultado") ResultadoExamen resultado) {
+	public String guardarResultado(
+			@CookieValue("username") String username, 
+			@ModelAttribute("resultado") ResultadoExamen resultado) {
 		
-		resultado.setFechaExamen(LocalDate.now());
-		
-		alumnoPrueba.addResultado(resultado);
+		resultado.setFechaExamen(LocalDate.now());//todo eso
+		Optional<Alumno> alumno = usuarios.stream()
+				.filter(u -> {
+					if(u instanceof Alumno) {
+						Alumno a = (Alumno) u ;
+						return a.getUsername().equals(username);
+					} else {
+						return false;
+					}
+				})
+				.map(u -> (Alumno) u)
+				.findFirst();
+		if(alumno.isPresent()) {
+			alumno.get().addResultado(resultado);
+		}
 		
 		LOG.info(resultado);
-		LOG.info(alumnoPrueba);
 		
 		return String.format("redirect:/cursos/%s", resultado.getIdCurso());
 	}

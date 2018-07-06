@@ -93,6 +93,7 @@
         }
     </style>
 
+
     <link rel="stylesheet" th:href="@{/css/wizard.css}"></link>
 
     <header th:include="/fragments/navbar :: navbar('Agregar Malla Curricular')"></header>
@@ -112,7 +113,7 @@
                     <div class="steps-step-2">
                         <a href="#step-2" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top"
                             title="Información sobre los ciclos">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <i class="fa fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                     </div>
 
@@ -126,7 +127,7 @@
                     <div class="steps-step-2">
                         <a href="#step-4" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top"
                             title="Relacionar cursos">
-                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                            <i class="fa fa-check" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -142,7 +143,7 @@
 
                         <div class="form-group">
                             <label class="font-weight-bold" for="facultad">Facultad</label>
-                            <select name="facultad" id="facultad" class="mdb-select" onchange="cargarEscuelas();" searchable="Buscar">
+                            <select name="facultad" id="facultad" class="mdb-select" searchable="Buscar">
                                 <option value="" selected="selected">   Seleccione una Facultad ...  </option>
                                 <option value="fisi">   Facultad de Ingeniería de Sistemas e Informática</option>
                                 <option value="fiee">   Facultad de Ingeniería Eléctrica y electrónica</option>
@@ -153,7 +154,6 @@
                             <label class="font-weight-bold" for="escuela">Escuela</label>
 
                             <select name="escuela" id="escuela" class="mdb-select" searchable="Buscar">
-                                <option value="" selected="selected">   Seleccione una Escuela ... </option>
                             </select>
                         </div>
                         <button class="btn indigo nextBtn-2 float-right" type="button">Siguiente</button>
@@ -175,15 +175,15 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-2 form-check">
-                                    <input type="checkbox" id="checkboxA" class="form-check-input"></input>
+                                    <input type="radio" id="radio100" name="radio100" class="form-check-input" value="6"></input>
 
-                                    <label for="checkboxA" class="form-check-label">Anual</label>
+                                    <label for="radio100" class="form-check-label">Anual</label>
                                 </div>
 
                                 <div class="col-md-2 form-check">
-                                    <input type="checkbox" id="checkboxS" class="form-check-input"></input>
+                                    <input type="radio" id="radio101" name="radio100" class="form-check-input" value="10"></input>
 
-                                    <label for="checkboxS" class="form-check-label">Semestral</label>
+                                    <label for="radio101" class="form-check-label">Semestral</label>
                                 </div>
                             </div>
                         </div>
@@ -193,17 +193,8 @@
                         <label class="font-weight-bold">Número de ciclos</label>
 
                         <div class="col-md-3">
-                            <select name="curso" id="nro_cursos" class="mdb-select">
-                                <option value="nro_cursos" selected="selected">1</option>
-                                <option value="nro_cursos" selected="selected">2</option>
-                                <option value="nro_cursos" selected="selected">3</option>
-                                <option value="nro_cursos" selected="selected">4</option>
-                                <option value="nro_cursos" selected="selected">5</option>
-                                <option value="nro_cursos" selected="selected">6</option>
-                                <option value="nro_cursos" selected="selected">7</option>
-                                <option value="nro_cursos" selected="selected">8</option>
-                                <option value="nro_cursos" selected="selected">9</option>
-                                <option value="nro_cursos" selected="selected">10</option>
+                            <select name="ciclo" id="ciclo" class="mdb-select">
+
                             </select>
                         </div>
                         <div class="col-md-3"></div>
@@ -994,6 +985,7 @@
                                         </div>
                                     </div>
 
+
                                     <div class="form-group">
                                         <a href="#" class="accordion-titulo">Ciclo 5
                                             <span class="toggle-icon"></span>
@@ -1054,6 +1046,7 @@
                                                                 <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
                                                                 <input id="nombre" type="text" required="required" class="form-control validate">
                                                             </div>
+
 
                                                             <div class="form-group md-form">
                                                                 <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
@@ -1399,7 +1392,42 @@
     <script th:src="@{/js/wizard.js}"></script>
     <script th:inline="javascript">
         $(function () {
+            var escuelas = {
+                "fisi":[
+                    "Ingenieria de Sistemas",
+                    "Ingenieria de Software"
+                ],
+                "fiee": [
+                    "Ingenieria Electrica",
+                    "Ingenieria Electronica",
+                    "Ingenieria de Telecomunicaciones"
+                ]
+            };
+            var selectEscuela = $("#escuela");
+            var selectFacultad = $("#facultad");
+            selectFacultad.change(() => {
+                let opciones = escuelas[selectFacultad.val()].map((e, i) => `<option value="${i}">${e}</option>`).join("");
+                selectEscuela.html(opciones);
+                selectEscuela.material_select();
+            });
 
+            $("input[name='radio100']").click(()=>{
+                let opciones = generarNumeros(parseInt($(this).val()));
+                console.log(opciones, $(this).val());
+                $("#ciclo").html(opciones);
+                $("#ciclo").material_select();
+            });
+
+            function generarNumeros(cantidad) {
+                let opciones = "";
+
+                for(let i = 1; i <= cantidad; i++) {
+                    opciones += `<option value="${i}">${i}</option>`;
+                }
+
+                return opciones;
+
+            }
             $(".mdb-select").material_select();
             $(".accordion-titulo").click(function (e) {
                 e.preventDefault();
@@ -1416,77 +1444,7 @@
 
         });
 
-        $("#checkboxA").click(function() {
-            // Si esta seleccionado (si la propiedad checked es igual a true)
-            if ($(this).prop('checked')) {
-                // Selecciona cada input que tenga la clase .checar
-                $('.checkboxS').prop('checked', false);
-            }
-        });
-        $("#checkboxS").click(function() {
-            // Si esta seleccionado (si la propiedad checked es igual a true)
-            if ($(this).prop('checked')) {
-                // Selecciona cada input que tenga la clase .checar
-                $('.checkboxA').prop('checked', false);
-            }
-        });
-
-        /*function cargarFacultades() {
-            var array = [
-                "Facultad de Ingeniería de Sistemas e Informática",
-                "Facultad de Ciencias Matemáticas",
-                "Facultad de Ingeniería Electrica y Electrónica",
-                "Facultad de Ciencias Físicas",
-                "Facultad de Inmgeniería Industrial"
-            ];
-            array.sort();
-            addOptions("facultad", array);
-        }
-        //Función para agregar opciones al <select>
-        function addOptions(domElement, array) {
-            var selector = document.getElementsByName(domElement)[0];
-            for (facultad) {
-                var opcion = document.createElement("option");
-                opcion.text = array[facultad];
-                // Añadimos un value a los option para hacer mas facil escoger los escuelas
-                opcion.value = array[facultad].toLowerCase()
-                selector.add(opcion);
-            }
-        }*/
-
-        function cargarEscuelas() {
-            // Objeto de facultades con escuelas
-            var listaEscuelas = {
-                fisi: ["Ingenieía de Sistemas","Ingeniería de Software"],
-                fiee: ["asda","asdasd"]
-            }
-
-            var facultades = document.getElementById('facultad')
-            var escuelas = document.getElementById('escuela')
-            var facultadSeleccionada = facultades.value
-
-            // Se limpian las facultades
-            escuelas.innerHTML = '<option value="">Seleccione una Facultad...</option>'
-
-            if (facultadSeleccionada !== '') {
-                // Se seleccionan los escuelas y se ordenan
-                facultadSeleccionada = listaEscuelas[facultadSeleccionada]
-                //facultadSeleccionada.sort()
-
-                // Insertamos los escuelas
-                facultadSeleccionada.forEach(function (escuela) {
-                    let opcion = document.createElement('option')
-                    opcion.value = escuela
-                    opcion.text = escuela
-                    escuelas.add(opcion)
-                });
-            }
-
-        }
-
-        // Iniciar la carga de Facultades solo para comprobar que funciona
-        //cargarFacultades();
-
+       
     </script>
 </body>
 

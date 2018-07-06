@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +14,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.guis.decademy.constants.ViewConstants;
+import com.guis.decademy.entity.Usuario;
 
 @Controller
 @RequestMapping("/cursos")
 public class CursosController {
+	
+	@Autowired
+	@Qualifier("usuarioActual")
+	private Usuario usuarioActual;
 	
 	private static final Log LOG  = LogFactory.getLog(CursosController.class);
 		
@@ -24,11 +31,12 @@ public class CursosController {
 		cursos.put("ia", "Inteligencia Artificial");
 		cursos.put("algo3", "Algoritmica 3");
 		cursos.put("so", "Sistemas Operativos");
-		cursos.put("bd3", "Bases de Datos 3");
+		cursos.put("bd2", "Bases de Datos 2");
 	}
 	@GetMapping("")
-	public String index () {
+	public String index (Model model) {
 		LOG.info("[/cursos] - METHOD [index] -- Entrando al método ");
+		model.addAttribute("loginUsuario", usuarioActual);
 		return ViewConstants.CURSOS_INDEX;
 	}
 	
@@ -37,7 +45,7 @@ public class CursosController {
 		
 		LOG.info("[/cursos] - METHOD [detalle] -- Entrando al método ");
 		LOG.info("[/cursos] - METHOD [detalle] -- idCurso" +  idCurso);
-		
+		model.addAttribute("loginUsuario", usuarioActual);
 		model.addAttribute("curso", cursos.get(idCurso));
 		return ViewConstants.CURSOS_DETALLE;
 	}
