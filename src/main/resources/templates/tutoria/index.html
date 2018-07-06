@@ -227,6 +227,9 @@
         $('#calendar').fullCalendar({
             locale: 'es',
             aspectRatio: 1.57,
+            dayClick: function() {
+				alert('clicked');            	
+            },
             eventSources : [
                 {
                 events: [

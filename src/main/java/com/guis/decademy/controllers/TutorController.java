@@ -42,12 +42,8 @@ public class TutorController {
 		LOG.info("[/cursos] - METHOD [detalle] -- idCurso" +  idCurso);
 		
 		model.addAttribute("curso", misCursos.get(idCurso));
+		
 		return ViewConstants.CURSOS_ADMINISTRAR;
 	}
-	
-	
-	
-	
-	
 	
 }

@@ -30,7 +30,6 @@ public class HomeController {
 	@Qualifier("usuarioActual")
 	private Usuario usuarioActual;
 	
-	
 	@Autowired
 	@Qualifier("usuarios")
 	private List<Usuario> usuarios;
