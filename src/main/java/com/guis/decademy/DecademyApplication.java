@@ -43,11 +43,12 @@ public class DecademyApplication {
 				.addProfesores(new Profesor("santiago.moquillaza", "Santiago", "Moquillaza", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/MoquillazaSantiago.jpg",TipoUsuario.TIPO_TUTOR))
 				.addProfesores(new Profesor("jorge.chavez", "Jorge", "Chavez", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/Jorge_Chavez.jpg",TipoUsuario.TIPO_TUTOR)));
 		
-		cursos.add(new Curso("ia", "Sistemas Operativos","En este curso aprenderemos los conceptos básicos asociados a la Inteligencia Artificial, las escuelas predominantes en esta área. Así como distintos algoritmos para la generación de la inteligencia en el computador", "sistemas_operativos.png")
+		cursos.add(new Curso("ia", "Inteligencia Artificial","En este curso aprenderemos los conceptos básicos asociados a la Inteligencia Artificial, las escuelas predominantes en esta área. Así como distintos algoritmos para la generación de la inteligencia en el computador", "sistemas_operativos.png")
 				.addProfesores(new Profesor("victor.bustamante", "Victor", "Bustamante", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/Bustamante_Victor.jpg",TipoUsuario.TIPO_TUTOR))
 				.addProfesores(new Profesor("ricardo.gareca", "Ricardo", "Gareca", "/img/ricardo.jpg",TipoUsuario.TIPO_TUTOR))
 				.addProfesores(new Profesor("jorge.chavez", "Jorge", "Chavez", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/Jorge_Chavez.jpg",TipoUsuario.TIPO_TUTOR)));
-		cursos.add(new Curso("so", "Inteligencia Artificial", "Conocerás como se estructura un Sistema Operativo, la forma como trabaja internamente el sistema operativo la gestión de los procesos. Daremos un vistazo a los SO predominantes en el mercado actualmente", "inteligencia_artificial.png")
+		
+		cursos.add(new Curso("so", "Sistemas Operativos", "Conocerás como se estructura un Sistema Operativo, la forma como trabaja internamente el sistema operativo la gestión de los procesos. Daremos un vistazo a los SO predominantes en el mercado actualmente", "inteligencia_artificial.png")
 				.addProfesores(new Profesor("victor.bustamante", "Victor", "Bustamante", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/Bustamante_Victor.jpg",TipoUsuario.TIPO_TUTOR))
 				.addProfesores(new Profesor("jorge.diaz", "Jorge", "Diaz Muñante", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/Diaz_Jorge.jpg",TipoUsuario.TIPO_TUTOR))
 				.addProfesores(new Profesor("jorge.chavez", "Jorge", "Chavez", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/Jorge_Chavez.jpg",TipoUsuario.TIPO_TUTOR)));

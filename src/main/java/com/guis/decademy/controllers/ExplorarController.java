@@ -36,6 +36,7 @@ public class ExplorarController {
 	public String cursos(Model model) {
 		model.addAttribute("loginUsuario", usuarioActual);
 		model.addAttribute("cursos", cursos);
+		model.addAttribute("tipo", "A");
 		LOG.info("[cursos]: Pagina devuelta => /explorar/cursos");
 		return ViewConstants.EXPLORAR_CURSOS;
 	}
@@ -50,6 +51,7 @@ public class ExplorarController {
 		model.addAttribute("loginUsuario", usuarioActual);
 		model.addAttribute("idCurso", idCurso);
 		model.addAttribute("curso", curso);
+		model.addAttribute("tipo", "A");
 		
 		LOG.info("[cursos]: Pagina devuelta => /explorar/cursos");
 		return ViewConstants.EXPLORAR_PROFESORES;
@@ -70,6 +72,8 @@ public class ExplorarController {
 		model.addAttribute("curso", curso);
 		model.addAttribute("profesor", String.format("%s %s", profesor.getNombres(), profesor.getApellidos()));
 		model.addAttribute("loginUsuario", usuarioActual);
+		model.addAttribute("tipo", "A");
+		
 		LOG.info("[cursos]: Pagina devuelta => /explorar/cursos");
 		return ViewConstants.EXPLORAR_HORARIO;
 	}

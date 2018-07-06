@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:include="/fragments/head :: headFragment('Profesores')">
+<head th:include="/fragments/head :: headFragment('Tutores')">
 </head>
 <body class="fixed-sn">
-	<header th:include="/fragments/navbar :: navbar('Profesores')"></header>
+	<header th:include="/fragments/navbar :: navbar('Tutores')"></header>
    <main>
    <div class="container-fluid text-justify">
       <div class="row">
@@ -26,7 +26,7 @@
       <div class="col-md-12 mb-5">
          <h5 class="mb-3">
             <i class="fa fa-graduation-cap  mr-2"></i>
-            Profesores
+            Tutores
          </h5>
          <div class="card-deck">
             <div th:each="p : ${curso.profesores}" class="card testimonial-card">

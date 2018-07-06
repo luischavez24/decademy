@@ -13,7 +13,7 @@
                 <!-- Logo -->
                 <li>
                     <div class="logo-wrapper waves-light waves-effect waves-light">
-                        <a th:href="@{/inicio}">
+                        <a th:href="@{/}">
                             <img th:src="@{/img/img-logo.png}" class="img-fluid flex-center">
                         </a>
                     </div>
@@ -34,19 +34,19 @@
                         </li>
                         <li>
                             <a class="collapsible-header waves-effect arrow-r">
-                                <i class="fa fa-search"></i> Explorar
+                                <i class="fa fa-chalkboard-teacher"></i> Inscribirse!
                                 <i class="fa fa-angle-down rotate-icon"></i>
                             </a>
                             <div class="collapsible-body">
                                 <ul class="list-unstyled">
                                     <li>
                                         <a th:href="@{/explorar/cursos}" class="waves-effect">
-                                            <i class="fa fa-book"></i>Cursos
+                                            <i class="fa fa-book"></i>En un curso
                                         </a>
                                     </li>
                                     <li>
                                         <a th:href="@{/explorar/tutores}" class="waves-effect">
-                                            <i class="fa fa-graduation-cap"></i>Tutores
+                                            <i class="fa fa-graduation-cap"></i>Como tutor
                                         </a>
                                     </li>
                                 </ul>
@@ -82,34 +82,30 @@
                         <i class="fa fa-bell"></i>
                     </a>
                     <div class="dropdown-menu dropdown-default dropdown-menu-right" style="width: 400px;">
-                        <a class="dropdown-item-text" href="#">
+                        <a class="dropdown-item-text" th:href="@{/notificaciones}">
                             <h5 class="p-0">
                                 <i class="fa fa-flag"></i> Tarea</h5>
                             Se ha subido una nueva tarea a Algoritmica 3
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item-text" href="#">
+                        <a class="dropdown-item-text" th:href="@{/notificaciones}">
                             <h5 class="p-0">
                                 <i class="fa fa-flag"></i> Tarea</h5>
                             Se ha subido una nueva tarea a Interfaz Hombre Computador
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item-text" href="#">
+                        <a class="dropdown-item-text" th:href="@{/notificaciones}">
                             <h5 class="p-0">
                                 <i class="fa fa-flag"></i> Tarea</h5>
                             Se ha subido una nueva tarea a Patrones de Construccion de Sistemas
                         </a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-cog"></i>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}" role="button" aria-haspopup="true" aria-expanded="false">
+                    	Cerrar Sesión
+                        <i class="fa fa-sign-out-alt"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-default dropdown-menu-right">
-                        <a class="dropdown-item" href="#">
-                            <i class="fa fa-sign-out"></i> Cerrar Sesión
-                        </a>
-                    </div>
                 </li>
             </ul>
             <ul th:if="${notLogin != null}" class="nav navbar-nav nav-flex-icons ml-auto">

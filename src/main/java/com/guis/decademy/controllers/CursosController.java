@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.guis.decademy.constants.TipoUsuario;
 import com.guis.decademy.constants.ViewConstants;
 import com.guis.decademy.entity.Alumno;
 import com.guis.decademy.entity.ResultadoExamen;
@@ -31,7 +32,6 @@ public class CursosController {
 	@Qualifier("usuarioActual")
 	private Usuario usuarioActual;
 	
-	
 	@Autowired
 	@Qualifier("usuarios")
 	private List<Usuario> usuarios;
@@ -39,18 +39,21 @@ public class CursosController {
 	private static final Log LOG  = LogFactory.getLog(CursosController.class);
 		
 	private Map<String, String> cursos = new HashMap<>();
+	
 	public CursosController() {
 		cursos.put("ia", "Inteligencia Artificial");
 		cursos.put("algo3", "Algoritmica 3");
 		cursos.put("so", "Sistemas Operativos");
 		cursos.put("bd2", "Bases de Datos 2");
 	}
+	
 	@GetMapping("")
 	public String index (Model model,
 			@RequestParam(name="cursoInscrito", required=false) String cursoInscrito) {
 		LOG.info("[/cursos] - METHOD [index] -- Entrando al método ");
 		model.addAttribute("loginUsuario", usuarioActual);
 		model.addAttribute("cursoInscrito", cursoInscrito);
+		model.addAttribute("tipo", TipoUsuario.TIPO_ALUMNO);
 		return ViewConstants.CURSOS_INDEX;
 	}
 	
@@ -107,7 +110,7 @@ public class CursosController {
 		
 		model.addAttribute("promedio", promedio);
 		model.addAttribute("idTemaMinimo", idTemaMinimo);
-		
+		model.addAttribute("tipo", TipoUsuario.TIPO_ALUMNO);
 		
 		model.addAttribute("loginUsuario", usuarioActual);
 		model.addAttribute("curso", cursos.get(idCurso));

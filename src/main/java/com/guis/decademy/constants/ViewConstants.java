@@ -43,5 +43,7 @@ public interface ViewConstants {
 	public static final String PROGRESO_ALUMNO = "/progreso/alumno";
 	
 	public static final String PROFESOR_INDEX= "/tutoria/index";
+	
+	public static final String NOTIFICACIONES = "/notificaciones/index";
 
 }

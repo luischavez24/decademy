@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="/fragments/head :: headFragment('Notificaciones')">
+</head>
+<body class="fixed-sn">
+	<header th:include="/fragments/navbar :: navbar('Mis Notificaciones')"></header>
+	<main>
+	<div class="col-md-12 mb-5">
+                        <header class="text-center">
+                            <h5>
+                                <i class="fa fa-flag"></i>
+                                Últimas noticias
+                            </h5>
+                        </header>
+                        <div class="list-group list-group-flush">
+                            <a href="sesion_virtual.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Algorítmica 3</h5>
+                                    <small>Hace 3 días</small>
+                                </div>
+                                <p class="mb-1">
+                                    Se subió un nuevo reto para el curso, puedes verificarlo en la pestaña 'Retos'
+                                </p>
+                                <small>
+                                    <i class="fa fa-check"></i>
+                                    Visto por todos
+                                </small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Interfaz Hombre Computador</h5>
+                                    <small>Hace 4 días</small>
+                                </div>
+                                <p class="mb-1">
+                                    Se subió un nuevo reto para el curso, puedes verificarlo en la pestaña 'Retos'
+                                </p>
+                                
+                                <small>
+                                    <i class="fa fa-eye"></i>
+                                    Visto por 15
+                                </small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Base de Datos 3</h5>
+                                    <small>Hace 5 días</small>
+                                </div>
+                                <p class="mb-1">
+                                    Se subió un nuevo reto para el curso, puedes verificarlo en la pestaña 'Retos'
+                                </p>
+                                <small>
+                                    <i class="fa fa-eye"></i>    
+                                    Visto por 10
+                                </small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Inteligencia Artificial</h5>
+                                    <small>Hace 6 días</small>
+                                </div>
+                                <p class="mb-1">
+                                    Se subió un nuevo reto para el curso, puedes verificarlo en la pestaña 'Retos'
+                                </p>
+                                <small>
+                                    <i class="fa fa-eye"></i>
+                                    Visto por 10
+                                </small>
+                            </a>
+                        </div>
+                    </div>
+	</main>
+	<div th:include="/fragments/head :: finalSection"></div>
+	<div th:include="/fragments/head :: scripts"></div>
+</body>
+</html>

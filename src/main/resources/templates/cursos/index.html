@@ -39,7 +39,7 @@
                                                                         Algoritmica 3
                                                                     </h5>
                                                                     <h3 class="card-title pt-2">
-                                                                        <strong>Próxima clase: Viernes 15 de Junio, 3 pm</strong>
+                                                                        <strong>Próxima clase: Domingo 15 de Julio, 3 pm</strong>
                                                                     </h3>
                                                                     <p>
                                                                         <dl>
@@ -77,7 +77,7 @@
                                                                         Inteligencia Artificial
                                                                     </h5>
                                                                     <h3 class="card-title pt-2">
-                                                                        <strong>Próxima clase: Jueves 14 de Junio, 5 pm</strong>
+                                                                        <strong>Próxima clase: Lunes 16 de Julio, 5 pm</strong>
                                                                     </h3>
                                                                     <p>
                                                                         <dl>
@@ -118,10 +118,10 @@
                                                             <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                                                 <div class="ml-5">
                                                                     <h5 class="teal-text font-weight-bold">
-                                                                        Base de Datos II
+                                                                        Base de Datos III
                                                                     </h5>
                                                                     <h3 class="card-title pt-2">
-                                                                        <strong>Próxima clase: Jueves 05 de Julio, 3 pm</strong>
+                                                                        <strong>Próxima clase: Domingo 05 de Agosto, 3 pm</strong>
                                                                     </h3>
                                                                     <p>
                                                                         <dl>
@@ -129,13 +129,13 @@
                                                                                 <strong>¿Que tema desarrollaremos?</strong>
                                                                             </dt>
                                                                             <dd>
-                                                                                <h4>Triggers</h4>
+                                                                                <h4>Data Warehouse</h4>
                                                                             </dd>
                                                                             <dt>
                                                                                 <strong>¿Qué veremos en este tema?</strong>
                                                                             </dt>
                                                                             <dd>
-                                                                                <h4>La creacion y ejecución de triggers</h4>
+                                                                                <h4>Creación de modelos estrellas.</h4>
                                                                             </dd>
                                                                             <dt>
                                                                                 <strong>¿Qué dificultad tiene?</strong>
@@ -144,7 +144,7 @@
                                                                                 <h4>Media</h4>
                                                                             </dd>
                                                                         </dl>
-                                                                    <a class="btn btn-teal " th:href="@{/cursos/bd2}" disabled>
+                                                                    <a class="btn btn-teal " th:href="@{/cursos/bd3}" disabled>
                                                                         <i class="fa fa-play left"></i> Ir a la clase</a>
                                                                 </div>
                                                             </div>
@@ -159,7 +159,7 @@
                                                                         Investigación Operativa
                                                                     </h5>
                                                                     <h3 class="card-title pt-2">
-                                                                        <strong>Próxima clase: Miercoles 11 de Julio, 5 pm</strong>
+                                                                        <strong>Próxima clase: Sábado 11 de Agosto, 5 pm</strong>
                                                                     </h3>
                                                                     <p>
                                                                         <dl>
@@ -224,20 +224,23 @@
     $(() => {
         var cursoInscrito = /*[[${cursoInscrito}]]*/ ""
         console.log(cursoInscrito);
-        if(cursoInscrito != "") {
+        if(cursoInscrito != null) {
             toastr.info("Felicidades! Te incribiste al curso de " + cursoInscrito);
         }
         // Inicializar calendar
         $('#calendar').fullCalendar({
             locale: 'es',
             aspectRatio: 1.57,
+            dayClick: function() {
+				;            	
+            },
             eventSources : [
                 {
                 events: [
-                    { title: "Algoritmica 3", start: "2018-05-24",},
-                    { title: "Interfaz Hombre Computador", start: "2018-05-25" },
-                    { title: "Base de Datos 3",  start: "2018-05-28" },
-                    { title: "Inteligencia Artificial",  start: "2018-05-29" }
+                    { title: "Algoritmica 3", start: "2018-07-15",},
+                    { title: "Investigacion Operativa", start: "2018-08-11" },
+                    { title: "Base de Datos 3",  start: "2018-08-05" },
+                    { title: "Inteligencia Artificial",  start: "2018-07-16" }
                 ],
                 color: "#435189",
                 textColor: "white"

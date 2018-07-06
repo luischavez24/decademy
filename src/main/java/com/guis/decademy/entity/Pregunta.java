@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pregunta {
+	
 	private String pregunta;
 	private List<String> opciones;
 	private int respuesta;
