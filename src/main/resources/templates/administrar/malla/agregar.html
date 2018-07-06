@@ -2,97 +2,97 @@
 <html lang="en">
 
 <head th:include="/fragments/head :: headFragment('Agregar Malla Curricular')"></head>
+<style>
+   input[type="file"] {
+         margin: 0 0 15px;
+         padding: 10px 1%;
+
+         -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+         border-radius: 3px;
+   }
+
+   .principal {
+         width: 80%;
+         margin: 0 auto;
+         padding: 3% 0 6% 0;
+         clear: both;
+   }
+
+   .barra {
+         background-color: #f3f3f3;
+         border-radius: 5px;
+         box-shadow: inset 0px 0px 5px rgba(0, 0, 0, .2);
+         height: 25px;
+   }
+
+   .cancel {
+         background: #ed1f3c !important;
+   }
+
+
+   .barra_azul {
+         background-color: #247CC0;
+         border-radius: 10px;
+         display: block;
+         height: 25px;
+         line-height: 25px;
+         text-align: center;
+         width: 0%;
+   }
+
+   .barra_verde {
+         background-color: #2EA265 !important;
+   }
+
+   .barra_roja {
+         background-color: #DE3152 !important;
+   }
+
+   #form_subir {
+         margin: 1.5% 0;
+         padding: 2%;
+   }
+
+   #barra_estado span {
+         color: #fff;
+         font-weight: bold;
+         line-height: 25px;
+   }
+
+   .accordion.accordion-5 .card {
+         border: 0;
+         background-color: transparent;
+   }
+
+   .accordion.accordion-5 .card .card-header {
+      border: 0;
+      /*background-color: #4341b8;*/
+      background-color: #4db6ac;
+      -webkit-transition: .3s;
+      transition: .3s;
+   }
+
+   .accordion.accordion-5 .card .card-header:hover {
+      -webkit-transition: .3s;
+      transition: .3s;
+      background-color: #3a7c76;
+   }
+
+   .accordion.accordion-5 .card .card-header .fa {
+      background-color: #fff;
+      border-top-left-radius: 3px;
+   }
+
+   .accordion.accordion-5 .card .card-body {
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+   }
+</style>
 
 <body class="fixed-sn">
 
-      <style>
-            input[type="file"] {
-                  margin: 0 0 15px;
-                  padding: 10px 1%;
-
-                  -webkit-border-radius: 3px;
-                  -moz-border-radius: 3px;
-                  border-radius: 3px;
-            }
-
-            .principal {
-                  width: 80%;
-                  margin: 0 auto;
-                  padding: 3% 0 6% 0;
-                  clear: both;
-            }
-
-            .barra {
-                  background-color: #f3f3f3;
-                  border-radius: 5px;
-                  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, .2);
-                  height: 25px;
-            }
-
-            .cancel {
-                  background: #ed1f3c !important;
-            }
-
-
-            .barra_azul {
-                  background-color: #247CC0;
-                  border-radius: 10px;
-                  display: block;
-                  height: 25px;
-                  line-height: 25px;
-                  text-align: center;
-                  width: 0%;
-            }
-
-            .barra_verde {
-                  background-color: #2EA265 !important;
-            }
-
-            .barra_roja {
-                  background-color: #DE3152 !important;
-            }
-
-            #form_subir {
-                  margin: 1.5% 0;
-                  padding: 2%;
-            }
-
-            #barra_estado span {
-                  color: #fff;
-                  font-weight: bold;
-                  line-height: 25px;
-            }
-
-            .accordion.accordion-5 .card {
-                  border: 0;
-                  background-color: transparent;
-            }
-
-            .accordion.accordion-5 .card .card-header {
-                  border: 0;
-                  /*background-color: #4341b8;*/
-                  background-color: #4db6ac;
-                  -webkit-transition: .3s;
-                  transition: .3s;
-            }
-
-            .accordion.accordion-5 .card .card-header:hover {
-                  -webkit-transition: .3s;
-                  transition: .3s;
-                  background-color: #3a7c76;
-            }
-
-            .accordion.accordion-5 .card .card-header .fa {
-                  background-color: #fff;
-                  border-top-left-radius: 3px;
-            }
-
-            .accordion.accordion-5 .card .card-body {
-                  border-bottom-right-radius: 3px;
-                  border-bottom-left-radius: 3px;
-            }
-      </style>
-
+     
       <link rel="stylesheet" th:href="@{/css/wizard.css}"></link>
 
       <header th:include="/fragments/navbar :: navbar('Agregar Malla Curricular')"></header>
@@ -208,13 +208,6 @@
                                     </div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-3"></div>
-                                    <!--
-                              <div class="form-group md-form">
-                                    <label for="yourEmail-2" data-error="wrong" data-success="right">Ciclos</label>
-
-                                    <input id="yourEmail-2" type="text" required="required" class="form-control validate"></input>
-                              </div>
-                              -->
                                     <button class="btn indigo lighten-2 nextBtn-2 float-left waves-effect waves-light" type="button">Anterior</button>
                                     <button class="btn indigo lighten-2 nextBtn-2 float-right waves-effect waves-light" type="button">Siguiente</button>
                               </div>

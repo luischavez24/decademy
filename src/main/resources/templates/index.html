@@ -1,153 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+<head th:include="/fragments/head :: headFragment('Decademy')"></head>
+<style>
+	body {
+		height: 100%;
+		background-size: cover;
+		background: url("img/fondo.png") no-repeat center fixed;
+	}
 
-<head th:include="/fragments/head :: headFragment('Decademy')">
-</head>
-
+</style>
 <body class="fixed-sn">
-    <style>
-        body {
-            height: 100%;
-            background-size: cover;
-            background: url("img/fondo.png") no-repeat center center fixed;
-        }
-    </style>
 
-    <header th:include="/fragments/navbar :: navbar('')"></header>
 
-    <main class="h-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8 m-auto">
-                    <header class="m-auto">
-                        <img class="img-fluid" src="img/logo_decademy.png" alt="logo">
-                    </header>
-                </div>
-                <div class="col-md-8 m-auto text-center text-white">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <h4 class="shadow">
-                                    Una plataforma donde podrás encontrar tutorias personales y en linea, para que puedas mejor tus calificaciones o reforzar
-                                    los cursos que ya llevaste en la universidad. Tus tutores pueden ser tanto alumnos como
-                                    profesores y estarán ahí para ayudarte.
-                                </h4>
-                            </div>
-                            <div class="col-12 mb-5">
-                                <button class="btn btn-orange btn-lg">
-                                    <i class="fa fa-book"></i>
-                                    Explora los cursos
-                                </button>
-                            </div>
-                            <div class="modal fade" id="modal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog cascading-modal" role="document">
-                                    <!--Content-->
-                                    <div class="modal-content">
+   <header th:include="/fragments/navbar :: navbar('')"></header>
 
-                                        <!--Modal cascading tabs-->
-                                        <div class="modal-c-tabs">
-
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs tabs-2 indigo darken-3" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" href="#panel_singin" role="tab">
-                                                        <i class="fa fa-user-check mr-1"></i> Ingresar</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#panel_singup" role="tab">
-                                                        <span><i class="fa fa-user-plus mr-1"></i> Registrarse</span></a>
-                                                </li>
-                                            </ul>
-
-                                            <!-- Tab panels -->
-                                            <div class="tab-content">
-                                                <!--Panel Sing In-->
-                                                <div class="tab-pane fade in show active" id="panel_singin" role="tabpanel">
-
-                                                    <!--Body-->
-                                                    <div class="modal-body mb-1">
-                                                        <div class="md-form form-sm mb-1">
-                                                            <i class="fa fa-user prefix"></i>
-                                                            <input type="text" id="input_user" class="form-control form-control-sm validate">
-                                                            <label data-error="wrong" data-success="right" for="input_user">Usuario</label>
-                                                        </div>
-
-                                                        <div class="md-form form-sm mb-4">
-                                                            <i class="fa fa-lock prefix"></i>
-                                                            <input type="password" id="input_password" class="form-control form-control-sm validate">
-                                                            <label data-error="wrong" data-success="right" for="input_password">Contraseña</label>
-                                                        </div>
-                                                        <div class="text-center mt-2">
-                                                            <a th:href="@{/cursos}"><button class="btn btn-indigo">Ingresar
-                                                                <i class="fa fa-sign-in ml-1"></i>
-                                                            </button></a>
-                                                        </div>
-                                                    </div>
-                                                    <!--Footer-->
-                                                    <div class="modal-footer">
-                                                        <div class="options text-center text-md-right mt-1">
-                                                            <p>Olvidaste tu
-                                                                <a href="#" class="blue-text"> contraseña?</a>
-                                                            </p>
-                                                        </div>
-                                                        <button type="button" class="btn btn-indigo waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
-                                                    </div>
-
-                                                </div>
-                                                <!--fin Panel Sing In-->
-
-                                                <!--Panel 8-->
-                                                <div class="tab-pane fade" id="panel_singup" role="tabpanel">
-
-                                                    <!--Body-->
-                                                    <div class="modal-body">
-                                                        <div class="md-form form-sm mb-5">
-                                                            <i class="fa fa-envelope prefix"></i>
-                                                            <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
-                                                            <label data-error="wrong" data-success="right" for="modalLRInput12">Correo</label>
-                                                        </div>
-
-                                                        <div class="md-form form-sm mb-5">
-                                                            <i class="fa fa-lock prefix"></i>
-                                                            <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
-                                                            <label data-error="wrong" data-success="right" for="modalLRInput13">Ingresa una contraseña</label>
-                                                        </div>
-
-                                                        <div class="md-form form-sm mb-4">
-                                                            <i class="fa fa-lock prefix"></i>
-                                                            <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-                                                            <label data-error="wrong" data-success="right" for="modalLRInput14">Vuelva a ingresar su contraseña</label>
-                                                        </div>
-
-                                                        <div class="text-center form-sm mt-2">
-                                                            <a th:href="@{/cursos}"><button class="btn btn-indigo">Registrase
-                                                                <i class="fa fa-sign-in ml-1"></i>
-                                                            </button></a>
-                                                        </div>
-
-                                                    </div>
-                                                    <!--Footer-->
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-indigo waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
-                                                    </div>
-                                                </div>
-                                                <!--/.Panel 8-->
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <!--/.Content-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+   <main class="h-100">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-md-8 m-auto">
+               <header class="m-auto">
+                  <img
+                     class="img-fluid"
+                     src="img/logo_decademy.png"
+                     alt="logo"
+                  >
+               </header>
             </div>
-        </div>
-    </main>
-    <div th:include="/fragments/head :: finalSection"></div>
-    <div th:include="/fragments/head :: scripts"></div>
-</body>
 
+            <div class="col-md-8 m-auto text-center text-white">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-12 mb-3">
+                        <h4 class="shadow">
+                           Una plataforma donde podrás encontrar tutorias personales y en linea, para que puedas mejor tus calificaciones o reforzar
+                           los cursos que ya llevaste en la universidad. Tus tutores pueden ser tanto alumnos como
+                           profesores y estarán ahí para ayudarte.
+                        </h4>
+                     </div>
+
+                     <div class="col-12 mb-5">
+                        <button class="btn btn-orange btn-lg">
+                           <i class="fa fa-book"></i>
+                           Explora los cursos
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </main>
+
+	<div class="modal fade" id="modal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-notify modal-orange" role="document">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <p class="heading lead">Ingresar</p>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true" class="white-text">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body">
+	                <form th:action="@{/login}" method="POST" th:object="${usuario}">
+	                    <div class="text-center">
+	                        <i class="fa fa-user-check  fa-4x mb-3 animated rotateIn"></i>
+	                    </div>
+						<div class="md-form form-sm mb-1">
+		                  <i class="fa fa-user prefix"></i>
+		
+		                  <input type="text" th:field="*{username}"id="input_user" class="form-control form-control-sm validate input-orange"></input>
+		
+		                  <label for="input_user" >Usuario</label>
+		               	</div>
+		
+		               <div class="md-form form-sm mb-4">
+		                  <i class="fa fa-lock prefix"></i>
+		
+		                  <input
+		                     type="password"
+		                     id="input_password"
+		                     class="form-control form-control-sm validate input-orange"
+		                  ></input>
+		
+		                  <label for="input_password">Contraseña</label>
+		               </div>
+		
+		               <div class="text-center mt-2">
+		                 
+	                     <button type="submit" class="btn btn-orange">
+	                        <i class="fa fa-sign-in-alt ml-1"></i>
+	                        Ingresar
+	                     </button>
+		               </div>	                    
+	                </form>
+	            </div>
+	            <div class="modal-footer">
+	               <div class="options text-center text-md-right mt-1">
+	                  <p>
+	                     Olvidaste tu
+	
+	                     <a
+	                        href="#"
+	                        class="blue-text"
+	                     >contraseña?</a>
+	                  </p>
+	               </div>
+	            </div>	        
+	        </div>  
+	    </div>
+	</div>	
+
+   <div th:include="/fragments/head :: finalSection"></div>
+   <div th:include="/fragments/head :: scripts"></div>
+</body>
 </html>
