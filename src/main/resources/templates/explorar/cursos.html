@@ -22,21 +22,21 @@
 								</div>
 								<div class="col-md-6">
 									<div class="md-form mt-0">
-										<select class="mdb-select colorful-select dropdown-orange" searchable="Buscar area">
+										<select class="mdb-select colorful-select dropdown-orange" searchable="Buscar area" id="area" name="area">
 											<option value="1">Ingenierías</option>
-											<option value="2">Humanidaes</option>
+											<option value="2">Humanidades</option>
 											<option value="3">Ciencias Básicas</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="md-form mt-0">
-										<select class="mdb-select colorful-select dropdown-orange" searchable="Buscar carrera">
-											<option value="1">Ing. de Sistemas</option>
+										<select class="mdb-select" searchable="Buscar carrera" id="carrera" name="carrera">
+										<!--	<option value="1">Ing. de Sistemas</option>
 											<option value="2">Ciencias Físicas</option>
 											<option value="3">Educación</option>
 											<option value="4">Ciencias Economicas</option>
-											<option value="5">Ciencias Matemáticas</option>
+											<option value="5">Ciencias Matemáticas</option>-->
 										</select>						
 									</div>										
 								</div>
@@ -79,8 +79,33 @@
 	</main>
 	<div th:include="/fragments/head :: finalSection"></div>
 	<div th:include="/fragments/head :: scripts"></div>
-	<script>
-		$(() => {
+	<script th:inline="javascript">
+		$(function () {
+			var carreras = {
+                "1":[
+                    "Ingeniería de Sistemas",
+                    "Ingeniería Industrial",
+					"Ingeniería de Mecánica"
+                ],
+                "2": [
+                    "Ciencias Administrativas",
+                    "Ciencias Contables",
+                    "Ciencias Económicas"
+                ],
+				"3": [
+					"Biología",
+					"Física",
+					"Química"
+				]
+            };
+            var selectcarrera = $("#carrera");
+            var selectarea = $("#area");
+            selectarea.change(() => {
+                let opciones = carreras[selectarea.val()].map((e, i) => `<option value="${i}">${e}</option>`).join("");
+                selectcarrera.html(opciones);
+                selectcarrera.material_select();
+            });
+
 			$('.mdb-select').material_select();
 		});
 	</script>
