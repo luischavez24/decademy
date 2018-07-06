@@ -1447,12 +1447,8 @@
                         <h3 class="font-weight-bold pl-0 my-4">
                             <strong>Relacionar curhjhjhsos</strong>
                         </h3>
-                        <!-- Dibujar malla curricular -->
-                        <h2 class="text-center font-weight-bold my-4">
-                            <div id="mynetwork">
-                                hola
-                            </div>
-                        </h2>
+                        <div id="mynetwork" style="height: 500px;">
+                         </div>
                         <button class="btn indigo prevBtn-2 float-left" type="button">Anterior</button>
                         <button class="btn btn-success float-right" type="button">Terminar</button>
                        
@@ -1467,6 +1463,38 @@
     <script th:src="@{/js/wizard.js}"></script>
     <script th:inline="javascript">
         $(function () {
+        	
+            //grafo paso 4 :C
+            // create an array with nodes
+            console.log("pinta");
+            var nodes = [
+                {id: 1, label: 'Node 1'},
+                {id: 2, label: 'Node 2'},
+                {id: 3, label: 'Node 3'},
+                {id: 4, label: 'Node 4'},
+                {id: 5, label: 'Node 5'}
+            ];
+
+            // create an array with edges
+            var edges = [
+                {from: 1, to: 2},
+                {from: 1, to: 3},
+                {from: 2, to: 4},
+                {from: 2, to: 5}
+            ];
+
+            // create a network
+            var container = document.getElementById('mynetwork');
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+            var network = new vis.Network(container, data, {});
+            console.log("pinta2");
+        	
+        	
+        	
+        	
             $("#grabar1").click(function () { toastr.info("Registro guardado"); });
             $("#grabar2").click(function () { toastr.info("Registro guardado"); });
             $("#grabar3").click(function () { toastr.info("Registro guardado"); });
@@ -1525,33 +1553,7 @@
             });
         });
 
-        //grafo paso 4 :C
-        // create an array with nodes
-        console.log("pinta");
-        var nodes = [
-            {id: 1, label: 'Node 1'},
-            {id: 2, label: 'Node 2'},
-            {id: 3, label: 'Node 3'},
-            {id: 4, label: 'Node 4'},
-            {id: 5, label: 'Node 5'}
-        ];
 
-        // create an array with edges
-        var edges = [
-            {from: 1, to: 2},
-            {from: 1, to: 3},
-            {from: 2, to: 4},
-            {from: 2, to: 5}
-        ];
-
-        // create a network
-        var container = document.getElementById('mynetwork');
-        var data = {
-            nodes: nodes,
-            edges: edges
-        };
-        var network = new vis.Network(container, data, {});
-        console.log("pinta2");
 
     </script>
 </body>
