@@ -10,7 +10,7 @@
 }
 
 .vis-active {
-  box-shadow: 0 0 10px #86d5f8;
+  box-shadow: 0 0 10px #756cbe;
 }
 
 /* override some bootstrap styles screwing up the timelines css */
@@ -66,7 +66,7 @@ div.vis-configuration.vis-config-button{
 }
 
 div.vis-configuration.vis-config-button.hover{
-    background-color: #4588e6;
+    background-color: #574eaa;
     border:2px solid #214373;
     color:#ffffff;
 }
