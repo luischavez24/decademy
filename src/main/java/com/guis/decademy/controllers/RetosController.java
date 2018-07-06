@@ -3,10 +3,12 @@ package com.guis.decademy.controllers;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -99,18 +101,8 @@ public class RetosController {
 		// TODO: Mostrar el agente inteligente
 		// TODO: Mostrar las calificaciones por tema (al ultimo)
 		
-		Map<Integer, List<ResultadoExamen>> resultadosAnteriores = alumno.get().getResultados().stream()
-				.filter(r -> r.getIdCurso().equals(idCurso))
-				.collect(Collectors.groupingBy(ResultadoExamen::getIdTema));
-		
-		//final int promedio = 0;
-		resultadosAnteriores.forEach((tema, resultados) -> {
-			 resultados.stream()
-					.map(r -> r.getPorcentajeBuenas() * 20)
-					.min(Double::compareTo)
-					.get();
-		});
 
+		
 		ResultadoExamen resultado = new ResultadoExamen();
 		
 		Collections.shuffle(preguntas);
@@ -120,7 +112,6 @@ public class RetosController {
 		model.addAttribute("resultado", resultado);
 		model.addAttribute("preguntas", preguntas.stream().limit(3).collect(Collectors.toList()));
 		model.addAttribute("idCurso", idCurso);
-		model.addAttribute("resultadosAnteriores", resultadosAnteriores);
 		
 		LOG.info(preguntas);
 		return ViewConstants.RETOS_DETALLE;
