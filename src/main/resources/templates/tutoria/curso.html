@@ -57,6 +57,18 @@
                             Retos
                         </a>
                     </li>
+                    
+                    <li class="nav-item">
+                    	<a 
+                    		class="nav-link"
+                    		data-toggle="tab"
+                    		href="#alumnos"
+                    		role = "tab"
+                    	>
+                    		<i class="fa fa-user mr-2"></i>
+                    		Mis alumnos
+                    	</a>
+                    </li>
 
                     <li class="nav-item">
                         <a
@@ -342,6 +354,78 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!-- Alumnos -->
+                    <div class="tab-pane fade" id="alumnos" role="tabpanel">
+                    	<div class="card-deck">
+                        <!-- Card -->
+                        <div class="card testimonial-card">
+
+                            <!-- Bacground color -->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="avatar mx-auto white">
+                                <img th:src="@{/img/pedro.jpg}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!-- Name -->
+                                <h4 class="card-title">Pedro Romero</h4>
+                                <hr>
+                                <!-- Quotation -->
+                                <p>
+                                    Alumno de la carrera Ingeniería de Sistemas de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM</p>
+                                    
+                            </div>
+                        </div>
+                        <div class="card testimonial-card">
+
+                            <!-- Bacground color -->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="avatar mx-auto white">
+                                <img th:src="@{/img/pedro.jpg}" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!-- Name -->
+                                <h4 class="card-title">Luis Romero</h4>
+                                <hr>
+                                <!-- Quotation -->
+                                <p>
+                                    Alumno de la carrera Ingeniería Industrial de la Facultad de Ingeniería Industrial de la UNMSM</p>
+                                    
+                            </div>
+                        </div>
+                        <!-- Card -->
+                        <!-- Card -->
+                        <div class="card testimonial-card">
+
+                            <!-- Bacground color -->
+                            <div class="card-up indigo lighten-1">
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="avatar mx-auto white">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2810%29.jpg" class="rounded-circle">
+                            </div>
+
+                            <div class="card-body">
+                                <!-- Name -->
+                                <h4 class="card-title">Ana Romero</h4>
+                                <hr>
+                                <!-- Quotation -->
+                                <p>
+                                    Alumna de la carrera de Administración de la Facultad de Ciencias Administrativas de la UNMSM</p>
+      
+                            </div>
+                        </div>
+                        <!-- Card -->
+                    </div>
                     </div>
                     <!-- Información -->
                     <div class="tab-pane fade" id="info" role="tabpanel">
@@ -683,7 +767,7 @@
                     },
                     { 
                         titulo: "Horario",
-                        descripcion: "Todos los jueves a las 3 pm",
+                        descripcion: "Todos los lunes a las 3 pm",
                         icono: "fa fa-calendar-alt"
                     }
                 ],

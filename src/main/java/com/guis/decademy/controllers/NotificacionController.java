@@ -21,7 +21,7 @@ public class NotificacionController {
 	@GetMapping("")
 	public String index(Model model) {
 		model.addAttribute("loginUsuario", usuarioActual);
-		model.addAttribute("tipo", "T");
+		model.addAttribute("tipo", "A");
 		return ViewConstants.NOTIFICACIONES;
 	}
 	

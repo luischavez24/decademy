@@ -39,7 +39,7 @@ public class DecademyApplication {
 	public List<Curso> cursos() {
 		List<Curso> cursos = new ArrayList<>();
 		cursos.add(new Curso("algo3", "Algoritmica 3","Desarrollar algoritmos con la finalidad de fortalecer los conocimientos adquiridos, poniendo énfasis en la eficiencia algorítmica, y las habilidades de elaboración de soluciones algorítmicas a problemas basados en un conjunto de componentes que deben interactuar entre si.", "algoritmica.png")
-				.addProfesores(new Profesor("victor.bustamante", "Victor", "Bustamante", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/Bustamante_Victor.jpg",TipoUsuario.TIPO_TUTOR))
+				.addProfesores(new Profesor("ricardo.gareca", "Ricardo", "Gareca", "/img/ricardo.jpg",TipoUsuario.TIPO_TUTOR))
 				.addProfesores(new Profesor("santiago.moquillaza", "Santiago", "Moquillaza", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/MoquillazaSantiago.jpg",TipoUsuario.TIPO_TUTOR))
 				.addProfesores(new Profesor("jorge.chavez", "Jorge", "Chavez", "http://sistemas.unmsm.edu.pe/fisi/adjuntos/paginas/Jorge_Chavez.jpg",TipoUsuario.TIPO_TUTOR)));
 		
