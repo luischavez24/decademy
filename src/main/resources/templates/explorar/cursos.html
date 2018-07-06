@@ -9,99 +9,64 @@
 			<div class="row">
 				<div class="col-md-12">
 					<form>
-						<div class="form-inline form-sm md-form">
-							<i class="fa fa-search" aria-hidden="true"></i>
-							<input class="form-control ml-3 input-orange" style="width: 95%" type="text" placeholder="Buscar" aria-label="Buscar">
-						</div>
-						<div class="md-form">
-							<select class="mdb-select" searchable="Buscar">
-								<option value="1">Ingenierías</option>
-								<option value="2">Humanidaes</option>
-								<option value="3">Ciencias Básicas</option>
-							</select>
-						</div>
-						<div class="md-form">
-							<select class="mdb-select" searchable="Buscar">
-								<option value="1">Ing. de Sistemas</option>
-								<option value="2">Ciencias Físicas</option>
-								<option value="3">Educación</option>
-								<option value="4">Ciencias Economicas</option>
-								<option value="5">Ciencias Matemáticas</option>
-							</select>						
-						</div>						
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-12 mb-3">
+									<div class="form-inline form-sm md-form">
+										<i class="fa fa-search" aria-hidden="true"></i>
+										<input class="form-control ml-3 input-orange" style="width: 95%" type="text" placeholder="Ingrese el nombre del curso" aria-label="Buscar por el nombre del curso">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<h4>O filtrar por área y escuela profesional</h4>
+								</div>
+								<div class="col-md-6">
+									<div class="md-form mt-0">
+										<select class="mdb-select colorful-select dropdown-orange" searchable="Buscar area">
+											<option value="1">Ingenierías</option>
+											<option value="2">Humanidaes</option>
+											<option value="3">Ciencias Básicas</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="md-form mt-0">
+										<select class="mdb-select colorful-select dropdown-orange" searchable="Buscar carrera">
+											<option value="1">Ing. de Sistemas</option>
+											<option value="2">Ciencias Físicas</option>
+											<option value="3">Educación</option>
+											<option value="4">Ciencias Economicas</option>
+											<option value="5">Ciencias Matemáticas</option>
+										</select>						
+									</div>										
+								</div>
+							</div>
+						</div>					
 					</form>
 				</div>
 				<div class="col-md-12">
-					<div class="card-deck mb-5">
-						<div class="card mb-4 ml-4">
+					<div class="card-deck my-4">
+						<div th:each="c : ${cursos}" class="card mb-4 ml-4">
 							<!-- Card image -->
 							<div class="view overlay">
-								<img class="card-img-top mx-auto d-block" th:src="@{/img/algoritmica.png}" alt="Card image cap">
+								<img class="card-img-top mx-auto d-block" th:src="@{/img/__${c.perfil}__}" alt="Card image cap">
 							</div>
 							<!-- Card content -->
 							<div class="card-body">
 								<!-- Title -->
-								<h4 class="card-title text-center">Algorítmica 3</h4>
+								<h4 class="card-title text-center">
+									<span th:text="${c.nombre}"></span>
+								</h4>
 								<!-- Text -->
 								<p class="card-text">
-									Desarrollar algoritmos con la finalidad de fortalecer los conocimientos adquiridos, poniendo énfasis
-									en la eficiencia algorítmica, y las habilidades de elaboración de soluciones algorítmicas a problemas
-									basados en un conjunto de componentes que deben interactuar entre si.
+									<span th:text="${c.descripcion}"></span>
 								</p>
 								<p class="text-center">
 								<!-- Button -->
 							</div>
 							<div class="card-footer text-center">
-								<a th:href="@{/explorar/profesores/algo3}" class="btn btn-orange mt-1">
-									<i class="fa fa-info-circle"></i>
-									Ver Más
-								</a>
-							</div>
-						</div>
-						<div class="card mb-4">
-							<!-- Card image -->
-							<div class="view overlay">
-								<img class="card-img-top mx-auto d-block mb-2" th:src="@{/img/sistemas_operativos.png}" alt="Card image cap">
-							</div>
-							<!-- Card content -->
-							<div class="card-body">
-		
-								<!-- Title -->
-								<h4 class="card-title text-center">Sistemas Operativos</h4>
-								<!-- Text -->
-								<p class="card-text">
-									Conocerás como se estructura un Sistema Operativo, la forma como trabaja internamente el sistema
-									operativo la gestión de los procesos. Daremos un vistazo a los SO predominantes en el mercado
-									actualmente
-								</p>
-							</div>
-							<div class="card-footer text-center">
-								<a th:href="@{/explorar/profesores/so}" class="btn btn-orange mt-1">
-									<i class="fa fa-info-circle"></i>
-									Ver Más
-								</a>
-							</div>
-						</div>
-						<div class="card mb-4 mr-4">
-							<!-- Card image -->
-							<div class="view overlay">
-								<img class="card-img-top mx-auto d-block" th:src="@{/img/inteligencia_artificial.png}" alt="Card image cap">
-							</div>
-		
-							<!-- Card content -->
-							<div class="card-body">
-								<!-- Title -->
-								<h4 class="card-title text-center">Inteligencia Artificial</h4>
-								<!-- Text -->
-								<p class="card-text">
-									En este curso aprenderemos los conceptos básicos asociados a la Inteligencia Artificial, las escuelas
-									predominantes en esta área. Así como distintos algoritmos para la generación de la inteligencia
-									en el computador
-								</p>
-							</div>
-							<div class="card-footer text-center">
-								<a th:href="@{/explorar/profesores/algo3}" class="btn btn-orange mt-1">
-									<i class="fa fa-info-circle"></i>
+								<a th:href="@{/explorar/profesores/__${c.idCurso}__}" class="btn btn-orange mt-1">
+									<i class="fa fa-plus mr-2"></i>
 									Ver Más
 								</a>
 							</div>

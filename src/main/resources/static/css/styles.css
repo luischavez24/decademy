@@ -85,3 +85,16 @@ body {
   border-bottom: 1px solid #4db6ac !important;
   box-shadow: 0 1px 0 0 #4db6ac !important; 
 }
+
+.dropdown.dropdown-menu.dropdown-orange.dropdown-item:active,.dropdown .dropdown-menu.dropdown-orange .dropdown-item:hover{
+  background-color:#ef6c00!important
+}
+
+.dropdown-orange .dropdown-content li a,.dropdown-orange .dropdown-content li span:hover,.dropdown-orange .dropdown-content li.active{
+  background-color:#ef6c00!important
+}
+.dropdown-orange .search-wrap input:focus{
+  border-bottom:1px solid #ef6c00;
+  -webkit-box-shadow:0 1px 0 0 #ef6c00;
+  box-shadow:0 1px 0 0 #ef6c00
+}

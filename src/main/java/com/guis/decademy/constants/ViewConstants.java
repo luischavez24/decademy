@@ -9,6 +9,10 @@ public interface ViewConstants {
 	public static final String PERFIL_VIRTUAL = "/perfil/virtual";
 
 	public static final String EXPLORAR_CURSOS = "/explorar/cursos";
+	
+	public static final String EXPLORAR_PROFESORES = "/explorar/profesores";
+	
+	public static final String EXPLORAR_HORARIO = "/explorar/horario";
 
 	public static final String CURSOS_INDEX= "/cursos/index";
 	
