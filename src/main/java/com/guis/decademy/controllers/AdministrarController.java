@@ -33,4 +33,12 @@ public class AdministrarController {
 		
 		return ViewConstants.ADMINISTRAR_MALLA_AGREGAR;
 	}
+	
+	@GetMapping("/malla/")
+	public String malla (Model model) {
+		
+		model.addAttribute("loginUsuario", usuarioActual);
+		
+		return ViewConstants.ADMINISTRAR_MALLA;
+	}
 }

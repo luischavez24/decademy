@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:include="/fragments/head :: headFragment('Administrar Malla Curricular')"></head>
+
+<body class="fixed-sn">
+    <style>
+    </style>
+    <header th:include="/fragments/navbar :: navbar('Adminsitrar Malla Curricular')"></header>
+    <main id="app" class="container-fluid mx-auto">
+        <div class="container">
+            <div class="card card-cascade narrower panel-cascade">
+                <div class="view view-cascade py-3 primary-color-dark">
+
+                </div>
+                <div class="card-body card-body-cascade text-center">
+                    <div class="list-group mb-3">
+                        <a class="home-components-buttons" th:ref="@{/administrar/malla/agregar}">
+                            <span>Agregar Nueva Malla</span>
+                            <span>
+                                <i class="fa fa-chevron-circle-right ml-2"></i>
+                            </span>
+                        </a>
+                        <a class="home-components-buttons">
+                            <span>Editar Malla</span>
+                            <span>
+                                <i class="fa fa-chevron-circle-right ml-2"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
