@@ -11,27 +11,28 @@
 					<form>
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-md-12 mb-3">
+								<div class="col-md-12 mb-3 center">
+									<h4>Buscar Curso</h4> 
 									<div class="form-inline form-sm md-form">
 										<i class="fa fa-search" aria-hidden="true"></i>
 										<input class="form-control ml-3 input-orange" style="width: 95%" type="text" placeholder="Ingrese el nombre del curso" aria-label="Buscar por el nombre del curso">
+										
 									</div>
 								</div>
-								<div class="col-md-12">
-									<h4>O filtrar por área y escuela profesional</h4>
-								</div>
 								<div class="col-md-6">
+									<h4>Area</h4>
 									<div class="md-form mt-0">
 										<select class="mdb-select colorful-select dropdown-orange" searchable="Buscar area" id="area" name="area">
-											<option value="1">Ingenierías</option>
-											<option value="2">Humanidades</option>
-											<option value="3">Ciencias Básicas</option>
+											<option value="1">	Ingenierías</option>
+											<option value="2">	Humanidades</option>
+											<option value="3">	Ciencias Básicas</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-6">
+										<h4>Carrera</h4>
 									<div class="md-form mt-0">
-										<select class="mdb-select" searchable="Buscar carrera" id="carrera" name="carrera">
+										<select class="mdb-select colorful-select dropdown-orange" searchable="Buscar carrera" id="carrera" name="carrera">
 										<!--	<option value="1">Ing. de Sistemas</option>
 											<option value="2">Ciencias Físicas</option>
 											<option value="3">Educación</option>
@@ -101,7 +102,7 @@
             var selectcarrera = $("#carrera");
             var selectarea = $("#area");
             selectarea.change(() => {
-                let opciones = carreras[selectarea.val()].map((e, i) => `<option value="${i}">${e}</option>`).join("");
+                let opciones = carreras[selectarea.val()].map((e, i) => `<option value="${i}">	${e}</option>`).join("");
                 selectcarrera.html(opciones);
                 selectcarrera.material_select();
             });

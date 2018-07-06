@@ -8,8 +8,8 @@
       <div class="container-fluid text-center">
          <div class="row">
             <div class="card-body">
-               <h5 class="card-title display-4">Curso: <span th:text="${curso.nombre}"></span></h5>
-               <h3 class="card-subtitle mb-2 text-muted">
+               <h5 style="font-size: 2em;" class="card-title display-4">Curso: <span th:text="${curso.nombre}"></span></h5>
+               <h3 class="card-subtitle mb-2 text-muted" style="font-size: 1.5em;">
                   Profesor: <span th:text="${profesor}"></span>
                </h3>
                <a class="btn btn-orange mt-1" th:href="@{/cursos?cursoInscrito=__${curso.nombre}__}" > 
