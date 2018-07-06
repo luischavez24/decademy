@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="/fragments/head :: headFragment('Profesores')">
+</head>
+<body class="fixed-sn">
+	<header th:include="/fragments/navbar :: navbar('Profesores')"></header>
+   <main>
+   <div class="container-fluid text-justify">
+      <div class="row">
+         <header class="col-md-12 mb-3">
+            <center>
+               <h1 class="main-title display-5">
+                  <span th:text="${curso.nombre}"></span>
+               </h1>
+            </center>
+         </header>
+      <div class="col-md-12 mb-3">
+         <p class="card-text">
+            <h5 class="mb-3">
+               <i class="fa fa-list-alt mr-2"></i>
+               Descripción
+            </h5>
+            <span th:text="${curso.descripcion}"></span>
+         </p>
+      </div>
+      <div class="col-md-12 mb-5">
+         <h5 class="mb-3">
+            <i class="fa fa-graduation-cap  mr-2"></i>
+            Profesores
+         </h5>
+         <div class="card-deck">
+            <div th:each="p : ${curso.profesores}" class="card testimonial-card">
+               <!-- Bacground color -->
+               <div class="card-up indigo darken-3"></div>
+               <!-- Avatar -->
+               <div class="avatar mx-auto white">
+                  <img th:src="${p.perfil}" class="rounded-circle" width="100" height="130">
+               </div>
+               <div class="card-body">
+                  <!-- Name -->
+                  <h4 class="card-title">
+                     <span th:text="${p.nombres + ' ' + p.apellidos}"></span>
+                  </h4>
+                  <hr>
+                  <i class="fa fa-star text-warning"></i>
+                  <i class="fa fa-star text-warning"></i>
+                  <i class="fa fa-star text-warning"></i>
+                  <i class="fa fa-star text-warning"></i>
+                  <i class="fa fa-star "></i>
+                  <p class="card-text">Profesor de la UNMSM.</p>
+               </div>
+               <div class="card-footer text-center">
+                  <a th:href="@{/explorar/horario/__${idCurso}__/__${p.username}__}" class="btn btn-orange">
+                     <i class="fa fa-calendar mr-2"></i> Ver Horario
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+   </div>
+   </main>
+	<div th:include="/fragments/head :: finalSection"></div>
+	<div th:include="/fragments/head :: scripts"></div>
+	<script>
+		$(() => {
+			$('.mdb-select').material_select();
+		});
+	</script>
+</body>
+</html>

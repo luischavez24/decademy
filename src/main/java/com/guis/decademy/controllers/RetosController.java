@@ -3,9 +3,12 @@ package com.guis.decademy.controllers;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -98,12 +101,8 @@ public class RetosController {
 		// TODO: Mostrar el agente inteligente
 		// TODO: Mostrar las calificaciones por tema (al ultimo)
 		
-		List<ResultadoExamen> resultadosAnteriores = alumno.get().getResultados().stream()
-				.filter(r -> r.getIdCurso().equals(idCurso) && r.getIdTema() == idTema)
-				.sorted((r1, r2) -> r1.getFechaExamen().compareTo(r2.getFechaExamen()))
-				.limit(5)
-				.collect(Collectors.toList());
 
+		
 		ResultadoExamen resultado = new ResultadoExamen();
 		
 		Collections.shuffle(preguntas);
@@ -113,7 +112,6 @@ public class RetosController {
 		model.addAttribute("resultado", resultado);
 		model.addAttribute("preguntas", preguntas.stream().limit(3).collect(Collectors.toList()));
 		model.addAttribute("idCurso", idCurso);
-		model.addAttribute("resultadosAnteriores", resultadosAnteriores);
 		
 		LOG.info(preguntas);
 		return ViewConstants.RETOS_DETALLE;
@@ -124,7 +122,7 @@ public class RetosController {
 			@CookieValue("username") String username, 
 			@ModelAttribute("resultado") ResultadoExamen resultado) {
 		
-		resultado.setFechaExamen(LocalDate.now());
+		resultado.setFechaExamen(LocalDate.now());//todo eso
 		Optional<Alumno> alumno = usuarios.stream()
 				.filter(u -> {
 					if(u instanceof Alumno) {

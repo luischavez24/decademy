@@ -269,8 +269,22 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade p-4" id="panel6" role="tabpanel">
+                                                <div th:if="${promedio <= 13 and promedio >= 0}"class="alert alert-info" role="alert">
+                                                    <h4 class="mb-2">Tenemos un mensaje para ti!</h4>
+                                                    <p class="mb-2">
+                                                        Tu promedio está un poco bajo en el curso, puedes mejorarlo realizando
+                                                        de nuevo uno de tus exámenes.
+                                                    </p>
+                                                    <a class="btn btn-teal" th:href="@{/retos/__${idCurso}__/__${idTemaMinimo}__}">
+                                                        Quiero hacerlo!
+                                                    </a>
+                                                    <button type="button" class="btn btn-outline-orange" data-dismiss="alert" aria-label="Cerrar">
+                                                        <span aria-hidden="true">Deseo preparame más</span>
+                                                    </button>
+                                                </div>
                                                 <div class="list-group list-group-flush">
-                                                    <a th:href="@{/retos/algo3/1}" class="list-group-item list-group-item-action flex-column align-items-start">
+
+                                                    <a th:href="@{/retos/__${idCurso}__/1}" class="list-group-item list-group-item-action flex-column align-items-start">
                                                         <div class="d-flex w-100 justify-content-between">
                                                         <h5 class="mb-1">Complejidad Algoritmica 
                                                             <span class="ml-2 badge teal lighten-2 py-2">
@@ -292,7 +306,7 @@
                                                             </ul>
                                                         </p>
                                                     </a>
-                                                    <a th:href="@{/retos/algo3/2}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                    <a th:href="@{/retos/__${idCurso}__/2}" class="list-group-item list-group-item-action flex-column align-items-start">
                                                         <div class="d-flex w-100 justify-content-between">
                                                         <h5 class="mb-1">Análisis de Estructuras de Control</h5>
                                                         <small>Hace 5 dias</small>

@@ -1,19 +1,26 @@
 package com.guis.decademy.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Curso {
 	private String idCurso;
 	private String nombre;
 	private String descripcion;
-	private String temaActual;
-
-	public Curso(String idCurso, String nombre, String descripcion, String temaActual) {
-		super();
+	private String perfil;
+	private List<Profesor> profesores;
+	
+	public Curso () {
+		profesores = new ArrayList<>();
+	}
+	
+	public Curso(String idCurso, String nombre, String descripcion, String perfil) {
 		this.idCurso = idCurso;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.temaActual = temaActual;
+		this.perfil = perfil;
+		profesores = new ArrayList<>();
 	}
-
 	public String getIdCurso() {
 		return idCurso;
 	}
@@ -38,12 +45,26 @@ public class Curso {
 		this.descripcion = descripcion;
 	}
 
-	public String getTemaActual() {
-		return temaActual;
+	public List<Profesor> getProfesores() {
+		return profesores;
 	}
 
-	public void setTemaActual(String temaActual) {
-		this.temaActual = temaActual;
-	}	
+	public void setProfesores(List<Profesor> profesores) {
+		this.profesores = profesores;
+	}
+	
+	public Curso addProfesores(Profesor profesor) {
+		this.profesores.add(profesor);
+		return this;
+	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+	
 	
 }
