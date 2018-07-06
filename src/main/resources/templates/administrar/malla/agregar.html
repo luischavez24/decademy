@@ -1,1472 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head th:include="/fragments/head :: headFragment('Agregar Malla Curricular')"></head>
+<head
+	th:include="/fragments/head :: headFragment('Agregar Malla Curricular')"></head>
 
 <body class="fixed-sn">
 
-    <style>
-        input[type="file"] {
-            margin: 0 0 15px;
-            padding: 10px 1%;
+	<style>
+input[type="file"] {
+	margin: 0 0 15px;
+	padding: 10px 1%;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
 
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
-        }
+.principal {
+	width: 80%;
+	margin: 0 auto;
+	padding: 3% 0 6% 0;
+	clear: both;
+}
 
-        .principal {
-            width: 80%;
-            margin: 0 auto;
-            padding: 3% 0 6% 0;
-            clear: both;
-        }
+.barra {
+	background-color: #f3f3f3;
+	border-radius: 5px;
+	box-shadow: inset 0px 0px 5px rgba(0, 0, 0, .2);
+	height: 25px;
+}
 
-        .barra {
-            background-color: #f3f3f3;
-            border-radius: 5px;
-            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, .2);
-            height: 25px;
-        }
+.cancel {
+	background: #ed1f3c !important;
+}
 
-        .cancel {
-            background: #ed1f3c !important;
-        }
+.barra_azul {
+	background-color: #247CC0;
+	border-radius: 10px;
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	width: 0%;
+}
 
+.barra_verde {
+	background-color: #2EA265 !important;
+}
 
-        .barra_azul {
-            background-color: #247CC0;
-            border-radius: 10px;
-            display: block;
-            height: 25px;
-            line-height: 25px;
-            text-align: center;
-            width: 0%;
-        }
+.barra_roja {
+	background-color: #DE3152 !important;
+}
 
-        .barra_verde {
-            background-color: #2EA265 !important;
-        }
+#form_subir {
+	margin: 1.5% 0;
+	padding: 2%;
+}
 
-        .barra_roja {
-            background-color: #DE3152 !important;
-        }
+#barra_estado span {
+	color: #fff;
+	font-weight: bold;
+	line-height: 25px;
+}
 
-        #form_subir {
-            margin: 1.5% 0;
-            padding: 2%;
-        }
+.accordion.accordion-5 .card {
+	border: 0;
+	background-color: transparent;
+}
 
-        #barra_estado span {
-            color: #fff;
-            font-weight: bold;
-            line-height: 25px;
-        }
+.accordion.accordion-5 .card .card-header {
+	border: 0;
+	/*background-color: #4341b8;*/
+	background-color: #4db6ac;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
 
-        .accordion.accordion-5 .card {
-            border: 0;
-            background-color: transparent;
-        }
+.accordion.accordion-5 .card .card-header:hover {
+	-webkit-transition: .3s;
+	transition: .3s;
+	background-color: #3a7c76;
+}
 
-        .accordion.accordion-5 .card .card-header {
-            border: 0;
-            /*background-color: #4341b8;*/
-            background-color: #4db6ac;
-            -webkit-transition: .3s;
-            transition: .3s;
-        }
+.accordion.accordion-5 .card .card-header.fa {
+	background-color: #fff;
+	border-top-left-radius: 3px;
+}
 
-        .accordion.accordion-5 .card .card-header:hover {
-            -webkit-transition: .3s;
-            transition: .3s;
-            background-color: #3a7c76;
-        }
-        .accordion.accordion-5 .card .card-header.fa {
-            background-color: #fff;
-            border-top-left-radius: 3px;
-        }
+.accordion.accordion-5 .card .card-body {
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+</style>
+	<link rel="stylesheet" th:href="@{/css/wizard.css}"></link>
 
-        .accordion.accordion-5 .card .card-body {
-            border-bottom-right-radius: 3px;
-            border-bottom-left-radius: 3px;
-        }
-    </style>
-    <link rel="stylesheet" th:href="@{/css/wizard.css}"></link>
+	<header
+		th:include="/fragments/navbar :: navbar('Agregar Malla Curricular')"></header>
 
-    <header th:include="/fragments/navbar :: navbar('Agregar Malla Curricular')"></header>
+	<main id="app" class="container-fluid mx-auto">
+	<div class="container">
+		<!-- Stepper -->
+		<div class="steps-form-2 mt-5">
+			<div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+				<div class="steps-step-2">
+					<a href="#step-1" type="button"
+						class="btn btn-amber btn-circle-2 waves-effect ml-0"
+						data-toggle="tooltip" data-placement="top"
+						title="Facultad y escuela académica"> <i
+						class="fa fa-university" aria-hidden="true"></i>
+					</a>
+				</div>
 
-    <main id ="app" class="container-fluid mx-auto">
-        <div class="container">
-            <!-- Stepper -->
-            <div class="steps-form-2 mt-5">
-                <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
-                    <div class="steps-step-2">
-                        <a href="#step-1" type="button" class="btn btn-amber btn-circle-2 waves-effect ml-0" data-toggle="tooltip" data-placement="top"
-                            title="Facultad y escuela académica">
-                            <i class="fa fa-university" aria-hidden="true"></i>
-                        </a>
-                    </div>
+				<div class="steps-step-2">
+					<a href="#step-2" type="button"
+						class="btn btn-blue-grey btn-circle-2 waves-effect"
+						data-toggle="tooltip" data-placement="top"
+						title="Información sobre los ciclos"> <i
+						class="fa fa-pencil-alt" aria-hidden="true"></i>
+					</a>
+				</div>
 
-                    <div class="steps-step-2">
-                        <a href="#step-2" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top"
-                            title="Información sobre los ciclos">
-                            <i class="fa fa-pencil-alt" aria-hidden="true"></i>
-                        </a>
-                    </div>
+				<div class="steps-step-2">
+					<a href="#step-3" type="button"
+						class="btn btn-blue-grey btn-circle-2 waves-effect"
+						data-toggle="tooltip" data-placement="top"
+						title="Llenado de cursos"> <i class="fa fa-book"
+						aria-hidden="true"></i>
+					</a>
+				</div>
 
-                    <div class="steps-step-2">
-                        <a href="#step-3" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top"
-                            title="Llenado de cursos">
-                            <i class="fa fa-book" aria-hidden="true"></i>
-                        </a>
-                    </div>
+				<div class="steps-step-2">
+					<a href="#step-4" type="button"
+						class="btn btn-blue-grey btn-circle-2 waves-effect mr-0"
+						data-toggle="tooltip" data-placement="top"
+						title="Relacionar cursos"> <i class="fa fa-check"
+						aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		<form role="form" action="" method="post">
+			<!-- First Step -->
+			<div class="row setup-content-2" id="step-1">
+				<div class="col-md-12">
+					<h3 class="font-weight-bold pl-0 my-4">
+						<strong>Facultad y Escuela académica</strong>
+					</h3>
 
-                    <div class="steps-step-2">
-                        <a href="#step-4" type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top"
-                            title="Relacionar cursos">
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <form role="form" action="" method="post">
-                <!-- First Step -->
-                <div class="row setup-content-2" id="step-1">
-                    <div class="col-md-12">
-                        <h3 class="font-weight-bold pl-0 my-4">
-                            <strong>Facultad y Escuela académica</strong>
-                        </h3>
+					<div class="form-group">
+						<label class="font-weight-bold" for="facultad">Facultad</label> 
+						<select
+							name="facultad" id="facultad" class="mdb-select"
+							searchable="Buscar">
+							<option value="" selected="selected">Seleccione una Facultad ...</option>
+							<option value="fisi">Facultad de Ingeniería de Sistemas e Informática</option>
+							<option value="fiee">Facultad de Ingeniería Eléctrica y electrónica</option>
+						</select>
+					</div>
 
-                        <div class="form-group">
-                            <label class="font-weight-bold" for="facultad">Facultad</label>
-                            <select name="facultad" id="facultad" class="mdb-select" searchable="Buscar">
-                                <option value="" selected="selected"> Seleccione una Facultad ... </option>
-                                <option value="fisi"> Facultad de Ingeniería de Sistemas e Informática</option>
-                                <option value="fiee"> Facultad de Ingeniería Eléctrica y electrónica</option>
-                            </select>
-                        </div>
+					<div class="form-group">
+						<label class="font-weight-bold" for="escuela">Escuela</label> <select
+							name="escuela" id="escuela" class="mdb-select"
+							searchable="Buscar">
+						</select>
+					</div>
+					<button class="btn indigo nextBtn-2 float-right" type="button">Siguiente</button>
+				</div>
+			</div>
 
-                        <div class="form-group">
-                            <label class="font-weight-bold" for="escuela">Escuela</label>
+			<!-- Second Step -->
+			<div class="row setup-content-2" id="step-2">
+				<div class="col-md-12">
+					<h3 class="font-weight-bold pl-0 my-4">
+						<strong>Ciclos</strong>
+					</h3>
 
-                            <select name="escuela" id="escuela" class="mdb-select" searchable="Buscar">
-                            </select>
-                        </div>
-                        <button class="btn indigo nextBtn-2 float-right" type="button">Siguiente</button>
-                    </div>
-                </div>
+					<label class="font-weight-bold">Seleccione su régimen</label> <br>
+					<br>
 
-                <!-- Second Step -->
-                <div class="row setup-content-2" id="step-2">
-                    <div class="col-md-12">
-                        <h3 class="font-weight-bold pl-0 my-4">
-                            <strong>Ciclos</strong>
-                        </h3>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-2 form-check">
+								<input type="radio" id="radio100" name="radio100"
+									class="form-check-input" value="6"></input> <label
+									for="radio100" class="form-check-label">Anual</label>
+							</div>
 
-                        <label class="font-weight-bold">Seleccione su régimen</label>
+							<div class="col-md-2 form-check">
+								<input type="radio" id="radio101" name="radio100"
+									class="form-check-input" value="10"></input> <label
+									for="radio101" class="form-check-label">Semestral</label>
+							</div>
+						</div>
+					</div>
+					<button class="btn indigo prevBtn-2 float-left" type="button">Anterior</button>
+					<button class="btn indigo nextBtn-2 float-right" type="button">Siguiente</button>
+				</div>
+			</div>
+			<!-- Third Step -->
+			<div class="row setup-content-2" id="step-3">
+				<div class="col-md-12">
+					<h3 class="font-weight-bold pl-0 my-4">
+						<strong>Llenado de cursos</strong>
+					</h3>
+					<!--Accordion wrapper-->
+					<div class="accordion accordion-5 center" id="accordionEx5"
+						role="tablist" aria-multiselectable="true">
+						<!-- Accordion card 1 -->
+						<div class="card mb-4">
+							<!-- Card header -->
+							<div class="card-header p-0 z-depth-1" role="tab" id="heading30">
+								<a data-toggle="collapse" data-parent="#accordionEx5"
+									href="#collapse30" aria-expanded="true"
+									aria-controls="collapse30">
+									<h6 class="white-text mb-0 pl-4 py-3 mt-1">
+										<i class="fas fa-user-check mr-2"></i> Cargar Archivo
+									</h6>
+								</a>
+							</div>
 
-                        <br>
-                        <br>
+							<!-- Card body -->
+							<div id="collapse30" class="collapse" role="tabpanel"
+								aria-labelledby="heading30" data-parent="#accordionEx5">
+								<div class="card-body z-depth-1 text-center">
+									<input type="file"> <input type="submit"
+										class="btn btn-success" accept=".xlxs">
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-2 form-check">
-                                    <input type="radio" id="radio100" name="radio100" class="form-check-input" value="6"></input>
+								</div>
+							</div>
+						</div>
 
-                                    <label for="radio100" class="form-check-label">Anual</label>
-                                </div>
+						<!-- Accordion card 2 -->
+						<div class="card mb-4">
+							<!-- Card header -->
+							<a class="accordion-titulo card-header" data-toggle="collapse"
+								aria-controls="collapse31">
+								<h6 class="white-text mb-0 pl-1 mt-1">
+									<i class="fas fa-user mr-2"></i> Llenar manualmente
+								</h6>
+							</a>
+							<!-- Card body -->
+							<div class="accordion-content card-body z-depth-1" id="manualmente">
+							
+							</div>
+						</div>
+					</div>
+					<!-- end Accordion wrapper-->
+					<button class="btn indigo prevBtn-2 float-left" type="button">Anterior</button>
+					<button class="btn indigo nextBtn-2 float-right" type="button">Siguiente</button>
+				</div>
+			</div>
 
-                                <div class="col-md-2 form-check">
-                                    <input type="radio" id="radio101" name="radio100" class="form-check-input" value="10"></input>
+			<!-- Fourth Step -->
+			<div class="row setup-content-2" id="step-4">
+				<div class="col-md-12">
+					<h3 class="font-weight-bold pl-0 my-4">
+						<strong>Haz terminado!</strong>
+						<p class="display-4 text-center">
+							<i class="fa fa-check-circle fa-3x teal-text"></i>
+							<br>
+							Genial! has ingresado correctamente la malla
+							curricular.
+						</p>
+					</h3>
 
-                                    <label for="radio101" class="form-check-label">Semestral</label>
-                                </div>
-                            </div>
-                        </div>
+					<button class="btn indigo prevBtn-2 float-left" type="button">Anterior</button>
+					<a th:href="@{/administrar/malla/agregar}" class="btn btn-teal float-right" type="button">Terminar</a>
 
-                        <br>
+				</div>
+			</div>
+		</form>
+	</div>
+	</main>
 
-                        <label class="font-weight-bold">Número de ciclos</label>
-
-                        <div class="col-md-3">
-                            <select name="ciclo" id="ciclo" class="mdb-select">
-
-                            </select>
-                        </div>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-3"></div>
-                        <!--
-                              <div class="form-group md-form">
-                                    <label for="yourEmail-2" data-error="wrong" data-success="right">Ciclos</label>
-
-                                    <input id="yourEmail-2" type="text" required="required" class="form-control validate"></input>
-                              </div>
-                              -->
-                        <button class="btn indigo prevBtn-2 float-left" type="button">Anterior</button>
-                        <button class="btn indigo nextBtn-2 float-right" type="button">Siguiente</button>
-                    </div>
-                </div>
-
-                <!-- Third Step -->
-                <div class="row setup-content-2" id="step-3">
-                    <div class="col-md-12">
-                        <h3 class="font-weight-bold pl-0 my-4">
-                            <strong>Llenado de cursos</strong>
-                        </h3>
-                        <!--Accordion wrapper-->
-                        <div class="accordion accordion-5 center" id="accordionEx5" role="tablist" aria-multiselectable="true">
-                            <!-- Accordion card 1 -->
-                            <div class="card mb-4">
-                                <!-- Card header -->
-                                <div class="card-header p-0 z-depth-1" role="tab" id="heading30">
-                                    <a data-toggle="collapse" data-parent="#accordionEx5" href="#collapse30" aria-expanded="true" aria-controls="collapse30">
-                                        <h6 class="white-text mb-0 pl-4 py-3 mt-1">
-                                            <i class="fas fa-user-check mr-2"></i> 
-                                            Cargar Archivo
-                                        </h6>
-                                    </a>
-                                </div>
-
-                                <!-- Card body -->
-                                <div id="collapse30" class="collapse" role="tabpanel" aria-labelledby="heading30" data-parent="#accordionEx5">
-                                    <div class="card-body z-depth-1 text-center">
-                                        <input type="file">
-                                        <input type="submit" class="btn btn-success" accept=".xlxs">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Accordion card 2 -->
-                            <div class="card mb-4">
-                                <!-- Card header -->
-                                <a class="accordion-titulo card-header" data-toggle="collapse" aria-controls="collapse31">
-                                    <h6 class="white-text mb-0 pl-1 mt-1">
-                                        <i class="fas fa-user mr-2"></i>
-                                        Llenar manualmente
-                                    </h6>
-                                </a>
-                                <!-- Card body -->
-                                <div class="accordion-content card-body z-depth-1">
-                                    <div class="form-group">
-                                        <a href="#" class="accordion-titulo card-header">
-                                            <h6 class="white-text mb-0 pl-4 mt-1">
-                                                Ciclo 1
-                                                <i class="fas fa-plus float-right"></i>
-                                            </h6>
-                                        </a>
-                                        <div class="accordion-content card-body z-depth-1 text-center">
-                                            <div class="row">
-                                                <div class="form-group col-md-4">
-                                                    <div class="form-group">
-                                                        <a href="#" class="accordion-titulo card-header">
-                                                            <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                Curso 1
-                                                                <i class="fas fa-plus float-right"></i>
-                                                            </h6>
-                                                        </a>
-                                                        <div class="accordion-content card-body z-depth-1 text-center">
-                                                            <div class="form-group md-form mt-3">
-                                                                <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                            </div>
-                                                            <div class="form-group md-form">
-                                                                <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                <input id="nombre" type="text" required="required" class="form-control validate">
-                                                            </div>
-
-                                                            <div class="form-group md-form">
-                                                                <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                            </div>
-                                                            <div class="form-group md-form mt-3">
-                                                                <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-md-4">
-                                                    <div class="form-group">
-                                                                <a href="#" class="accordion-titulo card-header">
-                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                        Curso 2
-                                                                        <i class="fas fa-plus float-right"></i>
-                                                                    </h6>
-                                                                </a>
-                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                    <div class="form-group md-form mt-3">
-                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                    </div>
-                                                                    <div class="form-group md-form">
-                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                    </div>
-        
-                                                                    <div class="form-group md-form">
-                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                    </div>
-                                                                    <div class="form-group md-form mt-3">
-                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-md-4">
-                                                    <div class="form-group">
-                                                                <a href="#" class="accordion-titulo card-header">
-                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                        Curso 3
-                                                                        <i class="fas fa-plus float-right"></i>
-                                                                    </h6>
-                                                                </a>
-                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                    <div class="form-group md-form mt-3">
-                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                    </div>
-                                                                    <div class="form-group md-form">
-                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                    </div>
-        
-                                                                    <div class="form-group md-form">
-                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                    </div>
-                                                                    <div class="form-group md-form mt-3">
-                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                    <div class="form-group col-md-4">
-                                                        <div class="form-group">
-                                                            <a href="#" class="accordion-titulo card-header">
-                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                    Curso 4
-                                                                    <i class="fas fa-plus float-right"></i>
-                                                                </h6>
-                                                            </a>
-                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                <div class="form-group md-form mt-3">
-                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                </div>
-                                                                <div class="form-group md-form">
-                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                </div>
-    
-                                                                <div class="form-group md-form">
-                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                </div>
-                                                                <div class="form-group md-form mt-3">
-                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="form-group col-md-4">
-                                                        <div class="form-group">
-                                                                    <a href="#" class="accordion-titulo card-header">
-                                                                        <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                            Curso 5
-                                                                            <i class="fas fa-plus float-right"></i>
-                                                                        </h6>
-                                                                    </a>
-                                                                    <div class="accordion-content card-body z-depth-1 text-center">
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                            <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                            <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                        </div>
-            
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                            <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                            <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                        </div>
-                                                    </div>
-    
-                                                    <div class="form-group col-md-4">
-                                                        <div class="form-group">
-                                                                    <a href="#" class="accordion-titulo card-header">
-                                                                        <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                            Curso 6
-                                                                            <i class="fas fa-plus float-right"></i>
-                                                                        </h6>
-                                                                    </a>
-                                                                    <div class="accordion-content card-body z-depth-1 text-center">
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                            <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                            <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                        </div>
-            
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                            <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                            <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <!-- agregar la alerta de curso grabado -->
-                                                <a class="btn btn-indigo float-left" id="grabar1">Grabar</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                            <a href="#" class="accordion-titulo card-header">
-                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                    Ciclo 2
-                                                    <i class="fas fa-plus float-right"></i>
-                                                </h6>
-                                            </a>
-                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                    <div class="row">
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                    <a href="#" class="accordion-titulo card-header">
-                                                                        <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                            Curso 1
-                                                                            <i class="fas fa-plus float-right"></i>
-                                                                        </h6>
-                                                                    </a>
-                                                                    <div class="accordion-content card-body z-depth-1 text-center">
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                            <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                            <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                        </div>
-            
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                            <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                            <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 2
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 3
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-            
-                                                        <div class="row">
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                        <a href="#" class="accordion-titulo card-header">
-                                                                            <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                Curso 4
-                                                                                <i class="fas fa-plus float-right"></i>
-                                                                            </h6>
-                                                                        </a>
-                                                                        <div class="accordion-content card-body z-depth-1 text-center">
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 5
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 6
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                <div class="form-group col-md-6">
-                                                    <!-- agregar la alerta de curso grabado -->
-                                                    <a class="btn btn-indigo float-left" id="grabar2">Grabar</a>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                            <a href="#" class="accordion-titulo card-header">
-                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                    Ciclo 3
-                                                    <i class="fas fa-plus float-right"></i>
-                                                </h6>
-                                            </a>
-                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                    <div class="row">
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                    <a href="#" class="accordion-titulo card-header">
-                                                                        <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                            Curso 1
-                                                                            <i class="fas fa-plus float-right"></i>
-                                                                        </h6>
-                                                                    </a>
-                                                                    <div class="accordion-content card-body z-depth-1 text-center">
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                            <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                            <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                        </div>
-            
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                            <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                            <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 2
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 3
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-            
-                                                        <div class="row">
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                        <a href="#" class="accordion-titulo card-header">
-                                                                            <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                Curso 4
-                                                                                <i class="fas fa-plus float-right"></i>
-                                                                            </h6>
-                                                                        </a>
-                                                                        <div class="accordion-content card-body z-depth-1 text-center">
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 5
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 6
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                <div class="form-group col-md-6">
-                                                    <!-- agregar la alerta de curso grabado -->
-                                                    <a class="btn btn-indigo float-left" id="grabar3">Grabar</a>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                            <a href="#" class="accordion-titulo card-header">
-                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                    Ciclo 4
-                                                    <i class="fas fa-plus float-right"></i>
-                                                </h6>
-                                            </a>
-                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                    <div class="row">
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                    <a href="#" class="accordion-titulo card-header">
-                                                                        <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                            Curso 1
-                                                                            <i class="fas fa-plus float-right"></i>
-                                                                        </h6>
-                                                                    </a>
-                                                                    <div class="accordion-content card-body z-depth-1 text-center">
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                            <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                            <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                        </div>
-            
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                            <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                            <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 2
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 3
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-            
-                                                        <div class="row">
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                        <a href="#" class="accordion-titulo card-header">
-                                                                            <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                Curso 4
-                                                                                <i class="fas fa-plus float-right"></i>
-                                                                            </h6>
-                                                                        </a>
-                                                                        <div class="accordion-content card-body z-depth-1 text-center">
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 5
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 6
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                <div class="form-group col-md-6">
-                                                    <!-- agregar la alerta de curso grabado -->
-                                                    <a class="btn btn-indigo float-left" id="grabar4">Grabar</a>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                            <a href="#" class="accordion-titulo card-header">
-                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                    Ciclo 5
-                                                    <i class="fas fa-plus float-right"></i>
-                                                </h6>
-                                            </a>
-                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                    <div class="row">
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                    <a href="#" class="accordion-titulo card-header">
-                                                                        <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                            Curso 1
-                                                                            <i class="fas fa-plus float-right"></i>
-                                                                        </h6>
-                                                                    </a>
-                                                                    <div class="accordion-content card-body z-depth-1 text-center">
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                            <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                            <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                        </div>
-            
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                            <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                            <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 2
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 3
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-            
-                                                        <div class="row">
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                        <a href="#" class="accordion-titulo card-header">
-                                                                            <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                Curso 4
-                                                                                <i class="fas fa-plus float-right"></i>
-                                                                            </h6>
-                                                                        </a>
-                                                                        <div class="accordion-content card-body z-depth-1 text-center">
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 5
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 6
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                <div class="form-group col-md-6">
-                                                    <!-- agregar la alerta de curso grabado -->
-                                                    <a class="btn btn-indigo float-left" id="grabar5">Grabar</a>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                            <a href="#" class="accordion-titulo card-header">
-                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                    Ciclo 6
-                                                    <i class="fas fa-plus float-right"></i>
-                                                </h6>
-                                            </a>
-                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                    <div class="row">
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                    <a href="#" class="accordion-titulo card-header">
-                                                                        <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                            Curso 1
-                                                                            <i class="fas fa-plus float-right"></i>
-                                                                        </h6>
-                                                                    </a>
-                                                                    <div class="accordion-content card-body z-depth-1 text-center">
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                            <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                            <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                        </div>
-            
-                                                                        <div class="form-group md-form">
-                                                                            <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                            <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                        </div>
-                                                                        <div class="form-group md-form mt-3">
-                                                                            <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                            <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 2
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-            
-                                                            <div class="form-group col-md-4">
-                                                                <div class="form-group">
-                                                                            <a href="#" class="accordion-titulo card-header">
-                                                                                <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                    Curso 3
-                                                                                    <i class="fas fa-plus float-right"></i>
-                                                                                </h6>
-                                                                            </a>
-                                                                            <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                    <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                    <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                    
-                                                                                <div class="form-group md-form">
-                                                                                    <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                    <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                </div>
-                                                                                <div class="form-group md-form mt-3">
-                                                                                    <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                    <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-            
-                                                        <div class="row">
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                        <a href="#" class="accordion-titulo card-header">
-                                                                            <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                Curso 4
-                                                                                <i class="fas fa-plus float-right"></i>
-                                                                            </h6>
-                                                                        </a>
-                                                                        <div class="accordion-content card-body z-depth-1 text-center">
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                
-                                                                            <div class="form-group md-form">
-                                                                                <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                            </div>
-                                                                            <div class="form-group md-form mt-3">
-                                                                                <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 5
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                
-                                                                <div class="form-group col-md-4">
-                                                                    <div class="form-group">
-                                                                                <a href="#" class="accordion-titulo card-header">
-                                                                                    <h6 class="white-text mb-0 pl-4 mt-1">
-                                                                                        Curso 6
-                                                                                        <i class="fas fa-plus float-right"></i>
-                                                                                    </h6>
-                                                                                </a>
-                                                                                <div class="accordion-content card-body z-depth-1 text-center">
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="codigoC" data-error="wrong" data-success="right">Código del curso</label>
-                                                                                        <input id="codigoC" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nombre" data-error="wrong" data-success="right">Nombre</label>
-                                                                                        <input id="nombre" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                        
-                                                                                    <div class="form-group md-form">
-                                                                                        <label for="nroCreditos" data-error="wrong" data-success="right">Número de créditos</label>
-                                                                                        <input id="nroCreditos" type="text" required="required" class="form-control validate">
-                                                                                    </div>
-                                                                                    <div class="form-group md-form mt-3">
-                                                                                        <label for="descripcion" data-error="wrong" data-success="right">Descripción</label>
-                                                                                        <textarea id="y" type="text" required="required" rows="2" class="md-textarea validate form-control"></textarea>
-                                                                                    </div>
-                                                                                </div>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                <div class="form-group col-md-6">
-                                                    <!-- agregar la alerta de curso grabado -->
-                                                    <a class="btn btn-indigo float-left" id="grabar6">Grabar</a>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <!-- agregar la alerta de subir información -->
-                                    <a class="btn btn-indigo float-left" id="subir">Subir información</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end Accordion wrapper-->
-                        <button class="btn indigo prevBtn-2 float-left" type="button">Anterior</button>
-                        <button class="btn indigo nextBtn-2 float-right" type="button">Siguiente</button>
-                    </div>
-                </div>
-
-                <!-- Fourth Step -->
-                <div class="row setup-content-2" id="step-4">
-                    <div class="col-md-12">
-                        <h3 class="font-weight-bold pl-0 my-4">
-                            <strong>Relacionar curhjhjhsos</strong>
-                        </h3>
-                        <div id="mynetwork" style="height: 500px;">
-                         </div>
-                        <button class="btn indigo prevBtn-2 float-left" type="button">Anterior</button>
-                        <button class="btn btn-success float-right" type="button">Terminar</button>
-                       
-                    </div>
-                </div>
-            </form>
-        </div>
-    </main>
-
-    <div th:include="/fragments/head :: finalSection"></div>
-    <div th:include="/fragments/head :: scripts"></div>
-    <script th:src="@{/js/wizard.js}"></script>
-    <script th:inline="javascript">
+	<div th:include="/fragments/head :: finalSection"></div>
+	<div th:include="/fragments/head :: scripts"></div>
+	<script th:src="@{/js/wizard.js}"></script>
+	<script th:inline="javascript">
         $(function () {
-        	
+			generarCiclos(10);
             //grafo paso 4 :C
             // create an array with nodes
-            console.log("pinta");
+            /*console.log("pinta");
+			
             var nodes = [
                 {id: 1, label: 'Node 1'},
                 {id: 2, label: 'Node 2'},
@@ -1491,16 +306,8 @@
             };
             var network = new vis.Network(container, data, {});
             console.log("pinta2");
-        	
-        	
-        	
-        	
-            $("#grabar1").click(function () { toastr.info("Registro guardado"); });
-            $("#grabar2").click(function () { toastr.info("Registro guardado"); });
-            $("#grabar3").click(function () { toastr.info("Registro guardado"); });
-            $("#grabar4").click(function () { toastr.info("Registro guardado"); });
-            $("#grabar5").click(function () { toastr.info("Registro guardado"); });
-            $("#grabar6").click(function () { toastr.info("Registro guardado"); });
+			 */
+			 
 
             $("#subir").click(function () { toastr.info("Malla actualizada correctamente"); });
 
@@ -1523,13 +330,6 @@
                 selectEscuela.material_select();
             });
 
-            $("input[name='radio100']").click(() => {
-                let opciones = generarNumeros(parseInt($(this).val()));
-                console.log(opciones, $(this).val());
-                $("#ciclo").html(opciones);
-                $("#ciclo").material_select();
-            });
-
             function generarNumeros(cantidad) {
                 let opciones = "";
 
@@ -1538,20 +338,465 @@
                 }
                 return opciones;
             }
+			
             $(".mdb-select").material_select();
-            $(".accordion-titulo").click(function (e) {
-                e.preventDefault();
-                var contenido = $(this).next(".accordion-content");
-                if (contenido.css("display") == "none") { //open        
-                    contenido.slideDown(250);
-                    $(this).addClass("open");
-                }
-                else { //close       
-                    contenido.slideUp(250);
-                    $(this).removeClass("open");
-                }
-            });
-        });
+
+			$(".accordion-titulo").click(function (e) {
+				e.preventDefault();
+				var contenido = $(this).next(".accordion-content");
+				if (contenido.css("display") == "none") { //open        
+					contenido.slideDown(250);
+					$(this).addClass("open");
+				}
+				else { //close       
+					contenido.slideUp(250);
+					$(this).removeClass("open");
+				}
+			});
+
+			function generarCiclos(ciclos) {
+
+				let plantillaCiclo = nroCiclo => {
+					return `
+					<div class="form-group">
+						<a href="#" class="accordion-titulo card-header">
+							<h6 class="white-text mb-0 pl-4 mt-1">
+								Ciclo ${nroCiclo} <i class="fas fa-plus float-right"></i>
+							</h6>
+						</a>
+						<div class="accordion-content card-body z-depth-1 text-center">
+							<div class="row">
+								<div class="form-group col-md-4">
+									<div class="form-group">
+										<a href="#" class="accordion-titulo card-header">
+											<h6 class="white-text mb-0 pl-4 mt-1">
+												Curso 1 <i class="fas fa-plus float-right"></i>
+											</h6>
+										</a>
+										<div
+											class="accordion-content card-body z-depth-1 text-center">
+											<div class="form-group md-form mt-3">
+												<label for="codigoC" data-error="wrong"
+													data-success="right">Código del curso</label> <input
+													id="codigoC" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form">
+												<label for="nombre" data-error="wrong"
+													data-success="right">Nombre</label> <input id="nombre"
+													type="text" required="required"
+													class="form-control validate">
+											</div>
+
+											<div class="form-group md-form">
+												<label for="nroCreditos" data-error="wrong"
+													data-success="right">Número de créditos</label> <input
+													id="nroCreditos" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form mt-3">
+												<label for="descripcion" data-error="wrong"
+													data-success="right">Descripción</label>
+												<textarea id="y" type="text" required="required" rows="2"
+													class="md-textarea validate form-control"></textarea>
+											</div>
+											<div class="form-group mt-3 text-left"> 
+												<label for="requisitos1">Prerrequsitos</label>
+												<select name="requisitos" id="requisitos1" class="form-control" style="display: block !important" searchable="Buscar">
+													<option value='' selected="selected">
+														No tiene prerrequisito
+													</option>
+													<option value='1'>
+														Introducción a la computacion
+													</option>
+													<option value='2'>
+														Calculo 1
+													</option>
+													<option value='3'>
+														Matematica Basica 1
+													</option>
+													<option value='4'>
+														Teoria General de Sistemas
+													</option>
+													<option value='5'>
+														Estrategias del Aprendizaje
+													</option>
+													<option value='6'>
+														Comunicación y dinámica de grupos
+													</option>
+													<option value='7'>
+														Etica
+													</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-4">
+									<div class="form-group">
+										<a href="#" class="accordion-titulo card-header">
+											<h6 class="white-text mb-0 pl-4 mt-1">
+												Curso 2 <i class="fas fa-plus float-right"></i>
+											</h6>
+										</a>
+										<div
+											class="accordion-content card-body z-depth-1 text-center">
+											<div class="form-group md-form mt-3">
+												<label for="codigoC" data-error="wrong"
+													data-success="right">Código del curso</label> <input
+													id="codigoC" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form">
+												<label for="nombre" data-error="wrong"
+													data-success="right">Nombre</label> <input id="nombre"
+													type="text" required="required"
+													class="form-control validate">
+											</div>
+
+											<div class="form-group md-form">
+												<label for="nroCreditos" data-error="wrong"
+													data-success="right">Número de créditos</label> <input
+													id="nroCreditos" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form mt-3">
+												<label for="descripcion" data-error="wrong"
+													data-success="right">Descripción</label>
+												<textarea id="y" type="text" required="required" rows="2"
+													class="md-textarea validate form-control"></textarea>
+											</div>
+											<div class="form-group mt-3 text-left"> 
+												<label for="requisitos1">Prerrequsitos</label>
+												<select name="requisitos" id="requisitos1" class="form-control" style="display: block !important" searchable="Buscar">
+													<option value='' selected="selected">
+														No tiene prerrequisito
+													</option>
+													<option value='1'>
+														Introducción a la computacion
+													</option>
+													<option value='2'>
+														Calculo 1
+													</option>
+													<option value='3'>
+														Matematica Basica 1
+													</option>
+													<option value='4'>
+														Teoria General de Sistemas
+													</option>
+													<option value='5'>
+														Estrategias del Aprendizaje
+													</option>
+													<option value='6'>
+														Comunicación y dinámica de grupos
+													</option>
+													<option value='7'>
+														Etica
+													</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-4">
+									<div class="form-group">
+										<a href="#" class="accordion-titulo card-header">
+											<h6 class="white-text mb-0 pl-4 mt-1">
+												Curso 3 <i class="fas fa-plus float-right"></i>
+											</h6>
+										</a>
+										<div
+											class="accordion-content card-body z-depth-1 text-center">
+											<div class="form-group md-form mt-3">
+												<label for="codigoC" data-error="wrong"
+													data-success="right">Código del curso</label> <input
+													id="codigoC" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form">
+												<label for="nombre" data-error="wrong"
+													data-success="right">Nombre</label> <input id="nombre"
+													type="text" required="required"
+													class="form-control validate">
+											</div>
+
+											<div class="form-group md-form">
+												<label for="nroCreditos" data-error="wrong"
+													data-success="right">Número de créditos</label> <input
+													id="nroCreditos" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form mt-3">
+												<label for="descripcion" data-error="wrong"
+													data-success="right">Descripción</label>
+												<textarea id="y" type="text" required="required" rows="2"
+													class="md-textarea validate form-control"></textarea>
+											</div>
+											<div class="form-group mt-3 text-left"> 
+												<label for="requisitos1">Prerrequsitos</label>
+												<select name="requisitos" id="requisitos1" class="form-control" style="display: block !important" searchable="Buscar">
+													<option value='' selected="selected">
+														No tiene prerrequisito
+													</option>
+													<option value='1'>
+														Introducción a la computacion
+													</option>
+													<option value='2'>
+														Calculo 1
+													</option>
+													<option value='3'>
+														Matematica Basica 1
+													</option>
+													<option value='4'>
+														Teoria General de Sistemas
+													</option>
+													<option value='5'>
+														Estrategias del Aprendizaje
+													</option>
+													<option value='6'>
+														Comunicación y dinámica de grupos
+													</option>
+													<option value='7'>
+														Etica
+													</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-4">
+									<div class="form-group">
+										<a href="#" class="accordion-titulo card-header">
+											<h6 class="white-text mb-0 pl-4 mt-1">
+												Curso 4 <i class="fas fa-plus float-right"></i>
+											</h6>
+										</a>
+										<div
+											class="accordion-content card-body z-depth-1 text-center">
+											<div class="form-group md-form mt-3">
+												<label for="codigoC" data-error="wrong"
+													data-success="right">Código del curso</label> <input
+													id="codigoC" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form">
+												<label for="nombre" data-error="wrong"
+													data-success="right">Nombre</label> <input id="nombre"
+													type="text" required="required"
+													class="form-control validate">
+											</div>
+
+											<div class="form-group md-form">
+												<label for="nroCreditos" data-error="wrong"
+													data-success="right">Número de créditos</label> <input
+													id="nroCreditos" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form mt-3">
+												<label for="descripcion" data-error="wrong"
+													data-success="right">Descripción</label>
+												<textarea id="y" type="text" required="required" rows="2"
+													class="md-textarea validate form-control"></textarea>
+											</div>
+											<div class="form-group mt-3 text-left"> 
+												<label for="requisitos1">Prerrequsitos</label>
+												<select name="requisitos" id="requisitos1" class="form-control" style="display: block !important" searchable="Buscar">
+													<option value='' selected="selected">
+														No tiene prerrequisito
+													</option>
+													<option value='1'>
+														Introducción a la computacion
+													</option>
+													<option value='2'>
+														Calculo 1
+													</option>
+													<option value='3'>
+														Matematica Basica 1
+													</option>
+													<option value='4'>
+														Teoria General de Sistemas
+													</option>
+													<option value='5'>
+														Estrategias del Aprendizaje
+													</option>
+													<option value='6'>
+														Comunicación y dinámica de grupos
+													</option>
+													<option value='7'>
+														Etica
+													</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-4">
+									<div class="form-group">
+										<a href="#" class="accordion-titulo card-header">
+											<h6 class="white-text mb-0 pl-4 mt-1">
+												Curso 5 <i class="fas fa-plus float-right"></i>
+											</h6>
+										</a>
+										<div
+											class="accordion-content card-body z-depth-1 text-center">
+											<div class="form-group md-form mt-3">
+												<label for="codigoC" data-error="wrong"
+													data-success="right">Código del curso</label> <input
+													id="codigoC" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form">
+												<label for="nombre" data-error="wrong"
+													data-success="right">Nombre</label> <input id="nombre"
+													type="text" required="required"
+													class="form-control validate">
+											</div>
+
+											<div class="form-group md-form">
+												<label for="nroCreditos" data-error="wrong"
+													data-success="right">Número de créditos</label> <input
+													id="nroCreditos" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form mt-3">
+												<label for="descripcion" data-error="wrong"
+													data-success="right">Descripción</label>
+												<textarea id="y" type="text" required="required" rows="2"
+													class="md-textarea validate form-control"></textarea>
+											</div>
+											<div class="form-group mt-3 text-left"> 
+												<label for="requisitos1">Prerrequsitos</label>
+												<select name="requisitos" id="requisitos1" class="form-control" style="display: block !important" searchable="Buscar">
+													<option value='' selected="selected">
+														No tiene prerrequisito
+													</option>
+													<option value='1'>
+														Introducción a la computacion
+													</option>
+													<option value='2'>
+														Calculo 1
+													</option>
+													<option value='3'>
+														Matematica Basica 1
+													</option>
+													<option value='4'>
+														Teoria General de Sistemas
+													</option>
+													<option value='5'>
+														Estrategias del Aprendizaje
+													</option>
+													<option value='6'>
+														Comunicación y dinámica de grupos
+													</option>
+													<option value='7'>
+														Etica
+													</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-4">
+									<div class="form-group">
+										<a href="#" class="accordion-titulo card-header">
+											<h6 class="white-text mb-0 pl-4 mt-1">
+												Curso 6 <i class="fas fa-plus float-right"></i>
+											</h6>
+										</a>
+										<div
+											class="accordion-content card-body z-depth-1 text-center">
+											<div class="form-group md-form mt-3">
+												<label for="codigoC" data-error="wrong"
+													data-success="right">Código del curso</label> <input
+													id="codigoC" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form">
+												<label for="nombre" data-error="wrong"
+													data-success="right">Nombre</label> <input id="nombre"
+													type="text" required="required"
+													class="form-control validate">
+											</div>
+
+											<div class="form-group md-form">
+												<label for="nroCreditos" data-error="wrong"
+													data-success="right">Número de créditos</label> <input
+													id="nroCreditos" type="text" required="required"
+													class="form-control validate">
+											</div>
+											<div class="form-group md-form mt-3">
+												<label for="descripcion" data-error="wrong"
+													data-success="right">Descripción</label>
+												<textarea id="y" type="text" required="required" rows="2"
+													class="md-textarea validate form-control"></textarea>
+											</div>
+											<div class="form-group mt-3 text-left"> 
+												<label for="requisitos1">Prerrequsitos</label>
+												<select name="requisitos" id="requisitos1" class="form-control" style="display: block !important" searchable="Buscar">
+													<option value='' selected="selected">
+														No tiene prerrequisito
+													</option>
+													<option value='1'>
+														Introducción a la computacion
+													</option>
+													<option value='2'>
+														Calculo 1
+													</option>
+													<option value='3'>
+														Matematica Basica 1
+													</option>
+													<option value='4'>
+														Teoria General de Sistemas
+													</option>
+													<option value='5'>
+														Estrategias del Aprendizaje
+													</option>
+													<option value='6'>
+														Comunicación y dinámica de grupos
+													</option>
+													<option value='7'>
+														Etica
+													</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<!-- agregar la alerta de curso grabado -->
+								<a class="btn btn-indigo float-left" id="grabar${nroCiclo}">Grabar</a>
+							</div>
+						</div>
+					</div>			
+					`;
+				}
+			
+				let manualmente = "";
+
+				for(let i = 1; i <= ciclos; i++){
+					manualmente += plantillaCiclo(i);
+				}
+				
+				manualmente+=`
+					<a class="btn btn-indigo float-left" id="subir">Subir información</a>
+				`;
+
+				$("#manualmente").html(manualmente);
+				
+				for(let i = 1; i <= ciclos; i++){
+					$("#grabar"+ i).click(function () { toastr.info("Registro guardado"); });
+				}
+			}
+		
+		});
 
 
 

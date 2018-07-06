@@ -49,7 +49,7 @@ $(document).ready(function () {
           }
       }
 
-      if (isValid)
+      if (true)
           nextStepSteps.removeAttr('disabled').trigger('click');
   });
 
