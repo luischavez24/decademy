@@ -30,6 +30,10 @@ import com.guis.decademy.entity.Usuario;
 @RequestMapping("/retos")
 public class RetosController {
 
+	@Autowired
+	@Qualifier("usuarioActual")
+	private Usuario usuarioActual;
+	
 	private static final Log LOG = LogFactory.getLog(RetosController.class);
 	private List<Pregunta> preguntas;
 	
@@ -77,7 +81,7 @@ public class RetosController {
 			Model model,
 			@PathVariable("idCurso") String idCurso,
 			@PathVariable("idTema") int idTema) {
-		
+		model.addAttribute("loginUsuario", usuarioActual);
 		Optional<Alumno> alumno = usuarios.stream()
 				.filter(u -> {
 					if(u instanceof Alumno) {
