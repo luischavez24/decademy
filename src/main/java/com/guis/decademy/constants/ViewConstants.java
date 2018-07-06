@@ -36,14 +36,16 @@ public interface ViewConstants {
 	
 	public static final String RETOS_DETALLE = "/retos/detalle";
 	
-	public static final String ADMINISTRAR_MALLA_AGREGAR= "/administrar/malla/agregar";
-	
-	public static final String PROGRESO_CONSULTA = "/progreso/index";
+	public static final String PROGRESO_CONSULTA = "/progreso/consulta";
 	
 	public static final String PROGRESO_ALUMNO = "/progreso/alumno";
 	
 	public static final String PROFESOR_INDEX= "/tutoria/index";
 	
 	public static final String NOTIFICACIONES = "/notificaciones/index";
+
+	public static final String ADMINISTRAR_MALLA = "/adminsitrar/malla/index";
+	
+	public static final String ADMINISTRAR_MALLA_AGREGAR= "/administrar/malla/agregar";
 
 }
