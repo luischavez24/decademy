@@ -224,7 +224,7 @@
     $(() => {
         var cursoInscrito = /*[[${cursoInscrito}]]*/ ""
         console.log(cursoInscrito);
-        if(cursoInscrito != "") {
+        if(cursoInscrito != "" && cursoInscrito !=null) {
             toastr.info("Felicidades! Te incribiste al curso de " + cursoInscrito);
         }
         // Inicializar calendar
