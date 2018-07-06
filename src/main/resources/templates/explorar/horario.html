@@ -12,7 +12,7 @@
                <h3 class="card-subtitle mb-2 text-muted">
                   Profesor: <span th:text="${profesor}"></span>
                </h3>
-               <a class="btn btn-orange mt-1" th:href="@{/cursos}" > 
+               <a class="btn btn-orange mt-1" th:href="@{/cursos?cursoInscrito=__${curso.nombre}__}" > 
                   <i class="fa fa-book-open mr-2"></i>
                   Inscribirme
                </a>

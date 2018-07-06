@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.guis.decademy.constants.ViewConstants;
 import com.guis.decademy.entity.Usuario;
@@ -34,9 +35,11 @@ public class CursosController {
 		cursos.put("bd2", "Bases de Datos 2");
 	}
 	@GetMapping("")
-	public String index (Model model) {
+	public String index (Model model,
+			@RequestParam(name="cursoInscrito", required=false) String cursoInscrito) {
 		LOG.info("[/cursos] - METHOD [index] -- Entrando al método ");
 		model.addAttribute("loginUsuario", usuarioActual);
+		model.addAttribute("cursoInscrito", cursoInscrito);
 		return ViewConstants.CURSOS_INDEX;
 	}
 	
