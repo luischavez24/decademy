@@ -23,15 +23,13 @@
                 <li>
                     <ul class="collapsible collapsible-accordion">
                         <li th:if="${notLogin == null}">
-                            <a th:href="@{/cursos}" class="waves-effect">
+                            <a th:if="${tipo == 'A'}" th:href="@{/cursos}" class="waves-effect">
                                 <i class="fa fa-book"></i>
                                 Mis cursos
                             </a>
-                        </li>
-                        <li th:if="${notLogin == null}">
-                            <a th:href="@{/cursos}" class="waves-effect">
-                                <i class="fa fa-trophy"></i>
-                                Mis retos
+                            <a th:if="${tipo == 'T'}" th:href="@{/tutoria}" class="waves-effect">
+                                <i class="fa fa-book"></i>
+                                Mis cursos
                             </a>
                         </li>
                         <li>
@@ -53,12 +51,6 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li>
-                            <a th:href="@{/nosotros}" class="waves-effect arrow-r">
-                                <i class="fa fa-address-card"></i>
-                                Nosotros
-                            </a>
                         </li>
                     </ul>
                 </li>

@@ -9,8 +9,8 @@ public class Alumno extends Usuario{
 	
 	private List<ResultadoExamen> resultados;
 	
-	public Alumno(String username, String nombres, String apellidos, String perfil) {
-		super(username, nombres, apellidos, perfil);
+	public Alumno(String username, String nombres, String apellidos, String perfil, String tipo) {
+		super(username, nombres, apellidos, perfil, tipo);
 		resultados = new ArrayList<>();
 		cursos = new ArrayList<>();
 	}

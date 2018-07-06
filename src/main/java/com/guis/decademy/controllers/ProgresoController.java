@@ -14,14 +14,23 @@ import com.guis.decademy.entity.Usuario;
 @Controller
 @RequestMapping("/progreso")
 public class ProgresoController {
+	
 	@Autowired
 	@Qualifier("usuarioActual")
 	private Usuario usuarioActual;
+	
+	@GetMapping("")
+	public String index(Model model) {
+		model.addAttribute("loginUsuario", usuarioActual);
+		return ViewConstants.PROGRESO_ALUMNO;
+	}
+	
 	@GetMapping("/consulta/{idAlumno}")
 	public String consulta(Model model, @PathVariable("idAlumno") String idAlumno) {
 		model.addAttribute("loginUsuario", usuarioActual);
 		return ViewConstants.PROGRESO_CONSULTA;
 	}
+	
 	@GetMapping("/alumno/{idAlumno}")
 	public String alumno(Model model, @PathVariable("idAlumno") String idAlumno) {
 		model.addAttribute("loginUsuario", usuarioActual);

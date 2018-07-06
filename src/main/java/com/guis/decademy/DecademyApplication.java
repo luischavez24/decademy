@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.guis.decademy.constants.TipoUsuario;
 import com.guis.decademy.entity.Alumno;
 import com.guis.decademy.entity.Profesor;
 import com.guis.decademy.entity.Usuario;
@@ -26,10 +27,10 @@ public class DecademyApplication {
 	@Bean("usuarios")
 	public List<Usuario> usuarios() {
 		List<Usuario> usuarios = new ArrayList<>();
-		usuarios.add(new Alumno("pedro.romero","Pedro", "Romero", "pedro.jpg"));
-		usuarios.add(new Alumno("ana.romero","Ana", "Romero", "sarah.jpg"));
-		usuarios.add(new Usuario("sarah.connor","Sarah", "Connor", "sarah.jpg"));
-		usuarios.add(new Profesor("ricardo.gareca", "Ricardo", "Gareca", "ricardo.jpg"));
+		usuarios.add(new Alumno("pedro.romero","Pedro", "Romero", "pedro.jpg", TipoUsuario.TIPO_ALUMNO));
+		usuarios.add(new Alumno("ana.romero","Ana", "Romero", "sarah.jpg", TipoUsuario.TIPO_ADMINISTRATIVO));
+		usuarios.add(new Usuario("sarah.connor","Sarah", "Connor", "sarah.jpg", TipoUsuario.TIPO_PADRE));
+		usuarios.add(new Profesor("ricardo.gareca", "Ricardo", "Gareca", "ricardo.jpg", TipoUsuario.TIPO_TUTOR));
 		return usuarios;
 	}
 }
